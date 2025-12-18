@@ -1,8 +1,8 @@
 [![Tracker](https://img.shields.io/github/issues/lamboley/AlomawaniQoL.svg?label=Issues&style=popout)](https://github.com/lamboley/AlomawaniQoL/issues)
 
-# AlomawaniQoL
+# Alomawani QoL
 
- Provide quality of life improvements to enhance your World of Wacraft experience.
+> Provide quality of life improvements to enhance your World of Wacraft experience.
 
 ## Issues
 
