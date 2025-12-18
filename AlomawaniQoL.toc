@@ -27,7 +27,6 @@ Libraries\LibSharedMedia-3.0\lib.xml
 
 ## Core ##
 AlomawaniQoL.lua
-Commands.lua
 
 ## Modules ##
 Modules\System\Graphics.lua
