@@ -31,7 +31,6 @@ function AlomawaniQoL:OnInitialize()
 	end
 
 	self:SetupOptions()
-	self:LoadCommands()
 end
 
 function AlomawaniQoL:InitializeProfile()
