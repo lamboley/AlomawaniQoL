@@ -21,8 +21,24 @@ local function generateOptions()
             profiles = { profiles = profilesTable },
         },
         args = {
-            system = {
+            frames = {
                 order = 1,
+                type = 'group',
+                name = 'Frames',
+                args = {
+                    options = {
+                        type = 'group',
+                        order = 0,
+                        name = function(info)
+                            return info.uiType == 'dialog' and '' or 'System'
+                        end,
+                        guiInline = true,
+                        args = {},
+                    },
+                },
+            },
+            system = {
+                order = 2,
                 type = 'group',
                 name = 'System',
                 args = {

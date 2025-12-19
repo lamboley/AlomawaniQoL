@@ -30,7 +30,9 @@ AlomawaniQoL.lua
 
 ## Modules ##
 Modules\System\Graphics.lua
+Modules\Frames\ObjectiveTracker.lua
 
 ## Options ##
 Options\Options.lua
-Options\OptionsGraphics.lua
+Options\Graphics.lua
+Options\ObjectiveTracker.lua

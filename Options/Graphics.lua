@@ -16,7 +16,6 @@ function Graphics:SetupOptions()
             type = 'toggle',
             order = 1,
             name = 'Enabled',
-            desc = 'Graphics',
             get = function() return self.db.profile.enabled end,
             set = 'ToggleModule',
             handler = self,
@@ -44,6 +43,7 @@ function Graphics:SetupOptions()
                 name = 'Custom scale value',
                 get = myGetterFunc,
                 set = mySetterFunc,
+                width = 'half',
             },
             maxCameraZoomToggle = {
                 order = 5,
@@ -59,6 +59,7 @@ function Graphics:SetupOptions()
                 type = 'input',
                 get = myGetterFunc,
                 set = mySetterFunc,
+                width = 'half',
             },
         }
 

@@ -21,6 +21,8 @@ end
 
 function Graphics:OnEnable()
     self:ToggleOptions()
+	self:ApplyConfig(self.db.profile)
+
     self:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
 
