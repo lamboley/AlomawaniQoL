@@ -2,7 +2,7 @@
 
 # Alomawani QoL
 
-> Provide quality of life improvements to enhance your World of Wacraft experience.
+Provide quality of life improvements to enhance your World of Wacraft experience.
 
 ## Issues
 
