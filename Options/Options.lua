@@ -21,26 +21,10 @@ local function generateOptions()
             profiles = { profiles = profilesTable },
         },
         args = {
-            frames = {
-                order = 1,
-                type = 'group',
-                name = 'Frames',
-                args = {
-                    options = {
-                        type = 'group',
-                        order = 0,
-                        name = function(info)
-                            return info.uiType == 'dialog' and '' or 'System'
-                        end,
-                        guiInline = true,
-                        args = {},
-                    },
-                },
-            },
-            system = {
+            quests = {
                 order = 2,
                 type = 'group',
-                name = 'System',
+                name = 'Quests',
                 args = {
                     options = {
                         type = 'group',
@@ -80,7 +64,7 @@ end
 
 function AlomawaniQoL:SetupOptions()
     AceConfig:RegisterOptionsTable('AlomawaniQoL', getOptions)
-    AceConfigDialog:SetDefaultSize('AlomawaniQoL', 660, 650)
+    AceConfigDialog:SetDefaultSize('AlomawaniQoL', 750, 650)
     self:RegisterChatCommand('alomawaniqol', 'ToggleOptions')
     self:RegisterChatCommand('alq', 'ToggleOptions')
 end

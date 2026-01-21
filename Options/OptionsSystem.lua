@@ -1,17 +1,17 @@
 local _, AlomawaniQoL = ...
 
-local Graphics = AlomawaniQoL:GetModule('Graphics')
+local System = AlomawaniQoL:GetModule('System')
 
 local function myGetterFunc(info)
-    return Graphics.db.profile[info[#info]]
+    return System.db.profile[info[#info]]
 end
 
 local function mySetterFunc(info, value)
-    Graphics.db.profile[info[#info]] = value
+    System.db.profile[info[#info]] = value
 end
 
-function Graphics:SetupOptions()
-    if not self.modulesoptions then
+function System:SetupOptions()
+    if not self.options then
         local enabled = {
             type = 'toggle',
             order = 1,
@@ -27,39 +27,52 @@ function Graphics:SetupOptions()
             header1 = {
                 order = 2,
                 type = 'header',
-                name = 'General',
+                name = 'System scale',
                 width = 'full',
             },
             customScaleToggle = {
                 order = 3,
                 type = 'toggle',
-                name = 'Use custom scale',
+                name = 'Enable custom system scale',
                 set = mySetterFunc,
                 get = myGetterFunc,
+                width = 'full',
             },
             customScaleValue = {
                 order = 4,
                 type = 'input',
-                name = 'Custom scale value',
+                name = 'Custom system scale value',
+                desc = 'Need a /reload',
                 get = myGetterFunc,
                 set = mySetterFunc,
-                width = 'half',
+            },
+            spacer1 = {
+                order = 5,
+                type = 'description',
+                name = '',
+                width = 'full',
+            },
+            header2 = {
+                order = 6,
+                type = 'header',
+                name = 'Max camera zoom',
+                width = 'full',
             },
             maxCameraZoomToggle = {
-                order = 5,
+                order = 7,
                 type = 'toggle',
-                name = 'Max camera zoom',
+                name = 'Configure max camera zoom',
                 set = mySetterFunc,
                 get = myGetterFunc,
+                width = 'full',
             },
             maxCameraZoomValue = {
-                order = 6,
+                order = 8,
                 name = 'Max camera zoom value',
-                desc = 'Configure the max camera zoom value. Default: 2.6',
+                desc = 'Need a /reload. Default: 2.6',
                 type = 'input',
                 get = myGetterFunc,
                 set = mySetterFunc,
-                width = 'half',
             },
         }
 
@@ -68,15 +81,14 @@ function Graphics:SetupOptions()
         }
     end
 
-    if not self.options then
-        self.options = {
-            order = 1,
-            type = 'group',
-            name = 'Graphics',
-            childGroups = 'tab',
-        }
-    end
 
-    AlomawaniQoL.options.args.system.args.Graphics = self.options
+    self.options = {
+        order = 99,
+        type = 'group',
+        name = 'System & Graphics',
+        arg = 'System',
+    }
+
+    AlomawaniQoL.options.args.system = self.options
     self.options.args = self:IsEnabled() and self.modulesoptions or self.disabledoptions
 end

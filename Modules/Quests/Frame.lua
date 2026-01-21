@@ -1,6 +1,6 @@
 local _, AlomawaniUI = ...
 
-local ObjectiveTracker = AlomawaniUI:NewModule('ObjectiveTracker', 'AceEvent-3.0')
+local Quests = AlomawaniUI:NewModule('Quests', 'AceEvent-3.0')
 
 local defaults = {
 	profile = {
@@ -9,35 +9,35 @@ local defaults = {
 	}
 }
 
-function ObjectiveTracker:OnInitialize()
-	self.db = AlomawaniUI.db:RegisterNamespace('ObjectiveTracker', defaults)
+function Quests:OnInitialize()
+	self.db = AlomawaniUI.db:RegisterNamespace('Quests', defaults)
 	self:SetEnabledState(self.db.profile.enabled)
 end
 
-function ObjectiveTracker:OnEnable()
+function Quests:OnEnable()
     self:ToggleOptions()
 	self:ApplyConfig(self.db.profile)
 
 	self:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
 
-function ObjectiveTracker:OnDisable()
+function Quests:OnDisable()
     self:UnregisterEvent('PLAYER_ENTERING_WORLD')
     self:ToggleOptions()
 end
 
-function ObjectiveTracker:ApplyConfig(config)
+function Quests:ApplyConfig(config)
 	if config then
 		self.config = config
 	end
 end
 
-function ObjectiveTracker:PLAYER_ENTERING_WORLD()
+function Quests:PLAYER_ENTERING_WORLD()
 	ObjectiveTrackerFrame:SetScale(self.db.profile.customScaleValue)
 
-	CompactRaidFrameManager:UnregisterAllEvents()
-	CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
-	CompactRaidFrameManager:Hide()
+	-- CompactRaidFrameManager:UnregisterAllEvents()
+	-- CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
+	-- CompactRaidFrameManager:Hide()
 
 	MicroButtonAndBagsBar:UnregisterAllEvents()
 	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)

@@ -29,10 +29,12 @@ Libraries\LibSharedMedia-3.0\lib.xml
 AlomawaniQoL.lua
 
 ## Modules ##
-Modules\System\Graphics.lua
-Modules\Frames\ObjectiveTracker.lua
+Modules\Vendors.lua
+Modules\System.lua
+Modules\Quests\Frame.lua
 
 ## Options ##
 Options\Options.lua
-Options\Graphics.lua
-Options\ObjectiveTracker.lua
+Options\OptionsVendors.lua
+Options\OptionsSystem.lua
+Options\OptionsQuests.lua

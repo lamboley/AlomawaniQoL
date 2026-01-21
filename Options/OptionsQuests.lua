@@ -1,17 +1,17 @@
 local _, AlomawaniUI = ...
 
-local ObjectiveTracker = AlomawaniUI:GetModule('ObjectiveTracker')
+local Quests = AlomawaniUI:GetModule('Quests')
 
 local function myGetterFunc(info)
-    return ObjectiveTracker.db.profile[info[#info]]
+    return Quests.db.profile[info[#info]]
 end
 
 local function mySetterFunc(info, value)
-    ObjectiveTracker.db.profile[info[#info]] = value
+    Quests.db.profile[info[#info]] = value
 end
 
-function ObjectiveTracker:SetupOptions()
-	if not self.modulesoptions then
+function Quests:SetupOptions()
+	if not self.options then
 		local enabled = {
 			type = 'toggle',
 			order = 1,
@@ -27,13 +27,13 @@ function ObjectiveTracker:SetupOptions()
             header1 = {
                 order = 2,
                 type = 'header',
-                name = 'Layout',
+                name = 'Frame',
                 width = 'full',
             },
 			customScaleValue = {
 				order = 3,
 				name = 'Custom scale value',
-				desc = 'Configure the scale of the ObjectiveTrackerFrame. (Need /reload)',
+				desc = 'Configure the scale of the QuestsFrame. (Need a /reload)',
 				type = "range",
 				min = 0.01, softMin = .1, softMax = 2, bigStep = 0.05,
 				get = myGetterFunc,
@@ -49,10 +49,10 @@ function ObjectiveTracker:SetupOptions()
 	self.options = {
 		order = 2,
 		type = 'group',
-		name = 'ObjectiveTracker',
+		name = 'Quests',
         childGroups = 'tab',
 	}
 
-    AlomawaniQoL.options.args.frames.args.ObjectiveTracker = self.options
+    AlomawaniQoL.options.args.quests.args.frame = self.options
     self.options.args = self:IsEnabled() and self.modulesoptions or self.disabledoptions
 end

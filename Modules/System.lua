@@ -1,43 +1,41 @@
 local _, AlomawaniQoL = ...
 
-local Graphics = AlomawaniQoL:NewModule('Graphics', 'AceEvent-3.0')
-
-local SetCVar = SetCVar
+local System = AlomawaniQoL:NewModule('System', 'AceEvent-3.0')
 
 local defaults = {
     profile = {
         enabled = true,
         customScaleToggle = false,
-        customScaleValue = 0,
+        customScaleValue = 0, -- 768/1440 -- 0.533333333 -- X .67 -- Y .33
         maxCameraZoomToggle = false,
         maxCameraZoomValue = 2.6,
     },
 }
 
-function Graphics:OnInitialize()
-    self.db = AlomawaniQoL.db:RegisterNamespace('Graphics', defaults)
+function System:OnInitialize()
+    self.db = AlomawaniQoL.db:RegisterNamespace('System', defaults)
     self:SetEnabledState(self.db.profile.enabled)
 end
 
-function Graphics:OnEnable()
+function System:OnEnable()
     self:ToggleOptions()
 	self:ApplyConfig(self.db.profile)
 
     self:RegisterEvent('PLAYER_ENTERING_WORLD')
 end
 
-function Graphics:OnDisable()
+function System:OnDisable()
     self:UnregisterEvent('PLAYER_ENTERING_WORLD')
     self:ToggleOptions()
 end
 
-function Graphics:ApplyConfig(config)
+function System:ApplyConfig(config)
     if config then
         self.config = config
     end
 end
 
-function Graphics:PLAYER_ENTERING_WORLD()
+function System:PLAYER_ENTERING_WORLD()
     local profile = self.db.profile
 
     if profile.customScaleToggle and profile.customScaleValue ~= 0 then
