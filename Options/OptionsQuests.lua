@@ -1,6 +1,6 @@
-local _, AlomawaniUI = ...
+local _, AlomawaniQoL = ...
 
-local Quests = AlomawaniUI:GetModule('Quests')
+local Quests = AlomawaniQoL:GetModule('Quests')
 
 local function myGetterFunc(info)
     return Quests.db.profile[info[#info]]

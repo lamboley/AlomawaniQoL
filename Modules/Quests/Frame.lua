@@ -1,6 +1,6 @@
-local _, AlomawaniUI = ...
+local _, AlomawaniQoL = ...
 
-local Quests = AlomawaniUI:NewModule('Quests', 'AceEvent-3.0')
+local Quests = AlomawaniQoL:NewModule('Quests', 'AceEvent-3.0')
 
 local defaults = {
 	profile = {
@@ -10,7 +10,7 @@ local defaults = {
 }
 
 function Quests:OnInitialize()
-	self.db = AlomawaniUI.db:RegisterNamespace('Quests', defaults)
+	self.db = AlomawaniQoL.db:RegisterNamespace('Quests', defaults)
 	self:SetEnabledState(self.db.profile.enabled)
 end
 

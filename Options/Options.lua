@@ -37,6 +37,22 @@ local function generateOptions()
                     },
                 },
             },
+            social = {
+                order = 3,
+                type = 'group',
+                name = 'Social',
+                args = {
+                    options = {
+                        type = 'group',
+                        order = 0,
+                        name = function(info)
+                            return info.uiType == 'dialog' and '' or 'System'
+                        end,
+                        guiInline = true,
+                        args = {},
+                    },
+                },
+            },
         },
     }
 

@@ -32,9 +32,11 @@ AlomawaniQoL.lua
 Modules\Vendors.lua
 Modules\System.lua
 Modules\Quests\Frame.lua
+Modules\Social\Frame.lua
 
 ## Options ##
 Options\Options.lua
 Options\OptionsVendors.lua
 Options\OptionsSystem.lua
 Options\OptionsQuests.lua
+Options\OptionsSocial.lua
