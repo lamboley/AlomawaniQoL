@@ -1,15 +1,7 @@
 local _, AQL = ...
 local Interface = AQL['Interface']
 
-local lastRightClick = 0
 
-local function DisableRightClick()
-    local time = GetTime()
-    if lastRightClick + 0.2 < time then
-        lastRightClick = time
-        MouselookStop()
-    end
-end
 
 function Interface:OnEvent(event, ...)
     SetCVar('floatingCombatTextCombatHealing', 0)
@@ -18,14 +10,6 @@ function Interface:OnEvent(event, ...)
     SetCVar('floatingCombatTextPetMeleeDamage', 0)
     SetCVar('floatingCombatTextPetSpellDamage', 0)
     SetCVar('cameraIndirectVisibility', 1)
-
-    WorldFrame:HookScript('OnMouseUp', function(_, button)
-        if button == "RightButton" and not IsMouseButtonDown('RightButton') then
-            if InCombatLockdown() then
-                DisableRightClick()
-            end
-        end
-    end)
 end
 
 function Interface:Enable()

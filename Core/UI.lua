@@ -33,6 +33,10 @@ function AQLUI:Init()
                 name = "Social",
                 text = "Social"
             },
+            {
+                name = "Gameplay",
+                text = "Gameplay"
+            },
         },
         {
             width = WIDTH,
@@ -130,6 +134,47 @@ function AQLUI:Init()
                     AQLDB.Configs["DisableChatClamping"] = value
                 end,
             },
+        },
+        10, -100, HEIGHT - 10, false,
+        textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
+    )
+
+    -------------------------------------------------------------------------------------------------------------------
+    -- GAMEPLAY
+    DF:BuildMenu(tabsContainer:GetTabFrameByName("Gameplay"),
+        {
+            { -- Label: Gameplay Options
+                type = "label",
+                get = function() return "Gameplay Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Disable Right Click Targeting
+                type = "toggle",
+                boxfirst = true,
+                name = "Disable Right Click Targeting",
+                get = function() return AQLDB.Configs["DisableRightClickTargeting"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["DisableRightClickTargeting"] = value
+                end,
+            },
+            {
+                type = "breakline"
+            },
+            { -- Label: Vendor Options
+                type = "label",
+                get = function() return "Vendor Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Enable Repair Automatic
+                type = "toggle",
+                boxfirst = true,
+                name = "Enable Repair Automatic",
+                get = function() return AQLDB.Configs["EnableRepairAutomatic"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["EnableRepairAutomatic"] = value
+                end,
+            },
+
         },
         10, -100, HEIGHT - 10, false,
         textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate

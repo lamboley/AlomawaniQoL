@@ -21,3 +21,6 @@ Modules\System\Graphics.lua
 Modules\Interface\Core.lua
 Modules\Interface\Quests.lua
 Modules\Interface\Social.lua
+
+Modules\Gameplay\Core.lua
+Modules\Gameplay\Vendor.lua

@@ -46,6 +46,16 @@ function AQL:OnEvent(event, ...)
             --
             -- Chat Options
             AQLDB.Configs["DisableChatClamping"] = AQLDB.Configs["DisableChatClamping"] or true
+
+            -----------------------------------------------------------------------------------------------------------
+            -- Gameplay
+            --
+            -- Vendor Options
+            AQLDB.Configs["EnableRepairAutomatic"] = AQLDB.Configs["EnableRepairAutomatic"] or true
+            AQLDB.Configs["DisableRightClickTargeting"] = AQLDB.Configs["DisableRightClickTargeting"] or true
+
+
+
         end
 	elseif (event == "PLAYER_ENTERING_WORLD") then -- PLAYER_ENTERING_WORLD
 	elseif (event == "PLAYER_LOGIN") then -- PLAYER_LOGIN
