@@ -1,7 +1,7 @@
 local _, AQL = ...
 
 AQL.Print = function(...)
-	DEFAULT_CHAT_FRAME:AddMessage(strjoin('', '|cff00ff00', 'AQL:|r ', ...))
+	print("Alomawani QoL:", ...)
 end
 
 AQL['System'] = CreateFrame('Frame')

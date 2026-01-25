@@ -17,9 +17,9 @@ function AQL:OnEvent(event, ...)
                 AQLDB = {}
             end
 
-            -- Initialize UI
-            if not AQLDB.UI then
-                AQLDB.UI = {
+            -- Initialize savedVariableTable for DF UI
+            if not AQLDB.AQLUI then
+                AQLDB.AQLUI = {
                     scale = 1
                 }
             end
@@ -29,11 +29,15 @@ function AQL:OnEvent(event, ...)
                 AQLDB.Configs = {}
             end
 
+            AQLDB.Configs["Debug"] = AQLDB.Configs["Debug"] or false
             AQLDB.Configs["ObjectiveTrackerScale"] = AQLDB.Configs["ObjectiveTrackerScale"] or 1.0
             AQLDB.Configs["UIParentScale"] = AQLDB.Configs["UIParentScale"] or (768/1440)
         end
 	elseif (event == "PLAYER_ENTERING_WORLD") then -- PLAYER_ENTERING_WORLD
 	elseif (event == "PLAYER_LOGIN") then -- PLAYER_LOGIN
+        -- User Interface
+        self.AQLUI:Init()
+
         -- Modules
 		AQL["System"]:Enable()
         AQL["Interface"]:Enable()

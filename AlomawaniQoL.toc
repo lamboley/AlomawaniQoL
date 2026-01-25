@@ -5,14 +5,16 @@
 ## Version: 0.0.1
 ## SavedVariables: AQLDB
 
-## Init
-Init.lua
-
 ## Libraries
 Libraries\Libraries.xml
 
+## Init
+Init.lua
+
 ## Core
 Core\Events.lua
+Core\UI.lua
+Core\SlashCommands.lua
 
 ## Modules
 Modules\System\System.lua
