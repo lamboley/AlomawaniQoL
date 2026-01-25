@@ -24,11 +24,14 @@ Libraries\AceGUI-3.0\AceGUI-3.0.xml
 Libraries\AceConfig-3.0\AceConfig-3.0.xml
 Libraries\LibDualSpec-1.0\LibDualSpec-1.0.lua
 Libraries\LibSharedMedia-3.0\lib.xml
+Libraries\LibDFramework-1.0\load.xml
 
 ## Core
 Core\Functions.lua
+Core\Commands.lua
 Core\Loading.lua
 Core\Modules.lua
+Core\UI.lua
 
 ## Modules
 Modules\System\System.lua
