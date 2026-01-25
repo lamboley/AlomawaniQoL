@@ -11,12 +11,12 @@ local dropdownTemplate = DF:GetTemplate("dropdown", "OPTIONS_DROPDOWN_TEMPLATE")
 local switchTemplate = DF:GetTemplate("switch", "OPTIONS_CHECKBOX_TEMPLATE")
 local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
+local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
 -- https://github.com/Tercioo/Details-Framework/blob/b924dc8df2a49c2caf00cce279e68ba669a2dc47/panel.lua#L2171
 -- detailsFramework:CreateSimplePanel(parent, width, height, title, frameName, panelOptions, savedVariableTable)
 local AQLUI = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AQLUI", {})
 AQLUI:SetPoint("CENTER")
-AQLUI:SetFrameStrata("HIGH")
 
 function AQLUI:Init()
     local tabsContainer = DF:CreateTabContainer(AQLUI, "Alomawani QoL", "AQLUITabsContainers",
@@ -25,40 +25,115 @@ function AQLUI:Init()
                 name = "General",
                 text = "General"
             },
+            {
+                name = "System",
+                text = "System"
+            },
+            {
+                name = "Social",
+                text = "Social"
+            },
         },
         {
             width = WIDTH,
-            height = HEIGHT - 5,
-            backdrop_color = { 0, 0, 0, 0 }, -- r, g, b, a
-            backdrop_border_color = { 0.1, 0.1, 0.1, 0.4 } -- r, g, b, a
+            height = HEIGHT - 10,
+            backdrop_color = { 0, 0, 0, 0 },
+            backdrop_border_color = { 0.1, 0.1, 0.1, 0.4 }
         }
     )
     tabsContainer:SetPoint("CENTER", AQLUI, "CENTER", 0, 0)
 
-    local tabGeneral = tabsContainer:GetTabFrameByName("General")
-    local tabGeneralMenuOptions = {
-        {
-            type = "label",
-            get = function() return "General Options" end,
-            text_template = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
-        },
-        {
-            type = "toggle",
-            boxfirst = true,
-            name = "Enable Debug",
-            get = function() return AQLDB.Configs["Debug"] end,
-            set = function(_, _, value)
-                AQLDB.Configs["Debug"] = value
-            end,
-        },
-        {
-            type = "breakline"
-        },
-    }
-
+    -------------------------------------------------------------------------------------------------------------------
+    -- GENERAL
+    --
     -- https://github.com/Tercioo/Details-Framework/blob/master/buildmenu.lua
     -- detailsFramework:BuildMenu(parent, menuOptions, xOffset, yOffset, height, useColon, textTemplate, dropdownTemplate, switchTemplate, switchIsCheckbox, sliderTemplate, buttonTemplate, valueChangeHook)
-    DF:BuildMenu(tabGeneral, tabGeneralMenuOptions, 10, -100, HEIGHT - 10, false, textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate)
+    DF:BuildMenu(tabsContainer:GetTabFrameByName("General"),
+        {
+            { -- Label: General Options
+                type = "label",
+                get = function() return "General Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Enable Debug
+                type = "toggle",
+                boxfirst = true,
+                name = "Enable Debug",
+                get = function() return AQLDB.Configs["Debug"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["Debug"] = value
+                end,
+            },
+            {
+                type = "breakline"
+            },
+            { -- Label: Modules Options
+                type = "label",
+                get = function() return "Modules Options" end,
+                text_template = orangeTextTemplate
+            },
+        },
+        10, -100, HEIGHT - 10, false,
+        textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
+    )
+
+    -------------------------------------------------------------------------------------------------------------------
+    -- SYSTEM
+    DF:BuildMenu(tabsContainer:GetTabFrameByName("System"),
+        {
+            { -- Label: System Options
+                type = "label",
+                get = function() return "Graphics Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- UI Scale
+                type = "range",
+                name = "UI Scale",
+                get = function() return AQLDB.Configs["UIParentScale"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["UIParentScale"] = value
+                end,
+                min = 0.0000001,
+                max = 2,
+                step = 0.0000001,
+                usedecimals = true,
+            },
+            { -- Max Out Camera Distance
+                type = "toggle",
+                boxfirst = true,
+                name = "Max Out Camera Distance",
+                get = function() return AQLDB.Configs["MaxOutCameraDistance"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["MaxOutCameraDistance"] = value
+                end,
+            },
+        },
+        10, -100, HEIGHT - 10, false,
+        textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
+    )
+
+    -------------------------------------------------------------------------------------------------------------------
+    -- SOCIAL
+    DF:BuildMenu(tabsContainer:GetTabFrameByName("Social"),
+        {
+            { -- Label: Chat Options
+                type = "label",
+                get = function() return "Chat Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Disable Chat Clamping
+                type = "toggle",
+                boxfirst = true,
+                name = "Disable Chat Clamping",
+                get = function() return AQLDB.Configs["DisableChatClamping"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["DisableChatClamping"] = value
+                end,
+            },
+        },
+        10, -100, HEIGHT - 10, false,
+        textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
+    )
 end
 
 function AQLUI:ToggleOptions()

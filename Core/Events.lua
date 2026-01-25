@@ -29,9 +29,23 @@ function AQL:OnEvent(event, ...)
                 AQLDB.Configs = {}
             end
 
+            -----------------------------------------------------------------------------------------------------------
+            -- General
             AQLDB.Configs["Debug"] = AQLDB.Configs["Debug"] or false
-            AQLDB.Configs["ObjectiveTrackerScale"] = AQLDB.Configs["ObjectiveTrackerScale"] or 1.0
-            AQLDB.Configs["UIParentScale"] = AQLDB.Configs["UIParentScale"] or (768/1440)
+
+            -----------------------------------------------------------------------------------------------------------
+            -- System Tabs
+            --
+            -- Graphics Options
+            AQLDB.Configs["ObjectiveTrackerScale"] = AQLDB.Configs["ObjectiveTrackerScale"] or 1
+            AQLDB.Configs["UIParentScale"] = AQLDB.Configs["UIParentScale"] or 1 -- 768/1440 = 0.5333333333333333333333333333333333
+            AQLDB.Configs["MaxOutCameraDistance"] = AQLDB.Configs["MaxOutCameraDistance"] or true
+
+            -----------------------------------------------------------------------------------------------------------
+            -- Social
+            --
+            -- Chat Options
+            AQLDB.Configs["DisableChatClamping"] = AQLDB.Configs["DisableChatClamping"] or true
         end
 	elseif (event == "PLAYER_ENTERING_WORLD") then -- PLAYER_ENTERING_WORLD
 	elseif (event == "PLAYER_LOGIN") then -- PLAYER_LOGIN

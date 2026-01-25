@@ -5,7 +5,10 @@ local Graphics = CreateFrame('Frame')
 
 function Graphics:OnEvent(event, ...)
     UIParent:SetScale(AQLDB.Configs["UIParentScale"])
-    SetCVar('cameraDistanceMaxZoomFactor', 2.6)
+
+    if AQLDB.Configs["MaxOutCameraDistance"] then
+        SetCVar('cameraDistanceMaxZoomFactor', 2.6)
+    end
 end
 
 function Graphics:Enable()
