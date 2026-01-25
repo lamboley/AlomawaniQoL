@@ -83,6 +83,8 @@ function AQLUI:Init()
 
     -------------------------------------------------------------------------------------------------------------------
     -- SYSTEM
+    --
+    -- TODO: Make Interface it's own tab
     DF:BuildMenu(tabsContainer:GetTabFrameByName("System"),
         {
             { -- Label: System Options
@@ -110,6 +112,23 @@ function AQLUI:Init()
                 max = 2,
                 step = 0.0000001,
                 usedecimals = true,
+            },
+            {
+                type = "breakline"
+            },
+            { -- Label: Interface Options
+                type = "label",
+                get = function() return "Interface Options" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Disable Damage Text
+                type = "toggle",
+                boxfirst = true,
+                name = "Disable Damage Text",
+                get = function() return AQLDB.Configs["DisableDamageText"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["DisableDamageText"] = value
+                end,
             },
         },
         10, -100, HEIGHT - 10, false,

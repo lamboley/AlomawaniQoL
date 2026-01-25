@@ -41,6 +41,9 @@ function AQL:OnEvent(event, ...)
             AQLDB.Configs["UIParentScale"] = AQLDB.Configs["UIParentScale"] or 1 -- 768/1440 = 0.5333333333333333333333333333333333
             AQLDB.Configs["MaxOutCameraDistance"] = AQLDB.Configs["MaxOutCameraDistance"] or true
 
+            -- Interface Options
+            AQLDB.Configs["DisableDamageText"] = AQLDB.Configs["DisableDamageText"] or 1
+
             -----------------------------------------------------------------------------------------------------------
             -- Social
             --
