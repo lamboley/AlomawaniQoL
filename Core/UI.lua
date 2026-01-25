@@ -37,6 +37,10 @@ function AQLUI:Init()
                 name = "Gameplay",
                 text = "Gameplay"
             },
+            {
+                name = "Interface",
+                text = "Interface"
+            },
         },
         {
             width = WIDTH,
@@ -56,7 +60,7 @@ function AQLUI:Init()
         {
             { -- Label: General Options
                 type = "label",
-                get = function() return "General Options" end,
+                get = function() return "General" end,
                 text_template = orangeTextTemplate
             },
             { -- Enable Debug
@@ -69,11 +73,11 @@ function AQLUI:Init()
                 end,
             },
             {
-                type = "breakline"
+                type = "blank"
             },
-            { -- Label: Modules Options
+            { -- Label: Modules
                 type = "label",
-                get = function() return "Modules Options" end,
+                get = function() return "Modules" end,
                 text_template = orangeTextTemplate
             },
         },
@@ -89,7 +93,7 @@ function AQLUI:Init()
         {
             { -- Label: System Options
                 type = "label",
-                get = function() return "Graphics Options" end,
+                get = function() return "General" end,
                 text_template = orangeTextTemplate
             },
             { -- Max Out Camera Distance
@@ -100,6 +104,14 @@ function AQLUI:Init()
                 set = function(_, _, value)
                     AQLDB.Configs["MaxOutCameraDistance"] = value
                 end,
+            },
+            {
+                type = "blank"
+            },
+            { -- Label: Graphics
+                type = "label",
+                get = function() return "Graphics" end,
+                text_template = orangeTextTemplate
             },
             { -- UI Scale
                 type = "range",
@@ -114,20 +126,20 @@ function AQLUI:Init()
                 usedecimals = true,
             },
             {
-                type = "breakline"
+                type = "blank"
             },
-            { -- Label: Interface Options
+            { -- Label: Audio
                 type = "label",
-                get = function() return "Interface Options" end,
+                get = function() return "Audio" end,
                 text_template = orangeTextTemplate
             },
-            { -- Disable Damage Text
+            { -- Mute Annoying Sound
                 type = "toggle",
                 boxfirst = true,
-                name = "Disable Damage Text",
-                get = function() return AQLDB.Configs["DisableDamageText"] end,
+                name = "Mute Annoying Sound",
+                get = function() return AQLDB.Configs["MuteAnnoyingSound"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["DisableDamageText"] = value
+                    AQLDB.Configs["MuteAnnoyingSound"] = value
                 end,
             },
         },
@@ -141,7 +153,7 @@ function AQLUI:Init()
         {
             { -- Label: Chat Options
                 type = "label",
-                get = function() return "Chat Options" end,
+                get = function() return "Chat" end,
                 text_template = orangeTextTemplate
             },
             { -- Disable Chat Clamping
@@ -164,7 +176,7 @@ function AQLUI:Init()
         {
             { -- Label: Gameplay Options
                 type = "label",
-                get = function() return "Gameplay Options" end,
+                get = function() return "General" end,
                 text_template = orangeTextTemplate
             },
             { -- Disable Right Click Targeting
@@ -179,9 +191,9 @@ function AQLUI:Init()
             {
                 type = "breakline"
             },
-            { -- Label: Vendor Options
+            { -- Label: Merchant
                 type = "label",
-                get = function() return "Vendor Options" end,
+                get = function() return "Merchant" end,
                 text_template = orangeTextTemplate
             },
             { -- Enable Repair Automatic
@@ -194,6 +206,49 @@ function AQLUI:Init()
                 end,
             },
 
+        },
+        10, -100, HEIGHT - 10, false,
+        textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
+    )
+
+    -------------------------------------------------------------------------------------------------------------------
+    -- Interface
+    DF:BuildMenu(tabsContainer:GetTabFrameByName("Interface"),
+        {
+            { -- Label: General
+                type = "label",
+                get = function() return "General" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Disable Damage Text
+                type = "toggle",
+                boxfirst = true,
+                name = "Disable Damage Text",
+                get = function() return AQLDB.Configs["DisableDamageText"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["DisableDamageText"] = value
+                end,
+            },
+            {
+                type = "blank"
+            },
+            { -- Label: Scale
+                type = "label",
+                get = function() return "Scale" end,
+                text_template = orangeTextTemplate
+            },
+            { -- ObjectiveTracker Scale
+                type = "range",
+                name = "ObjectiveTracker Scale",
+                get = function() return AQLDB.Configs["ObjectiveTrackerScale"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["ObjectiveTrackerScale"] = value
+                end,
+                min = 0.0000001,
+                max = 2,
+                step = 0.0000001,
+                usedecimals = true,
+            },
         },
         10, -100, HEIGHT - 10, false,
         textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
