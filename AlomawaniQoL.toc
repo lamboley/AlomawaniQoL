@@ -1,42 +1,39 @@
 ## Interface: 120001, 120000, 110207
+## Author: Alomawani
 ## Title: Alomawani QoL
 ## Notes: Provide quality of life improvements to enhance your World of Wacraft experience
 ## Version: 0.0.1
 ## SavedVariables: AlomawaniQoLDB
 
-## OptionalDeps: Ace3, LibSharedMedia-3.0, LibDualSpec-1.0
+## Init
+Init.lua
 
-#@no-lib-strip@
+## Settings
+Config\Settings.lua
+
+## Libraries
 Libraries\LibStub\LibStub.lua
 Libraries\CallbackHandler-1.0\CallbackHandler-1.0.xml
-
 Libraries\AceAddon-3.0\AceAddon-3.0.xml
 Libraries\AceDB-3.0\AceDB-3.0.xml
 Libraries\AceDBOptions-3.0\AceDBOptions-3.0.xml
 Libraries\AceEvent-3.0\AceEvent-3.0.xml
 Libraries\AceHook-3.0\AceHook-3.0.xml
-
 Libraries\AceConsole-3.0\AceConsole-3.0.xml
 Libraries\AceGUI-3.0\AceGUI-3.0.xml
 Libraries\AceConfig-3.0\AceConfig-3.0.xml
-
 Libraries\LibDualSpec-1.0\LibDualSpec-1.0.lua
-
 Libraries\LibSharedMedia-3.0\lib.xml
-#@end-no-lib-strip@
 
-## Core ##
-AlomawaniQoL.lua
+## Core
+Core\Functions.lua
+Core\Loading.lua
+Core\Modules.lua
 
-## Modules ##
-Modules\Vendors.lua
-Modules\System.lua
-Modules\Quests\Frame.lua
-Modules\Social\Frame.lua
+## Modules
+Modules\System\System.lua
+Modules\System\Graphics.lua
 
-## Options ##
-Options\Options.lua
-Options\OptionsVendors.lua
-Options\OptionsSystem.lua
-Options\OptionsQuests.lua
-Options\OptionsSocial.lua
+Modules\Interface\Interface.lua
+Modules\Interface\Quests.lua
+Modules\Interface\Social.lua
