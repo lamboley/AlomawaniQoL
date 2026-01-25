@@ -18,6 +18,7 @@ function Interface:OnEvent(event, ...)
     SetCVar('floatingCombatTextCombatLogPeriodicSpells', 0)
     SetCVar('floatingCombatTextPetMeleeDamage', 0)
     SetCVar('floatingCombatTextPetSpellDamage', 0)
+    SetCVar('cameraIndirectVisibility', 1)
 
     WorldFrame:HookScript('OnMouseUp', function(_, button)
         if button == "RightButton" and not IsMouseButtonDown('RightButton') then
