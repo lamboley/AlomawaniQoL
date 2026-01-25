@@ -1,11 +1,10 @@
-local _, addon = ...
-local T, C, L = addon[1], addon[2], addon[3]
-local Interface = T['Interface']
+local _, AQL = ...
+local Interface = AQL['Interface']
 
 local Quests = CreateFrame('Frame')
 
 function Quests:OnEvent(event, ...)
-    ObjectiveTrackerFrame:SetScale(C.Interface.customScaleValue)
+	ObjectiveTrackerFrame:SetScale(AQLDB.Configs["ObjectiveTrackerScale"])
 
 	-- CompactRaidFrameManager:UnregisterAllEvents()
 	-- CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)

@@ -1,7 +1,8 @@
-local _, addon = ...
+local _, AQL = ...
 
-addon[1] = CreateFrame('Frame')
-addon[2] = {}
-addon[3] = {}
+AQL.Print = function(...)
+	DEFAULT_CHAT_FRAME:AddMessage(strjoin('', '|cff00ff00', 'AQL:|r ', ...))
+end
 
-AlomawaniQoL = addon
+AQL['System'] = CreateFrame('Frame')
+AQL['Interface'] = CreateFrame('Frame')

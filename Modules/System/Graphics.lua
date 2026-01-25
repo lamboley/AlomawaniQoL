@@ -1,11 +1,10 @@
-local _, addon = ...
-local T, C, L = addon[1], addon[2], addon[3]
-local System = T['System']
+local _, AQL = ...
+local System = AQL['System']
 
 local Graphics = CreateFrame('Frame')
 
 function Graphics:OnEvent(event, ...)
-    UIParent:SetScale(768/1440)
+    UIParent:SetScale(AQLDB.Configs["UIParentScale"])
     SetCVar('cameraDistanceMaxZoomFactor', 2.6)
 end
 
