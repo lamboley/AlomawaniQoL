@@ -86,6 +86,15 @@ function AQLUI:Init()
                 get = function() return "Graphics Options" end,
                 text_template = orangeTextTemplate
             },
+            { -- Max Out Camera Distance
+                type = "toggle",
+                boxfirst = true,
+                name = "Max Out Camera Distance",
+                get = function() return AQLDB.Configs["MaxOutCameraDistance"] end,
+                set = function(_, _, value)
+                    AQLDB.Configs["MaxOutCameraDistance"] = value
+                end,
+            },
             { -- UI Scale
                 type = "range",
                 name = "UI Scale",
@@ -97,15 +106,6 @@ function AQLUI:Init()
                 max = 2,
                 step = 0.0000001,
                 usedecimals = true,
-            },
-            { -- Max Out Camera Distance
-                type = "toggle",
-                boxfirst = true,
-                name = "Max Out Camera Distance",
-                get = function() return AQLDB.Configs["MaxOutCameraDistance"] end,
-                set = function(_, _, value)
-                    AQLDB.Configs["MaxOutCameraDistance"] = value
-                end,
             },
         },
         10, -100, HEIGHT - 10, false,
