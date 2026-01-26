@@ -1,5 +1,4 @@
 local _, AlomawaniQoL = ...
-local System = AlomawaniQoL['System']
 
 local Graphics = CreateFrame('Frame')
 
@@ -16,4 +15,4 @@ function Graphics:Enable()
 	self:SetScript('OnEvent', self.OnEvent)
 end
 
-System.Graphics = Graphics
+AlomawaniQoL.System.Graphics = Graphics

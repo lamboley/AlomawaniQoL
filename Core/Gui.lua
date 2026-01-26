@@ -1,11 +1,9 @@
 local _, AlomawaniQoL = ...
 
-local WIDTH, HEIGHT = 1050, 620
-
--- https://www.curseforge.com/wow/addons/libdframework
 local DF = _G["DetailsFramework"]
 
--- DetailsFramework Template
+local WIDTH, HEIGHT = 1050, 620
+
 local textTemplate = DF:GetTemplate("font", "OPTIONS_FONT_TEMPLATE")
 local dropdownTemplate = DF:GetTemplate("dropdown", "OPTIONS_DROPDOWN_TEMPLATE")
 local switchTemplate = DF:GetTemplate("switch", "OPTIONS_CHECKBOX_TEMPLATE")
@@ -13,8 +11,6 @@ local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
 local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
--- https://github.com/Tercioo/Details-Framework/blob/b924dc8df2a49c2caf00cce279e68ba669a2dc47/panel.lua#L2171
--- detailsFramework:CreateSimplePanel(parent, width, height, title, frameName, panelOptions, savedVariableTable)
 local AlomawaniQoLUI = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLUI", {})
 AlomawaniQoLUI:SetPoint("CENTER")
 
@@ -52,13 +48,11 @@ function AlomawaniQoLUI:Init()
     tabsContainer:SetPoint("CENTER", AlomawaniQoLUI, "CENTER", 0, 0)
 
     -------------------------------------------------------------------------------------------------------------------
-    -- GENERAL
+    -- General
     --
-    -- https://github.com/Tercioo/Details-Framework/blob/master/buildmenu.lua
-    -- detailsFramework:BuildMenu(parent, menuOptions, xOffset, yOffset, height, useColon, textTemplate, dropdownTemplate, switchTemplate, switchIsCheckbox, sliderTemplate, buttonTemplate, valueChangeHook)
     DF:BuildMenu(tabsContainer:GetTabFrameByName("General"),
         {
-            { -- Label: General Options
+            { -- General
                 type = "label",
                 get = function() return "General" end,
                 text_template = orangeTextTemplate
@@ -75,7 +69,7 @@ function AlomawaniQoLUI:Init()
             {
                 type = "blank"
             },
-            { -- Label: Modules
+            { -- Modules
                 type = "label",
                 get = function() return "Modules" end,
                 text_template = orangeTextTemplate
@@ -86,12 +80,11 @@ function AlomawaniQoLUI:Init()
     )
 
     -------------------------------------------------------------------------------------------------------------------
-    -- SYSTEM
+    -- System
     --
-    -- TODO: Make Interface it's own tab
     DF:BuildMenu(tabsContainer:GetTabFrameByName("System"),
         {
-            { -- Label: System Options
+            { -- General
                 type = "label",
                 get = function() return "General" end,
                 text_template = orangeTextTemplate
@@ -108,7 +101,7 @@ function AlomawaniQoLUI:Init()
             {
                 type = "blank"
             },
-            { -- Label: Graphics
+            { -- Graphics
                 type = "label",
                 get = function() return "Graphics" end,
                 text_template = orangeTextTemplate
@@ -128,7 +121,7 @@ function AlomawaniQoLUI:Init()
             {
                 type = "blank"
             },
-            { -- Label: Audio
+            { -- Audio
                 type = "label",
                 get = function() return "Audio" end,
                 text_template = orangeTextTemplate
@@ -148,10 +141,10 @@ function AlomawaniQoLUI:Init()
     )
 
     -------------------------------------------------------------------------------------------------------------------
-    -- SOCIAL
+    -- Social
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Social"),
         {
-            { -- Label: Chat Options
+            { -- Chat
                 type = "label",
                 get = function() return "Chat" end,
                 text_template = orangeTextTemplate
@@ -171,10 +164,10 @@ function AlomawaniQoLUI:Init()
     )
 
     -------------------------------------------------------------------------------------------------------------------
-    -- GAMEPLAY
+    -- Gameplay
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Gameplay"),
         {
-            { -- Label: Gameplay Options
+            { -- General
                 type = "label",
                 get = function() return "General" end,
                 text_template = orangeTextTemplate
@@ -191,7 +184,7 @@ function AlomawaniQoLUI:Init()
             {
                 type = "breakline"
             },
-            { -- Label: Merchant
+            { -- Merchant
                 type = "label",
                 get = function() return "Merchant" end,
                 text_template = orangeTextTemplate
@@ -215,7 +208,7 @@ function AlomawaniQoLUI:Init()
     -- Interface
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Interface"),
         {
-            { -- Label: General
+            { -- General
                 type = "label",
                 get = function() return "General" end,
                 text_template = orangeTextTemplate
@@ -232,7 +225,7 @@ function AlomawaniQoLUI:Init()
             {
                 type = "blank"
             },
-            { -- Label: Scale
+            { -- Scale
                 type = "label",
                 get = function() return "Scale" end,
                 text_template = orangeTextTemplate

@@ -6,4 +6,4 @@ function System:Enable()
     self.Graphics:Enable()
 end
 
-AlomawaniQoL['System'] = System
+AlomawaniQoL.System = System

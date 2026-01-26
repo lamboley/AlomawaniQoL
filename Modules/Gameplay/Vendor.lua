@@ -1,5 +1,4 @@
 local _, AlomawaniQoL = ...
-local Gameplay = AlomawaniQoL['Interface']
 
 local Vendor = CreateFrame('Frame')
 
@@ -14,4 +13,4 @@ function Vendor:Enable()
 	self:SetScript('OnEvent', self.OnEvent)
 end
 
-Gameplay.Vendor = Vendor
+AlomawaniQoL.Gameplay.Vendor = Vendor

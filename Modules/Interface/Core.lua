@@ -26,4 +26,4 @@ function Interface:Enable()
     self.Social:Enable()
 end
 
-AlomawaniQoL['Interface'] = Interface
+AlomawaniQoL.Interface = Interface

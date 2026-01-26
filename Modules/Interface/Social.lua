@@ -1,5 +1,4 @@
 local _, AlomawaniQoL = ...
-local Interface = AlomawaniQoL['Interface']
 
 local Social = CreateFrame('Frame')
 
@@ -34,4 +33,4 @@ function Social:Enable()
 	self:SetScript('OnEvent', self.OnEvent)
 end
 
-Interface.Social = Social
+AlomawaniQoL.Interface.Social = Social

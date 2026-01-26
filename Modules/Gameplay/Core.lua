@@ -33,4 +33,4 @@ function Gameplay:Enable()
     self.Vendor:Enable()
 end
 
-AlomawaniQoL['Gameplay'] = Gameplay
+AlomawaniQoL.Gameplay = Gameplay

@@ -1,5 +1,4 @@
 local _, AlomawaniQoL = ...
-local Interface = AlomawaniQoL['Interface']
 
 local Quests = CreateFrame('Frame')
 
@@ -33,4 +32,4 @@ function Quests:Enable()
 	self:SetScript('OnEvent', self.OnEvent)
 end
 
-Interface.Quests = Quests
+AlomawaniQoL.Interface.Quests = Quests
