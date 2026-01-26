@@ -3,16 +3,23 @@
 ## Title: AlomawaniQoL
 ## Notes: Provide quality of life improvements to enhance your World of Wacraft experience
 ## Version: 0.0.1
-## SavedVariables: AQLDB
+## SavedVariables: AlomawaniQoLData
 
-## Libraries
-Libraries\Libraries.xml
+## Init
+Init.lua
+
+## Libs
+Libs\load.xml
+
+## Locales
+Locales\enUS.lua
+Locales\frFR.lua
 
 ## Core
-Core\Init.lua
+Core\Functions.lua
+Core\Commands.lua
 Core\Events.lua
-Core\UI.lua
-Core\SlashCommands.lua
+Core\Gui.lua
 
 ## Modules
 Modules\System\Core.lua

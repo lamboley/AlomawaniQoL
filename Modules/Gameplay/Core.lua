@@ -1,8 +1,9 @@
-local _, AQL = ...
-local Gameplay = AQL['Gameplay']
+local _, AlomawaniQoL = ...
 
-function Gameplay:OnEvent(event, ...)
-    if AQLDB.Configs["DisableRightClickTargeting"] then
+local Gameplay = CreateFrame('Frame')
+
+function Gameplay:OnEvent(_, ...)
+    if AlomawaniQoLData.Configs["DisableRightClickTargeting"] then
         local statusMouseover = CreateFrame('frame', nil, nil, 'SecureHandlerStateTemplate')
         RegisterStateDriver(statusMouseover, 'mouseunitexist', '[@mouseover,exists]1;0')
         statusMouseover:SetAttribute('_onstate-mouseunitexist', [[
@@ -31,3 +32,5 @@ function Gameplay:Enable()
 
     self.Vendor:Enable()
 end
+
+AlomawaniQoL['Gameplay'] = Gameplay

@@ -1,10 +1,9 @@
-local _, AQL = ...
-local Interface = AQL['Interface']
+local _, AlomawaniQoL = ...
 
-
+local Interface = CreateFrame('Frame')
 
 function Interface:OnEvent(event, ...)
-    if AQLDB.Configs["DisableDamageText"] then
+    if AlomawaniQoLData.Configs["DisableDamageText"] then
         SetCVar('floatingCombatTextCombatHealing', 0)
         SetCVar('floatingCombatTextCombatDamage', 0)
         SetCVar('floatingCombatTextCombatLogPeriodicSpells', 0)
@@ -26,3 +25,5 @@ function Interface:Enable()
     self.Quests:Enable()
     self.Social:Enable()
 end
+
+AlomawaniQoL['Interface'] = Interface

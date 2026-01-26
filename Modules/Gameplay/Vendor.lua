@@ -1,10 +1,10 @@
-local _, AQL = ...
-local Gameplay = AQL['Interface']
+local _, AlomawaniQoL = ...
+local Gameplay = AlomawaniQoL['Interface']
 
 local Vendor = CreateFrame('Frame')
 
 function Vendor:OnEvent(event, ...)
-    if AQLDB.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
+    if AlomawaniQoLData.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
         RepairAllItems()
     end
 end

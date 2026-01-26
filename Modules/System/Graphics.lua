@@ -1,12 +1,12 @@
-local _, AQL = ...
-local System = AQL['System']
+local _, AlomawaniQoL = ...
+local System = AlomawaniQoL['System']
 
 local Graphics = CreateFrame('Frame')
 
 function Graphics:OnEvent(event, ...)
-    UIParent:SetScale(AQLDB.Configs["UIParentScale"])
+    UIParent:SetScale(AlomawaniQoLData.Configs["UIParentScale"])
 
-    if AQLDB.Configs["MaxOutCameraDistance"] then
+    if AlomawaniQoLData.Configs["MaxOutCameraDistance"] then
         SetCVar('cameraDistanceMaxZoomFactor', 2.6)
     end
 end

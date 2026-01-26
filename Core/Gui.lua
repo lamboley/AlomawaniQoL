@@ -1,4 +1,4 @@
-local _, AQL = ...
+local _, AlomawaniQoL = ...
 
 local WIDTH, HEIGHT = 1050, 620
 
@@ -15,11 +15,11 @@ local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
 -- https://github.com/Tercioo/Details-Framework/blob/b924dc8df2a49c2caf00cce279e68ba669a2dc47/panel.lua#L2171
 -- detailsFramework:CreateSimplePanel(parent, width, height, title, frameName, panelOptions, savedVariableTable)
-local AQLUI = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AQLUI", {})
-AQLUI:SetPoint("CENTER")
+local AlomawaniQoLUI = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLUI", {})
+AlomawaniQoLUI:SetPoint("CENTER")
 
-function AQLUI:Init()
-    local tabsContainer = DF:CreateTabContainer(AQLUI, "Alomawani QoL", "AQLUITabsContainers",
+function AlomawaniQoLUI:Init()
+    local tabsContainer = DF:CreateTabContainer(AlomawaniQoLUI, "Alomawani QoL", "AlomawaniQoLUITabsContainers",
         {
             {
                 name = "General",
@@ -49,7 +49,7 @@ function AQLUI:Init()
             backdrop_border_color = { 0.1, 0.1, 0.1, 0.4 }
         }
     )
-    tabsContainer:SetPoint("CENTER", AQLUI, "CENTER", 0, 0)
+    tabsContainer:SetPoint("CENTER", AlomawaniQoLUI, "CENTER", 0, 0)
 
     -------------------------------------------------------------------------------------------------------------------
     -- GENERAL
@@ -67,9 +67,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Enable Debug",
-                get = function() return AQLDB.Configs["Debug"] end,
+                get = function() return AlomawaniQoLData.Configs["Debug"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["Debug"] = value
+                    AlomawaniQoLData.Configs["Debug"] = value
                 end,
             },
             {
@@ -100,9 +100,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Max Out Camera Distance",
-                get = function() return AQLDB.Configs["MaxOutCameraDistance"] end,
+                get = function() return AlomawaniQoLData.Configs["MaxOutCameraDistance"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["MaxOutCameraDistance"] = value
+                    AlomawaniQoLData.Configs["MaxOutCameraDistance"] = value
                 end,
             },
             {
@@ -116,9 +116,9 @@ function AQLUI:Init()
             { -- UI Scale
                 type = "range",
                 name = "UI Scale",
-                get = function() return AQLDB.Configs["UIParentScale"] end,
+                get = function() return AlomawaniQoLData.Configs["UIParentScale"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["UIParentScale"] = value
+                    AlomawaniQoLData.Configs["UIParentScale"] = value
                 end,
                 min = 0.0000001,
                 max = 2,
@@ -137,9 +137,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Mute Annoying Sound",
-                get = function() return AQLDB.Configs["MuteAnnoyingSound"] end,
+                get = function() return AlomawaniQoLData.Configs["MuteAnnoyingSound"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["MuteAnnoyingSound"] = value
+                    AlomawaniQoLData.Configs["MuteAnnoyingSound"] = value
                 end,
             },
         },
@@ -160,9 +160,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Chat Clamping",
-                get = function() return AQLDB.Configs["DisableChatClamping"] end,
+                get = function() return AlomawaniQoLData.Configs["DisableChatClamping"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["DisableChatClamping"] = value
+                    AlomawaniQoLData.Configs["DisableChatClamping"] = value
                 end,
             },
         },
@@ -183,9 +183,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Right Click Targeting",
-                get = function() return AQLDB.Configs["DisableRightClickTargeting"] end,
+                get = function() return AlomawaniQoLData.Configs["DisableRightClickTargeting"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["DisableRightClickTargeting"] = value
+                    AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
                 end,
             },
             {
@@ -200,9 +200,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Enable Repair Automatic",
-                get = function() return AQLDB.Configs["EnableRepairAutomatic"] end,
+                get = function() return AlomawaniQoLData.Configs["EnableRepairAutomatic"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["EnableRepairAutomatic"] = value
+                    AlomawaniQoLData.Configs["EnableRepairAutomatic"] = value
                 end,
             },
 
@@ -224,9 +224,9 @@ function AQLUI:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Damage Text",
-                get = function() return AQLDB.Configs["DisableDamageText"] end,
+                get = function() return AlomawaniQoLData.Configs["DisableDamageText"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["DisableDamageText"] = value
+                    AlomawaniQoLData.Configs["DisableDamageText"] = value
                 end,
             },
             {
@@ -240,9 +240,9 @@ function AQLUI:Init()
             { -- ObjectiveTracker Scale
                 type = "range",
                 name = "ObjectiveTracker Scale",
-                get = function() return AQLDB.Configs["ObjectiveTrackerScale"] end,
+                get = function() return AlomawaniQoLData.Configs["ObjectiveTrackerScale"] end,
                 set = function(_, _, value)
-                    AQLDB.Configs["ObjectiveTrackerScale"] = value
+                    AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = value
                 end,
                 min = 0.0000001,
                 max = 2,
@@ -255,12 +255,12 @@ function AQLUI:Init()
     )
 end
 
-function AQLUI:ToggleOptions()
-    if AQLUI:IsShown() then
-        AQLUI:Hide()
+function AlomawaniQoLUI:ToggleOptions()
+    if AlomawaniQoLUI:IsShown() then
+        AlomawaniQoLUI:Hide()
     else
-        AQLUI:Show()
+        AlomawaniQoLUI:Show()
     end
 end
 
-AQL.AQLUI = AQLUI
+AlomawaniQoL.AlomawaniQoLUI = AlomawaniQoLUI

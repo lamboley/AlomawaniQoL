@@ -1,5 +1,5 @@
-local _, AQL = ...
-local Interface = AQL['Interface']
+local _, AlomawaniQoL = ...
+local Interface = AlomawaniQoL['Interface']
 
 local Social = CreateFrame('Frame')
 
@@ -12,7 +12,7 @@ function Social:OnEvent(event, ...)
 
 	for i = 1, #CHAT_FRAMES do
 		local chatFrame = _G["ChatFrame" .. i]
-		chatFrame:SetClampedToScreen(not AQLDB.Configs["DisableChatClamping"])
+		chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
 		chatFrame:SetClampRectInsets(0, 0, 0, 0)
 		chatFrame:SetScale(1.1)
 

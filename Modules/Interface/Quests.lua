@@ -1,10 +1,10 @@
-local _, AQL = ...
-local Interface = AQL['Interface']
+local _, AlomawaniQoL = ...
+local Interface = AlomawaniQoL['Interface']
 
 local Quests = CreateFrame('Frame')
 
 function Quests:OnEvent(event, ...)
-	ObjectiveTrackerFrame:SetScale(AQLDB.Configs["ObjectiveTrackerScale"])
+	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
 
 	-- CompactRaidFrameManager:UnregisterAllEvents()
 	-- CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
