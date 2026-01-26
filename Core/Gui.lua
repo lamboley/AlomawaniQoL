@@ -1,5 +1,10 @@
 local _, AlomawaniQoL = ...
 
+-- Lua API
+local _G = _G
+
+-- WoW API
+
 local DF = _G["DetailsFramework"]
 
 local WIDTH, HEIGHT = 1050, 620
@@ -11,11 +16,11 @@ local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
 local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
-local AlomawaniQoLUI = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLUI", {})
-AlomawaniQoLUI:SetPoint("CENTER")
+local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLGui", {})
+AlomawaniQoLGui:SetPoint("CENTER")
 
-function AlomawaniQoLUI:Init()
-    local tabsContainer = DF:CreateTabContainer(AlomawaniQoLUI, "Alomawani QoL", "AlomawaniQoLUITabsContainers",
+function AlomawaniQoLGui:Init()
+    local tabsContainer = DF:CreateTabContainer(AlomawaniQoLGui, "Alomawani QoL", "AlomawaniQoLGuiTabsContainers",
         {
             {
                 name = "General",
@@ -45,11 +50,9 @@ function AlomawaniQoLUI:Init()
             backdrop_border_color = { 0.1, 0.1, 0.1, 0.4 }
         }
     )
-    tabsContainer:SetPoint("CENTER", AlomawaniQoLUI, "CENTER", 0, 0)
+    tabsContainer:SetPoint("CENTER", AlomawaniQoLGui, "CENTER", 0, 0)
 
-    -------------------------------------------------------------------------------------------------------------------
     -- General
-    --
     DF:BuildMenu(tabsContainer:GetTabFrameByName("General"),
         {
             { -- General
@@ -79,9 +82,7 @@ function AlomawaniQoLUI:Init()
         textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
     )
 
-    -------------------------------------------------------------------------------------------------------------------
     -- System
-    --
     DF:BuildMenu(tabsContainer:GetTabFrameByName("System"),
         {
             { -- General
@@ -140,7 +141,6 @@ function AlomawaniQoLUI:Init()
         textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
     )
 
-    -------------------------------------------------------------------------------------------------------------------
     -- Social
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Social"),
         {
@@ -163,7 +163,6 @@ function AlomawaniQoLUI:Init()
         textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
     )
 
-    -------------------------------------------------------------------------------------------------------------------
     -- Gameplay
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Gameplay"),
         {
@@ -204,7 +203,6 @@ function AlomawaniQoLUI:Init()
         textTemplate, dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
     )
 
-    -------------------------------------------------------------------------------------------------------------------
     -- Interface
     DF:BuildMenu(tabsContainer:GetTabFrameByName("Interface"),
         {
@@ -248,12 +246,12 @@ function AlomawaniQoLUI:Init()
     )
 end
 
-function AlomawaniQoLUI:ToggleOptions()
-    if AlomawaniQoLUI:IsShown() then
-        AlomawaniQoLUI:Hide()
+function AlomawaniQoLGui:ToggleOptions()
+    if AlomawaniQoLGui:IsShown() then
+        AlomawaniQoLGui:Hide()
     else
-        AlomawaniQoLUI:Show()
+        AlomawaniQoLGui:Show()
     end
 end
 
-AlomawaniQoL.AlomawaniQoLUI = AlomawaniQoLUI
+AlomawaniQoL.AlomawaniQoLGui = AlomawaniQoLGui

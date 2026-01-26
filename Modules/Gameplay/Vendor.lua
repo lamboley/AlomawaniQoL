@@ -1,5 +1,10 @@
 local _, AlomawaniQoL = ...
 
+-- WoW API
+local CanMerchantRepair = CanMerchantRepair
+local RepairAllItems = RepairAllItems
+local CreateFrame = CreateFrame
+
 local Vendor = CreateFrame('Frame')
 
 function Vendor:OnEvent(event, ...)

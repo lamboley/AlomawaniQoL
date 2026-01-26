@@ -8,6 +8,6 @@ SlashCmdList["AlomawaniQoL"] = function(msg)
         AlomawaniQoL.Print("debug")
         AlomawaniQoL.Print(AlomawaniQoLData.Configs["DisableRightClickTargeting"])
     else
-        AlomawaniQoL.AlomawaniQoLUI:ToggleOptions()
+        AlomawaniQoL.AlomawaniQoLGui:ToggleOptions()
     end
 end

@@ -1,5 +1,8 @@
 local _, AlomawaniQoL = ...
 
+-- WoW API
+local CreateFrame = CreateFrame
+
 local Gameplay = CreateFrame('Frame')
 
 function Gameplay:OnEvent(_, ...)

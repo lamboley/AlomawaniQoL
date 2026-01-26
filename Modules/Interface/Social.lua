@@ -1,5 +1,11 @@
 local _, AlomawaniQoL = ...
 
+-- LUA API
+local _G = _G
+
+-- WoW API
+local CreateFrame = CreateFrame
+
 local Social = CreateFrame('Frame')
 
 function Social:OnEvent(event, ...)

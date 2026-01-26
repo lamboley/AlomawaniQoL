@@ -1,5 +1,12 @@
 local _, AlomawaniQoL = ...
 
+-- Lua API
+local select = select
+
+-- WoW API
+local IsInInstance = IsInInstance
+local CreateFrame = CreateFrame
+
 local Quests = CreateFrame('Frame')
 
 function Quests:OnEvent(event, ...)

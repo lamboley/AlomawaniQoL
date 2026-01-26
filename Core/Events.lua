@@ -1,9 +1,12 @@
 local _, AlomawaniQoL = ...
 
+-- WoW API
+local CreateFrame = CreateFrame
+
 local Events = CreateFrame("Frame")
 Events:RegisterEvent("ADDON_LOADED")
 Events:RegisterEvent("PLAYER_LOGIN")
-Events:SetScript("OnEvent", function(self, event, ...)
+Events:SetScript("OnEvent", function(_, event, ...)
 	if (event == "ADDON_LOADED") then
         local name = ...
         if name == "AlomawaniQoL" then
@@ -37,7 +40,7 @@ Events:SetScript("OnEvent", function(self, event, ...)
             AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = AlomawaniQoLData.Configs["ObjectiveTrackerScale"] or 1
         end
 	elseif (event == "PLAYER_LOGIN") then
-        AlomawaniQoL.AlomawaniQoLUI:Init()
+        AlomawaniQoL.AlomawaniQoLGui:Init()
 
 		AlomawaniQoL.System:Enable()
         AlomawaniQoL.Gameplay:Enable()

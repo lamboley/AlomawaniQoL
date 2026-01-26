@@ -1,5 +1,9 @@
 local _, AlomawaniQoL = ...
 
+-- WoW API
+local CreateFrame = CreateFrame
+local SetCVar = SetCVar
+
 local Interface = CreateFrame('Frame')
 
 function Interface:OnEvent(event, ...)
