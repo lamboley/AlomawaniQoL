@@ -1,15 +1,45 @@
 local _, AlomawaniQoL = ...
 
+--Lua API
+local select = select
+
 -- WoW API
+local GetContainerItemInfo = C_Container.GetContainerItemInfo
+local GetContainerNumSlots = C_Container.GetContainerNumSlots
+local GetContainerItemID = C_Container.GetContainerItemID
+local UseContainerItem = C_Container.UseContainerItem
 local CanMerchantRepair = CanMerchantRepair
 local RepairAllItems = RepairAllItems
+local GetGuildInfo = GetGuildInfo
 local CreateFrame = CreateFrame
 
 local Vendor = CreateFrame('Frame')
 
-function Vendor:OnEvent(event, ...)
+function Vendor:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
+        if AlomawaniQoLData.Configs["UseGuildBankForRepair"] and select(1, GetGuildInfo('player')) then
+            RepairAllItems(true)
+        end
         RepairAllItems()
+    end
+
+    if AlomawaniQoLData.Configs["SellJunkAutomatically"] then
+        for bagID = 0, NUM_BAG_SLOTS do
+            local numSlots  = GetContainerNumSlots(bagID)
+            if numSlots then
+                for slot = 1, numSlots do
+                    local itemID = GetContainerItemID(bagID, slot)
+                    if itemID then
+                        local containerInfo = GetContainerItemInfo(bagID, slot)
+                        if not containerInfo.isLocked and containerInfo.iconFileID then
+                            if (containerInfo.quality and containerInfo.quality == 0) then
+                                UseContainerItem(bagID, slot)
+                            end
+                        end
+                    end
+                end
+            end
+        end
     end
 end
 

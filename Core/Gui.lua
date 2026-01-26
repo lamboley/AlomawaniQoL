@@ -188,13 +188,31 @@ function AlomawaniQoLGui:Init()
                 get = function() return "Merchant" end,
                 text_template = orangeTextTemplate
             },
-            { -- Enable Repair Automatic
+            { -- Repair Gear Automatically
                 type = "toggle",
                 boxfirst = true,
-                name = "Enable Repair Automatic",
-                get = function() return AlomawaniQoLData.Configs["EnableRepairAutomatic"] end,
+                name = "Repair Gear Automatically",
+                get = function() return AlomawaniQoLData.Configs["RepairGearAutomatically"] end,
                 set = function(_, _, value)
-                    AlomawaniQoLData.Configs["EnableRepairAutomatic"] = value
+                    AlomawaniQoLData.Configs["RepairGearAutomatically"] = value
+                end,
+            },
+            { -- Use Guild Bank For Repair
+                type = "toggle",
+                boxfirst = true,
+                name = "Use Guild Bank For Repair",
+                get = function() return AlomawaniQoLData.Configs["UseGuildBankForRepair"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["UseGuildBankForRepair"] = value
+                end,
+            },
+            { -- Sell Junk Automatically
+                type = "toggle",
+                boxfirst = true,
+                name = "Sell Junk Automatically",
+                get = function() return AlomawaniQoLData.Configs["SellJunkAutomatically"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["SellJunkAutomatically"] = value
                 end,
             },
 

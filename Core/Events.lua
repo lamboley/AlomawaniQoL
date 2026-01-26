@@ -33,7 +33,9 @@ Events:SetScript("OnEvent", function(_, event, ...)
 
             -- Gameplay
             AlomawaniQoLData.Configs["DisableRightClickTargeting"] = AlomawaniQoLData.Configs["DisableRightClickTargeting"] or true
-            AlomawaniQoLData.Configs["EnableRepairAutomatic"] = AlomawaniQoLData.Configs["EnableRepairAutomatic"] or true
+            AlomawaniQoLData.Configs["RepairGearAutomatically"] = AlomawaniQoLData.Configs["RepairGearAutomatically"] or true
+            AlomawaniQoLData.Configs["UseGuildBankForRepair"] = AlomawaniQoLData.Configs["UseGuildBankForRepair"] or false
+            AlomawaniQoLData.Configs["SellJunkAutomatically"] = AlomawaniQoLData.Configs["SellJunkAutomatically"] or true
 
             -- Interface
             AlomawaniQoLData.Configs["DisableDamageText"] = AlomawaniQoLData.Configs["DisableDamageText"] or true
