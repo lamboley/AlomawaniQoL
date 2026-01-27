@@ -21,10 +21,6 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 
 Use __/aql__ for configurations.
 
-## Localization
-
-If you want to help with the localization, please visit <https://legacy.curseforge.com/wow/addons/alomawaniqol/localization>, instead of creating a PR.
-
 ## Todo
 
 - Hide tooltip during combat
