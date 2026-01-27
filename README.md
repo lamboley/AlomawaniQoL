@@ -27,7 +27,8 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- Add code for Muted Sound ...
+- Code for Muted Sound ...
+- Code Add Line from Thich Nhat Hanh
 
 ## Issues
 

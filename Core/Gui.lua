@@ -212,6 +212,15 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = value
                 end,
             },
+            { -- Print Quote From Thich Nhat Hanh
+                type = "toggle",
+                boxfirst = true,
+                name = "Print Quote From Thich Nhat Hanh",
+                get = function() return AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = value
+                end,
+            },
             {
                 type = "breakline"
             },

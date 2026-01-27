@@ -39,6 +39,7 @@ Events:SetScript("OnEvent", function(_, event, ...)
             -- Gameplay
             AlomawaniQoLData.Configs["DisableRightClickTargeting"] = AlomawaniQoLData.Configs["DisableRightClickTargeting"] or true
             AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] or false
+            AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] or false
             AlomawaniQoLData.Configs["RepairGearAutomatically"] = AlomawaniQoLData.Configs["RepairGearAutomatically"] or true
             AlomawaniQoLData.Configs["UseGuildBankForRepair"] = AlomawaniQoLData.Configs["UseGuildBankForRepair"] or false
             AlomawaniQoLData.Configs["SellJunkAutomatically"] = AlomawaniQoLData.Configs["SellJunkAutomatically"] or true
