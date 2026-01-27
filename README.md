@@ -14,16 +14,10 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 - __Graphics:__ Custom scale.
 - __Merchant:__ Automatic gear repair, automatic junk selling.
 
-&nbsp;
-
 ## Slash Commands
 
 Use __/aql__ for more information.
 
-&nbsp;
-
  ## Localization
 
 If you want to help with the localization, please visit <https://legacy.curseforge.com/wow/addons/alomawaniqol/localization>, instead of creating a PR.
-
-&nbsp;
