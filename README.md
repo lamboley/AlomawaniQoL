@@ -11,12 +11,15 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 
 ## Features
 
-- __Graphics:__ Custom scale.
+- __Graphics:__ Custom scale, max out camera distance.
+- __Social:__ Un-Clamp chat window, set Editbox at the top.
+- __Interface:__ Allow change to scale of ObjectiveTrackerFrame, Choose when to collapse ObjectiveTrackerFrame, Show/Hide combat text.
+- __Gameplay:__ Disable targeting with right-click.
 - __Merchant:__ Automatic gear repair, automatic junk selling.
 
 ## Slash Commands
 
-Use __/aql__ for more information.
+Use __/aql__ for configurations.
 
  ## Localization
 
