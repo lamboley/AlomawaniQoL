@@ -45,6 +45,8 @@ Events:SetScript("OnEvent", function(_, event, ...)
 
             -- Interface
             AlomawaniQoLData.Configs["DisableDamageText"] = AlomawaniQoLData.Configs["DisableDamageText"] or true
+            AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] or false
+
             AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = AlomawaniQoLData.Configs["ObjectiveTrackerScale"] or 1
         end
 	elseif (event == "PLAYER_LOGIN") then

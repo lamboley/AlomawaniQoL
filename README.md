@@ -7,6 +7,10 @@
 
 [![Curseforge](https://img.shields.io/curseforge/dt/1445676?label=CurseForge&color=F16436)](https://www.curseforge.com/wow/addons/AlomawaniQoL)
 
+> Work In Progress
+
+## Introduction
+
 Provide quality of life improvements to enhance your World of Wacraft experience.
 
 ## Features
@@ -23,7 +27,7 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- Hide tooltip during combat
+- Add code for Muted Sound ...
 
 ## Issues
 

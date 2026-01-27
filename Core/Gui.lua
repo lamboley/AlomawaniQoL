@@ -270,6 +270,15 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DisableDamageText"] = value
                 end,
             },
+            { -- Hide Tooltip While In Combat
+                type = "toggle",
+                boxfirst = true,
+                name = "Hide Tooltip While In Combat",
+                get = function() return AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
+                end,
+            },
             {
                 type = "blank"
             },
