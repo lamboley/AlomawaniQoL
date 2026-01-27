@@ -2,7 +2,7 @@
 ## Author: Alomawani
 ## Title: AlomawaniQoL
 ## Notes: Provide quality of life improvements to enhance your World of Wacraft experience
-## Version: 0.0.1
+## Version: #@project-version@
 ## SavedVariables: AlomawaniQoLData
 
 ## Init
