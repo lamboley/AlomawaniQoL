@@ -14,7 +14,12 @@ Events:SetScript("OnEvent", function(_, event, ...)
                 AlomawaniQoLData = {}
             end
 
-            -- Init Configs
+            if not AlomawaniQoLData.AlomawaniQoLGui then
+                AlomawaniQoLData.AlomawaniQoLGui = {
+                    scale = 1
+                }
+            end
+
             if not AlomawaniQoLData.Configs then
                 AlomawaniQoLData.Configs = {}
             end
@@ -24,8 +29,8 @@ Events:SetScript("OnEvent", function(_, event, ...)
 
             -- System
             AlomawaniQoLData.Configs["MaxOutCameraDistance"] = AlomawaniQoLData.Configs["MaxOutCameraDistance"] or true
-            AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = AlomawaniQoLData.Configs["ObjectiveTrackerScale"] or 1
-            AlomawaniQoLData.Configs["UIParentScale"] = AlomawaniQoLData.Configs["UIParentScale"] or 1 -- 768/1440 = 0.5333333333333333333333333333333333
+            AlomawaniQoLData.Configs["UsePerfectPixel"] = AlomawaniQoLData.Configs["UsePerfectPixel"] or false
+            AlomawaniQoLData.Configs["UseCustomHeight"] = AlomawaniQoLData.Configs["UseCustomHeight"] or ""
             AlomawaniQoLData.Configs["MuteAnnoyingSound"] = AlomawaniQoLData.Configs["MuteAnnoyingSound"] or false
 
             -- Social

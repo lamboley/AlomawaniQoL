@@ -69,14 +69,6 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["Debug"] = value
                 end,
             },
-            {
-                type = "blank"
-            },
-            { -- Modules
-                type = "label",
-                get = function() return "Modules" end,
-                text_template = orangeTextTemplate
-            },
         },
         10, -100, HEIGHT - 10, false,
         textTemplate,  dropdownTemplate, switchTemplate, true, sliderTemplate, buttonTemplate
@@ -100,27 +92,57 @@ function AlomawaniQoLGui:Init()
                 end,
             },
             {
-                type = "blank"
+                type = "breakline"
             },
             { -- Graphics
                 type = "label",
                 get = function() return "Graphics" end,
                 text_template = orangeTextTemplate
             },
-            { -- UI Scale
-                type = "range",
-                name = "UI Scale",
-                get = function() return AlomawaniQoLData.Configs["UIParentScale"] end,
+            { -- Use Perfect Pixel
+                type = "toggle",
+                boxfirst = true,
+                name = "Use Perfect Pixel",
+                desc = "Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution)",
+                get = function() return AlomawaniQoLData.Configs["UsePerfectPixel"] end,
                 set = function(_, _, value)
-                    AlomawaniQoLData.Configs["UIParentScale"] = value
+                    AlomawaniQoLData.Configs["UsePerfectPixel"] = value
                 end,
-                min = 0.0000001,
-                max = 2,
-                step = 0.0000001,
-                usedecimals = true,
             },
+            { -- Use Custom Height
+                type = "textentry",
+                name = "Use Custom Height",
+                desc = "If the UI is too small when using the option above, you can set a custom vertical resolution here.",
+                width = 50,
+                get = function() return AlomawaniQoLData.Configs["UseCustomHeight"] or "" end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["UseCustomHeight"] = value
+                end,
+                hooks = {
+                    OnEditFocusLost = function(self)
+                        self:SetText(AlomawaniQoLData.Configs["UseCustomHeight"])
+                    end,
+                    OnEnterPressed = function(self) return end
+                },
+            },
+            -- { -- UI Scale
+            --     type = "range",
+            --     name = "UI Scale",
+            --     get = function() return AlomawaniQoLData.Configs["UIParentScale"] end,
+            --     set = function(_, _, value)
+            --         AlomawaniQoLData.Configs["UIParentScale"] = value
+            --     end,
+            --     min = 0.0000001,
+            --     max = 2,
+            --     step = 0.0000001,
+            --     usedecimals = true,
+            -- },
+            -- {
+            --     type = "breakline"
+            -- },
             {
-                type = "blank"
+                type = "breakline",
+                spacement = true,
             },
             { -- Audio
                 type = "label",
