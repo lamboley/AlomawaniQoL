@@ -5,7 +5,7 @@
 ## Version: #@project-version@
 ## SavedVariables: AlomawaniQoLData
 
-## X-Curse-Project-ID: 61284
+## X-Curse-Project-ID: 1445676
 
 ## Init
 Init.lua
