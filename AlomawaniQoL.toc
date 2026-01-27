@@ -13,6 +13,9 @@ Init.lua
 ## Libs
 Libs\load.xml
 
+## Medias
+Core\Medias.lua
+
 ## Locales
 Locales\enUS.lua
 Locales\frFR.lua
@@ -33,3 +36,4 @@ Modules\Interface\Social.lua
 
 Modules\Gameplay\Core.lua
 Modules\Gameplay\Vendor.lua
+Modules\Gameplay\Voice.lua

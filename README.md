@@ -21,6 +21,10 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 
 Use __/aql__ for configurations.
 
- ## Localization
+## Localization
 
 If you want to help with the localization, please visit <https://legacy.curseforge.com/wow/addons/alomawaniqol/localization>, instead of creating a PR.
+
+## Issues
+
+* If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).

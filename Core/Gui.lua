@@ -202,6 +202,16 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
                 end,
             },
+            { -- Add Voice Line When Dead
+                type = "toggle",
+                boxfirst = true,
+                name = "Add Voice Line When Dead",
+                desc = "Voice line are from Ilgynoth, Yshaarj, Xalatath and Yoggsaron",
+                get = function() return AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = value
+                end,
+            },
             {
                 type = "breakline"
             },

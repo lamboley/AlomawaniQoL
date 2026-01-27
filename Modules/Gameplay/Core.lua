@@ -34,6 +34,7 @@ function Gameplay:Enable()
 	self:SetScript('OnEvent', self.OnEvent)
 
     self.Vendor:Enable()
+    self.Voice:Enable()
 end
 
 AlomawaniQoL.Gameplay = Gameplay
