@@ -1,5 +1,9 @@
 local _, AlomawaniQoL = ...
 
+-- Lua API
+local select = select
+
+-- WoW API
 local GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
 
