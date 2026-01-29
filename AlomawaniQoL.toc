@@ -29,6 +29,7 @@ Core\Gui.lua
 ## Modules
 Modules\System\Core.lua
 Modules\System\Graphics.lua
+Modules\System\Audio.lua
 
 Modules\Interface\Core.lua
 Modules\Interface\Quests.lua

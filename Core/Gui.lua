@@ -248,9 +248,9 @@ function AlomawaniQoLGui:Init()
             },
             { -- Battle Pet Name To Summon
                 type = "textentry",
-                name = "Battle Pet Name",
+                name = "Pet Name",
                 desc = "The name of the battle pet to be summoned",
-                width = 100,
+                width = 130,
                 get = function() return AlomawaniQoLData.Configs["BattlePetNameToSummon"] or "" end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["BattlePetNameToSummon"] = value
