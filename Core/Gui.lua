@@ -202,6 +202,14 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
                 end,
             },
+            {
+                type = "blank"
+            },
+            { -- Scale
+                type = "label",
+                get = function() return "Roleplay" end,
+                text_template = orangeTextTemplate
+            },
             { -- Add Voice Line When Dead
                 type = "toggle",
                 boxfirst = true,
@@ -220,6 +228,39 @@ function AlomawaniQoLGui:Init()
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = value
                 end,
+            },
+            {
+                type = "blank"
+            },
+            { -- Scale
+                type = "label",
+                get = function() return "Battle Pet" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Keep A Battle Pet Summoned
+                type = "toggle",
+                boxfirst = true,
+                name = "Keep A Battle Pet Summoned",
+                get = function() return AlomawaniQoLData.Configs["KeepABattlePetSummoned"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = value
+                end,
+            },
+            { -- Battle Pet Name To Summon
+                type = "textentry",
+                name = "Battle Pet Name",
+                desc = "The name of the battle pet to be summoned",
+                width = 100,
+                get = function() return AlomawaniQoLData.Configs["BattlePetNameToSummon"] or "" end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["BattlePetNameToSummon"] = value
+                end,
+                hooks = {
+                    OnEditFocusLost = function(self)
+                        self:SetText(AlomawaniQoLData.Configs["BattlePetNameToSummon"])
+                    end,
+                    OnEnterPressed = function(self) return end
+                },
             },
             {
                 type = "breakline"

@@ -35,6 +35,8 @@ function Gameplay:Enable()
 
     self.Vendor:Enable()
     self.Voice:Enable()
+    self.ThichNhatHanh:Enable()
+    self.BattlePet:Enable()
 end
 
 AlomawaniQoL.Gameplay = Gameplay
