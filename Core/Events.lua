@@ -14,12 +14,6 @@ Events:SetScript("OnEvent", function(_, event, ...)
                 AlomawaniQoLData = {}
             end
 
-            if not AlomawaniQoLData.AlomawaniQoLGui then
-                AlomawaniQoLData.AlomawaniQoLGui = {
-                    scale = 1
-                }
-            end
-
             if not AlomawaniQoLData.Configs then
                 AlomawaniQoLData.Configs = {}
             end
