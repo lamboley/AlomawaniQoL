@@ -7,6 +7,7 @@ local System = CreateFrame('Frame')
 
 function System:Enable()
     self.Graphics:Enable()
+    self.Audio:Enable()
 end
 
 AlomawaniQoL.System = System

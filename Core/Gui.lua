@@ -202,6 +202,75 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
                 end,
             },
+            { -- Faster Auto Loot
+                type = "toggle",
+                boxfirst = true,
+                name = "Faster Auto Loot",
+                get = function() return AlomawaniQoLData.Configs["FasterAutoLoot"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["FasterAutoLoot"] = value
+                end,
+            },
+            {
+                type = "blank"
+            },
+            { -- Scale
+                type = "label",
+                get = function() return "Roleplay" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Add Voice Line When Dead
+                type = "toggle",
+                boxfirst = true,
+                name = "Add Voice Line When Dead",
+                desc = "Voice line are from Ilgynoth, Yshaarj, Xalatath and Yoggsaron",
+                get = function() return AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = value
+                end,
+            },
+            { -- Print Quote From Thich Nhat Hanh
+                type = "toggle",
+                boxfirst = true,
+                name = "Print Quote From Thich Nhat Hanh",
+                get = function() return AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = value
+                end,
+            },
+            {
+                type = "blank"
+            },
+            { -- Scale
+                type = "label",
+                get = function() return "Battle Pet" end,
+                text_template = orangeTextTemplate
+            },
+            { -- Keep A Battle Pet Summoned
+                type = "toggle",
+                boxfirst = true,
+                name = "Keep A Battle Pet Summoned",
+                get = function() return AlomawaniQoLData.Configs["KeepABattlePetSummoned"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = value
+                end,
+            },
+            { -- Battle Pet Name To Summon
+                type = "textentry",
+                name = "Pet Name",
+                desc = "The name of the battle pet to be summoned",
+                width = 130,
+                get = function() return AlomawaniQoLData.Configs["BattlePetNameToSummon"] or "" end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["BattlePetNameToSummon"] = value
+                end,
+                hooks = {
+                    OnEditFocusLost = function(self)
+                        self:SetText(AlomawaniQoLData.Configs["BattlePetNameToSummon"])
+                    end,
+                    OnEnterPressed = function(self) return end
+                },
+            },
             {
                 type = "breakline"
             },
@@ -258,6 +327,15 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["DisableDamageText"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableDamageText"] = value
+                end,
+            },
+            { -- Hide Tooltip While In Combat
+                type = "toggle",
+                boxfirst = true,
+                name = "Hide Tooltip While In Combat",
+                get = function() return AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
                 end,
             },
             {

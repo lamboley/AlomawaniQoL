@@ -7,6 +7,10 @@
 
 [![Curseforge](https://img.shields.io/curseforge/dt/1445676?label=CurseForge&color=F16436)](https://www.curseforge.com/wow/addons/AlomawaniQoL)
 
+> Work In Progress
+
+## Introduction
+
 Provide quality of life improvements to enhance your World of Wacraft experience.
 
 ## Features
@@ -14,13 +18,17 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 - __Graphics:__ Custom scale, max out camera distance.
 - __Social:__ Un-Clamp chat window, set Editbox at the top.
 - __Interface:__ Allow change to scale of ObjectiveTrackerFrame, Choose when to collapse ObjectiveTrackerFrame, Show/Hide combat text.
-- __Gameplay:__ Disable targeting with right-click.
+- __Gameplay:__ Add rp voice, disable targeting with right-click.
 - __Merchant:__ Automatic gear repair, automatic junk selling.
 
 ## Slash Commands
 
 Use __/aql__ for configurations.
 
- ## Localization
+## Todo
 
-If you want to help with the localization, please visit <https://legacy.curseforge.com/wow/addons/alomawaniqol/localization>, instead of creating a PR.
+- Nothing
+
+## Issues
+
+* If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).

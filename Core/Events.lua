@@ -14,12 +14,6 @@ Events:SetScript("OnEvent", function(_, event, ...)
                 AlomawaniQoLData = {}
             end
 
-            if not AlomawaniQoLData.AlomawaniQoLGui then
-                AlomawaniQoLData.AlomawaniQoLGui = {
-                    scale = 1
-                }
-            end
-
             if not AlomawaniQoLData.Configs then
                 AlomawaniQoLData.Configs = {}
             end
@@ -38,12 +32,19 @@ Events:SetScript("OnEvent", function(_, event, ...)
 
             -- Gameplay
             AlomawaniQoLData.Configs["DisableRightClickTargeting"] = AlomawaniQoLData.Configs["DisableRightClickTargeting"] or true
+            AlomawaniQoLData.Configs["FasterAutoLoot"] = AlomawaniQoLData.Configs["FasterAutoLoot"] or false
+            AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] or false
+            AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] or false
+            AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = AlomawaniQoLData.Configs["KeepABattlePetSummoned"] or false
+            AlomawaniQoLData.Configs["BattlePetNameToSummon"] = AlomawaniQoLData.Configs["BattlePetNameToSummon"] or ""
             AlomawaniQoLData.Configs["RepairGearAutomatically"] = AlomawaniQoLData.Configs["RepairGearAutomatically"] or true
             AlomawaniQoLData.Configs["UseGuildBankForRepair"] = AlomawaniQoLData.Configs["UseGuildBankForRepair"] or false
             AlomawaniQoLData.Configs["SellJunkAutomatically"] = AlomawaniQoLData.Configs["SellJunkAutomatically"] or true
 
             -- Interface
             AlomawaniQoLData.Configs["DisableDamageText"] = AlomawaniQoLData.Configs["DisableDamageText"] or true
+            AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] or false
+
             AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = AlomawaniQoLData.Configs["ObjectiveTrackerScale"] or 1
         end
 	elseif (event == "PLAYER_LOGIN") then

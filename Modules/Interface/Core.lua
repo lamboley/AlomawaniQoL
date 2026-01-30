@@ -1,6 +1,8 @@
 local _, AlomawaniQoL = ...
 
 -- WoW API
+local UnitAffectingCombat = UnitAffectingCombat
+local hooksecurefunc = hooksecurefunc
 local CreateFrame = CreateFrame
 local SetCVar = SetCVar
 
@@ -19,6 +21,14 @@ function Interface:OnEvent(event, ...)
         SetCVar('floatingCombatTextCombatLogPeriodicSpells', 1)
         SetCVar('floatingCombatTextPetMeleeDamage', 1)
         SetCVar('floatingCombatTextPetSpellDamage', 1)
+    end
+
+    if AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] then
+		hooksecurefunc(GameTooltip, 'Show', function(self)
+			if UnitAffectingCombat('player') then
+				self:Hide()
+			end
+		end)
     end
 end
 
