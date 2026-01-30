@@ -6,6 +6,7 @@ local select = select
 -- WoW API
 local GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
+local ReloadUI = ReloadUI
 
 SLASH_AlomawaniQoL1 = "/alomawaniqol"
 SLASH_AlomawaniQoL2 = "/aql"
@@ -30,3 +31,6 @@ SlashCmdList["AlomawaniQoL"] = function(msg)
         AlomawaniQoL.AlomawaniQoLGui:ToggleOptions()
     end
 end
+
+SLASH_RELOADUI1 = "/rel"
+SlashCmdList.RELOADUI = ReloadUI

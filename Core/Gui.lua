@@ -202,6 +202,15 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
                 end,
             },
+            { -- Faster Auto Loot
+                type = "toggle",
+                boxfirst = true,
+                name = "Faster Auto Loot",
+                get = function() return AlomawaniQoLData.Configs["FasterAutoLoot"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["FasterAutoLoot"] = value
+                end,
+            },
             {
                 type = "blank"
             },

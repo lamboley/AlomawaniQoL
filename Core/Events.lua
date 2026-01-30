@@ -38,6 +38,7 @@ Events:SetScript("OnEvent", function(_, event, ...)
 
             -- Gameplay
             AlomawaniQoLData.Configs["DisableRightClickTargeting"] = AlomawaniQoLData.Configs["DisableRightClickTargeting"] or true
+            AlomawaniQoLData.Configs["FasterAutoLoot"] = AlomawaniQoLData.Configs["FasterAutoLoot"] or false
             AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] or false
             AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] or false
             AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = AlomawaniQoLData.Configs["KeepABattlePetSummoned"] or false
