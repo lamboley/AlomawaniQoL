@@ -18,7 +18,7 @@ Provide quality of life improvements to enhance your World of Wacraft experience
 - __Graphics:__ Custom scale, max out camera distance.
 - __Social:__ Un-Clamp chat window, set Editbox at the top.
 - __Interface:__ Allow change to scale of ObjectiveTrackerFrame, Choose when to collapse ObjectiveTrackerFrame, Show/Hide combat text.
-- __Gameplay:__ Add rp voice, disable targeting with right-click.
+- __Gameplay:__ Add rp voice, disable right click targeting in combat.
 - __Merchant:__ Automatic gear repair, automatic junk selling.
 
 ## Slash Commands
