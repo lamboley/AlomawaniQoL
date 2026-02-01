@@ -11,10 +11,10 @@ function Gameplay:OnEvent(event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
         if AlomawaniQoLData.Configs["DisableRightClickTargeting"] then
             local statusMouseover = CreateFrame('frame', nil, nil, 'SecureHandlerStateTemplate')
-            RegisterStateDriver(statusMouseover, 'mouseunitexist', '[@mouseover,exists]1;0')
+            RegisterStateDriver(statusMouseover, 'mouseunitexist', '[@mouseover,exists,combat]1;0')
             statusMouseover:SetAttribute('_onstate-mouseunitexist', [[
                 if newstate == 1 then
-                    self:SetBindingClick(1,'BUTTON2','ButtonMouselookFrame')
+                    self:SetBindingClick(1, 'BUTTON2','ButtonMouselookFrame')
                 else
                     self:ClearBindings()
                 end
