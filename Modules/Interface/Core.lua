@@ -26,6 +26,11 @@ function Interface:OnEvent(event, ...)
         SetCVar('floatingCombatTextCombatLogPeriodicSpells', 1)
         SetCVar('floatingCombatTextPetMeleeDamage', 1)
         SetCVar('floatingCombatTextPetSpellDamage', 1)
+        SetCVar('floatingCombatTextCombatHealing_v2', 1)
+        SetCVar('floatingCombatTextCombatDamage_v2', 1)
+        SetCVar('floatingCombatTextCombatLogPeriodicSpells_v2', 1)
+        SetCVar('floatingCombatTextPetMeleeDamage_v2', 1)
+        SetCVar('floatingCombatTextPetSpellDamage_v2', 1)
     end
 
     if AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] then
