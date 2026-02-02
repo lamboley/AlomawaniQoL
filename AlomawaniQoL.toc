@@ -34,6 +34,7 @@ Modules\System\Audio.lua
 Modules\Interface\Core.lua
 Modules\Interface\Quests.lua
 Modules\Interface\Social.lua
+Modules\Interface\Portrait.lua
 
 Modules\Gameplay\Core.lua
 Modules\Gameplay\Vendor.lua

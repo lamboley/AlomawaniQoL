@@ -43,6 +43,7 @@ function Interface:Enable()
 
     self.Quests:Enable()
     self.Social:Enable()
+    self.Portrait:Enable()
 end
 
 AlomawaniQoL.Interface = Interface

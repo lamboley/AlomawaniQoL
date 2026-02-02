@@ -338,6 +338,15 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
                 end,
             },
+            { -- Hide Player Portrait When Heal
+                type = "toggle",
+                boxfirst = true,
+                name = "Hide Player Portrait When Heal",
+                get = function() return AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] = value
+                end,
+            },
             {
                 type = "blank"
             },

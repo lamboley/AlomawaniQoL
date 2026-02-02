@@ -9,7 +9,7 @@ local ThichNhatHanh = CreateFrame('Frame')
 
 function ThichNhatHanh:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] then
-        C_Timer.NewTicker(1000, function()
+        C_Timer.NewTicker(2000, function()
             DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r")
             DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r")
 
