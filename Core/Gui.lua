@@ -86,6 +86,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Max Out Camera Distance",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["MaxOutCameraDistance"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MaxOutCameraDistance"] = value
@@ -103,7 +104,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Use Perfect Pixel",
-                desc = "Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution)",
+                desc = "Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["UsePerfectPixel"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["UsePerfectPixel"] = value
@@ -112,7 +113,7 @@ function AlomawaniQoLGui:Init()
             { -- Use Custom Height
                 type = "textentry",
                 name = "Use Custom Height",
-                desc = "If the UI is too small when using the option above, you can set a custom vertical resolution here.",
+                desc = "If the UI is too small when using the option above, you can set a custom vertical resolution here. Requires /reload to take effect",
                 width = 50,
                 get = function() return AlomawaniQoLData.Configs["UseCustomHeight"] or "" end,
                 set = function(_, _, value)
@@ -153,6 +154,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Mute Annoying Sound",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["MuteAnnoyingSound"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MuteAnnoyingSound"] = value
@@ -175,6 +177,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Chat Clamping",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["DisableChatClamping"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableChatClamping"] = value
@@ -197,6 +200,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Right Click Targeting",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["DisableRightClickTargeting"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
@@ -339,6 +343,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Damage Text",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["DisableDamageText"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableDamageText"] = value
@@ -348,6 +353,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Hide Tooltip While In Combat",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
@@ -378,6 +384,7 @@ function AlomawaniQoLGui:Init()
             { -- ObjectiveTracker Scale
                 type = "range",
                 name = "ObjectiveTracker Scale",
+                desc = "Requires /reload to take effect",
                 get = function() return AlomawaniQoLData.Configs["ObjectiveTrackerScale"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = value
