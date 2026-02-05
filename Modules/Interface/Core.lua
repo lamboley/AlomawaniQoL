@@ -3,10 +3,9 @@ local _, AlomawaniQoL = ...
 -- WoW API
 local UnitAffectingCombat = UnitAffectingCombat
 local hooksecurefunc = hooksecurefunc
-local CreateFrame = CreateFrame
 local SetCVar = SetCVar
 
-local Interface = CreateFrame('Frame')
+local Interface = AlomawaniQoL.CreateModule("Interface", "PLAYER_ENTERING_WORLD")
 
 function Interface:OnEvent(event, ...)
     if AlomawaniQoLData.Configs["DisableDamageText"] then
@@ -42,13 +41,16 @@ function Interface:OnEvent(event, ...)
     end
 end
 
-function Interface:Enable()
-    self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
-
+function Interface:PostEnable()
     self.Quests:Enable()
     self.Social:Enable()
     self.Portrait:Enable()
+end
+
+function Interface:PostDisable()
+    self.Quests:Disable()
+    self.Social:Disable()
+    self.Portrait:Disable()
 end
 
 AlomawaniQoL.Interface = Interface

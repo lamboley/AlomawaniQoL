@@ -9,10 +9,9 @@ local min = math.min
 
 -- WoW API
 local GetPhysicalScreenSize = GetPhysicalScreenSize
-local CreateFrame = CreateFrame
 local SetCVar = SetCVar
 
-local Graphics = CreateFrame('Frame')
+local Graphics = AlomawaniQoL.CreateModule("Graphics", "PLAYER_ENTERING_WORLD")
 
 function Graphics:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["UsePerfectPixel"] then
@@ -30,11 +29,6 @@ function Graphics:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["MaxOutCameraDistance"] then
         SetCVar('cameraDistanceMaxZoomFactor', 2.6)
     end
-end
-
-function Graphics:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.System.Graphics = Graphics

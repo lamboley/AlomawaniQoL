@@ -9,10 +9,15 @@ local FindPetIDByName = C_PetJournal.FindPetIDByName
 local SummonPetByGUID = C_PetJournal.SummonPetByGUID
 local InCombatLockdown = InCombatLockdown
 local IsInInstance = IsInInstance
-local CreateFrame = CreateFrame
 local IsStealthed = IsStealthed
 
-local BattlePet = CreateFrame('Frame')
+local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
+    "PLAYER_ENTERING_WORLD",
+    "COMPANION_UPDATE",
+    "ZONE_CHANGED",
+    "ZONE_CHANGED_INDOORS",
+    "ZONE_CHANGED_NEW_AREA"
+})
 
 function BattlePet:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["KeepABattlePetSummoned"] and AlomawaniQoLData.Configs["BattlePetNameToSummon"] ~= "" then
@@ -26,15 +31,6 @@ function BattlePet:OnEvent(_, ...)
             SummonPetByGUID(petGUID)
         end
     end
-end
-
-function BattlePet:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-    self:RegisterEvent('COMPANION_UPDATE')
-    self:RegisterEvent('ZONE_CHANGED')
-    self:RegisterEvent('ZONE_CHANGED_INDOORS')
-    self:RegisterEvent('ZONE_CHANGED_NEW_AREA')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Gameplay.BattlePet = BattlePet

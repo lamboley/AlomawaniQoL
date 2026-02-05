@@ -5,9 +5,8 @@ local pairs  = pairs
 
 -- WoW API
 local MuteSoundFile  = MuteSoundFile
-local CreateFrame = CreateFrame
 
-local Audio = CreateFrame('Frame')
+local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 
 local blacklistSound = {
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
@@ -73,11 +72,6 @@ function Audio:OnEvent(_, ...)
             MuteSoundFile(s)
         end
     end
-end
-
-function Audio:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.System.Audio = Audio

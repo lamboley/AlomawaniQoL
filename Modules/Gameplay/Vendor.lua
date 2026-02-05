@@ -11,9 +11,8 @@ local UseContainerItem = C_Container.UseContainerItem
 local CanMerchantRepair = CanMerchantRepair
 local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
-local CreateFrame = CreateFrame
 
-local Vendor = CreateFrame('Frame')
+local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
 
 function Vendor:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
@@ -41,11 +40,6 @@ function Vendor:OnEvent(_, ...)
             end
         end
     end
-end
-
-function Vendor:Enable()
-	self:RegisterEvent('MERCHANT_SHOW')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Gameplay.Vendor = Vendor

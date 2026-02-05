@@ -3,10 +3,7 @@ local _, AlomawaniQoL = ...
 -- LUA API
 local _G = _G
 
--- WoW API
-local CreateFrame = CreateFrame
-
-local Social = CreateFrame('Frame')
+local Social = AlomawaniQoL.CreateModule("Social", "PLAYER_ENTERING_WORLD")
 
 function Social:OnEvent(event, ...)
 	DEFAULT_CHATFRAME_ALPHA = 0
@@ -32,11 +29,6 @@ function Social:OnEvent(event, ...)
 	end
 
 	QuickJoinToastButton:SetScale(1.1)
-end
-
-function Social:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Interface.Social = Social

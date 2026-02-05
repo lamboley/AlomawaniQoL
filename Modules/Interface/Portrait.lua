@@ -4,9 +4,11 @@ local _, AlomawaniQoL = ...
 local RegisterAttributeDriver = RegisterAttributeDriver
 local GetSpecializationRole = GetSpecializationRole
 local GetSpecialization = GetSpecialization
-local CreateFrame = CreateFrame
 
-local Portrait = CreateFrame('Frame')
+local Portrait = AlomawaniQoL.CreateModule("Portrait", {
+    "PLAYER_ENTERING_WORLD",
+    "PLAYER_SPECIALIZATION_CHANGED"
+})
 
 function Portrait:OnEvent(event, ...)
     if AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] then
@@ -20,12 +22,6 @@ function Portrait:OnEvent(event, ...)
             end
         end
     end
-end
-
-function Portrait:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-    self:RegisterEvent('PLAYER_SPECIALIZATION_CHANGED')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Interface.Portrait = Portrait

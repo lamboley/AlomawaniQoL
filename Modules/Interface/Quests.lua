@@ -5,9 +5,8 @@ local select = select
 
 -- WoW API
 local IsInInstance = IsInInstance
-local CreateFrame = CreateFrame
 
-local Quests = CreateFrame('Frame')
+local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
 function Quests:OnEvent(event, ...)
 	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
@@ -32,11 +31,6 @@ function Quests:OnEvent(event, ...)
 		ObjectiveTrackerFrame:Show()
 		ObjectiveTrackerFrame:SetCollapsed(false)
 	end
-end
-
-function Quests:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Interface.Quests = Quests

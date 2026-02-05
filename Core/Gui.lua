@@ -227,6 +227,11 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = value
+                    if value then
+                        AlomawaniQoL.Gameplay.Voice:Enable()
+                    else
+                        AlomawaniQoL.Gameplay.Voice:Disable()
+                    end
                 end,
             },
             { -- Print Quote From Thich Nhat Hanh
@@ -236,6 +241,11 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = value
+                    if value then
+                        AlomawaniQoL.Gameplay.ThichNhatHanh:Enable()
+                    else
+                        AlomawaniQoL.Gameplay.ThichNhatHanh:Disable()
+                    end
                 end,
             },
             {
@@ -253,6 +263,11 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["KeepABattlePetSummoned"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = value
+                    if value then
+                        AlomawaniQoL.Gameplay.BattlePet:Enable()
+                    else
+                        AlomawaniQoL.Gameplay.BattlePet:Disable()
+                    end
                 end,
             },
             { -- Battle Pet Name To Summon
@@ -345,6 +360,11 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] = value
+                    if value then
+                        AlomawaniQoL.Interface.Portrait:Enable()
+                    else
+                        AlomawaniQoL.Interface.Portrait:Disable()
+                    end
                 end,
             },
             {
