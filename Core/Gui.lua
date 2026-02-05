@@ -1,9 +1,8 @@
 local _, AlomawaniQoL = ...
 
 -- Lua API
+local tonumber = tonumber
 local _G = _G
-
--- WoW API
 
 local DF = _G["DetailsFramework"]
 
@@ -117,7 +116,12 @@ function AlomawaniQoLGui:Init()
                 width = 50,
                 get = function() return AlomawaniQoLData.Configs["UseCustomHeight"] or "" end,
                 set = function(_, _, value)
-                    AlomawaniQoLData.Configs["UseCustomHeight"] = value
+                    local height = tonumber(value)
+                    if height and height >= 480 and height <= 4320 then
+                        AlomawaniQoLData.Configs["UseCustomHeight"] = value
+                    else
+                        AlomawaniQoL.Print("Custom height must be between 480-4320")
+                    end
                 end,
                 hooks = {
                     OnEditFocusLost = function(self)
