@@ -8,18 +8,17 @@ local IsInInstance = IsInInstance
 
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
-local uiElementsHidden = false
 local lastInstanceType = nil
+
+-- One-time setup: hooks are permanent and cannot be removed
+function Quests:PreEnable()
+	MicroButtonAndBagsBar:UnregisterAllEvents()
+	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
+	MicroButtonAndBagsBar:Hide()
+end
 
 function Quests:OnEvent(event, ...)
 	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
-
-	if not uiElementsHidden then
-		MicroButtonAndBagsBar:UnregisterAllEvents()
-		MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
-		MicroButtonAndBagsBar:Hide()
-		uiElementsHidden = true
-	end
 
 	local instanceType = select(2, IsInInstance())
 

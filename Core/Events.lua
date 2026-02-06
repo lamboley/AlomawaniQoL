@@ -18,35 +18,41 @@ Events:SetScript("OnEvent", function(_, event, ...)
                 AlomawaniQoLData.Configs = {}
             end
 
+            local function SetDefault(key, default)
+                if AlomawaniQoLData.Configs[key] == nil then
+                    AlomawaniQoLData.Configs[key] = default
+                end
+            end
+
             -- General
-            AlomawaniQoLData.Configs["Debug"] = AlomawaniQoLData.Configs["Debug"] or false
+            SetDefault("Debug", false)
 
             -- System
-            AlomawaniQoLData.Configs["MaxOutCameraDistance"] = AlomawaniQoLData.Configs["MaxOutCameraDistance"] or true
-            AlomawaniQoLData.Configs["UsePerfectPixel"] = AlomawaniQoLData.Configs["UsePerfectPixel"] or false
-            AlomawaniQoLData.Configs["UseCustomHeight"] = AlomawaniQoLData.Configs["UseCustomHeight"] or ""
-            AlomawaniQoLData.Configs["MuteAnnoyingSound"] = AlomawaniQoLData.Configs["MuteAnnoyingSound"] or false
+            SetDefault("MaxOutCameraDistance", true)
+            SetDefault("UsePerfectPixel", false)
+            SetDefault("UseCustomHeight", "")
+            SetDefault("MuteAnnoyingSound", false)
 
             -- Social
-            AlomawaniQoLData.Configs["DisableChatClamping"] = AlomawaniQoLData.Configs["DisableChatClamping"] or true
+            SetDefault("DisableChatClamping", true)
 
             -- Gameplay
-            AlomawaniQoLData.Configs["DisableRightClickTargeting"] = AlomawaniQoLData.Configs["DisableRightClickTargeting"] or true
-            AlomawaniQoLData.Configs["FasterAutoLoot"] = AlomawaniQoLData.Configs["FasterAutoLoot"] or false
-            AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] = AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] or false
-            AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] = AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] or false
-            AlomawaniQoLData.Configs["KeepABattlePetSummoned"] = AlomawaniQoLData.Configs["KeepABattlePetSummoned"] or false
-            AlomawaniQoLData.Configs["BattlePetNameToSummon"] = AlomawaniQoLData.Configs["BattlePetNameToSummon"] or ""
-            AlomawaniQoLData.Configs["RepairGearAutomatically"] = AlomawaniQoLData.Configs["RepairGearAutomatically"] or true
-            AlomawaniQoLData.Configs["UseGuildBankForRepair"] = AlomawaniQoLData.Configs["UseGuildBankForRepair"] or false
-            AlomawaniQoLData.Configs["SellJunkAutomatically"] = AlomawaniQoLData.Configs["SellJunkAutomatically"] or true
+            SetDefault("DisableRightClickTargeting", true)
+            SetDefault("FasterAutoLoot", false)
+            SetDefault("AddVoiceLineWhenDead", false)
+            SetDefault("PrintQuoteFromThichNhatHanh", false)
+            SetDefault("KeepABattlePetSummoned", false)
+            SetDefault("BattlePetNameToSummon", "")
+            SetDefault("RepairGearAutomatically", true)
+            SetDefault("UseGuildBankForRepair", false)
+            SetDefault("SellJunkAutomatically", true)
 
             -- Interface
-            AlomawaniQoLData.Configs["DisableDamageText"] = AlomawaniQoLData.Configs["DisableDamageText"] or true
-            AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] or false
-            AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] = AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] or false
+            SetDefault("DisableDamageText", true)
+            SetDefault("HideTooltipWhileInCombat", false)
+            SetDefault("HidePlayerPortraitWhenHeal", false)
 
-            AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = AlomawaniQoLData.Configs["ObjectiveTrackerScale"] or 1
+            SetDefault("ObjectiveTrackerScale", 1)
         end
 	elseif (event == "PLAYER_LOGIN") then
         AlomawaniQoL.AlomawaniQoLGui:Init()

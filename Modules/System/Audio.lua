@@ -1,7 +1,7 @@
 local _, AlomawaniQoL = ...
 
 -- Lua API
-local pairs  = pairs
+local ipairs = ipairs
 
 -- WoW API
 local MuteSoundFile  = MuteSoundFile
@@ -71,7 +71,7 @@ local blacklistSound = {
 
 function Audio:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["MuteAnnoyingSound"] and not soundsMutedThisSession then
-        for _, s in pairs(blacklistSound) do
+        for _, s in ipairs(blacklistSound) do
             MuteSoundFile(s)
         end
         soundsMutedThisSession = true

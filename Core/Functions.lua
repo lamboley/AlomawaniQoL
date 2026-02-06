@@ -18,6 +18,12 @@ function AlomawaniQoL.Debug(...)
 	end
 end
 
+function AlomawaniQoL.GetConfig(key, default)
+    local val = AlomawaniQoLData.Configs[key]
+    if val == nil then return default end
+    return val
+end
+
 function AlomawaniQoL.CreateModule(name, events)
     local module = CreateFrame('Frame', "AlomawaniQoL_" .. name)
     module.enabled = false

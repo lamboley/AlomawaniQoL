@@ -16,18 +16,24 @@ function Social:OnEvent(event, ...)
 		local frameName = "ChatFrame" .. i
 
 		local chatFrame = _G[frameName]
-		chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
-		chatFrame:SetClampRectInsets(0, 0, 0, 0)
-		chatFrame:SetScale(1.1)
+		if chatFrame then
+			chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
+			chatFrame:SetClampRectInsets(0, 0, 0, 0)
+			chatFrame:SetScale(1.1)
 
-		local chatFrameXTab = _G[frameName .. 'Tab']
-		chatFrameXTab:SetScale(1.1)
+			local chatFrameXTab = _G[frameName .. 'Tab']
+			if chatFrameXTab then
+				chatFrameXTab:SetScale(1.1)
+			end
 
-		local frame = _G[frameName .. 'EditBox']
-		frame:ClearAllPoints()
-		frame:SetPoint('BOTTOMLEFT', frame.chatFrame, 'TOPLEFT', 0, 3)
-		frame:SetPoint('BOTTOMRIGHT', frame.chatFrame, 'TOPRIGHT', frame.chatFrame.ScrollBar:GetWidth(), 3)
-		frame:SetScale(1.1)
+			local editBox = _G[frameName .. 'EditBox']
+			if editBox then
+				editBox:ClearAllPoints()
+				editBox:SetPoint('BOTTOMLEFT', editBox.chatFrame, 'TOPLEFT', 0, 3)
+				editBox:SetPoint('BOTTOMRIGHT', editBox.chatFrame, 'TOPRIGHT', editBox.chatFrame.ScrollBar:GetWidth(), 3)
+				editBox:SetScale(1.1)
+			end
+		end
 	end
 
 	QuickJoinToastButton:SetScale(1.1)

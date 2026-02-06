@@ -1,49 +1,75 @@
 local _, AlomawaniQoL = ...
 
+-- Lua API
+local ipairs = ipairs
+local wipe = wipe
+
 -- WoW API
 local NewTicker = C_Timer.NewTicker
-local After = C_Timer.After
+local NewTimer = C_Timer.NewTimer
 
 local ThichNhatHanh = AlomawaniQoL.CreateModule("ThichNhatHanh", "PLAYER_ENTERING_WORLD")
 
+local CYCLE_INTERVAL = 2000
+local STEP_DELAY = 60
+
+local steps = {
+    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r",
+     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r"},
+    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00As my in-breath grows deep,|r",
+     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00My out-breath grows slow.|r"},
+    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I am aware of my body.|r",
+     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I calm my body.|r"},
+    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Dwelling in the present moment,|r",
+     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00I know this is a wonderful moment.|r"},
+}
+
 local quoteTicker = nil
+local stepTimers = {}
+
+local function CancelAllTimers()
+    if quoteTicker then
+        quoteTicker:Cancel()
+        quoteTicker = nil
+    end
+    for _, timer in ipairs(stepTimers) do
+        timer:Cancel()
+    end
+    wipe(stepTimers)
+end
+
+local function DisplayStep(step)
+    for _, line in ipairs(step) do
+        DEFAULT_CHAT_FRAME:AddMessage(line)
+    end
+end
 
 function ThichNhatHanh:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] then
-        if quoteTicker then
-            quoteTicker:Cancel()
-            AlomawaniQoL.Debug("Cancelled previous Thich Nhat Hanh ticker")
-        end
+        CancelAllTimers()
 
-        quoteTicker = NewTicker(2000, function()
-            DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r")
-            DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r")
+        quoteTicker = NewTicker(CYCLE_INTERVAL, function()
+            for _, timer in ipairs(stepTimers) do
+                timer:Cancel()
+            end
+            wipe(stepTimers)
 
-            After(60, function()
-                DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00As my in-breath grows deep,|r")
-                DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00My out-breath grows slow.|r")
+            DisplayStep(steps[1])
 
-                After(60, function()
-                    DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I am aware of my body.|r")
-                    DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I calm my body.|r")
-
-                    After(60, function()
-                        DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Dwelling in the present moment,|r")
-                        DEFAULT_CHAT_FRAME:AddMessage("|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00I know this is a wonderful moment.|r")
-                    end)
+            for i = 2, #steps do
+                local timer = NewTimer(STEP_DELAY * (i - 1), function()
+                    DisplayStep(steps[i])
                 end)
-            end)
+                stepTimers[#stepTimers + 1] = timer
+            end
         end)
         AlomawaniQoL.Debug("Started Thich Nhat Hanh quote ticker")
     end
 end
 
 function ThichNhatHanh:PreDisable()
-    if quoteTicker then
-        quoteTicker:Cancel()
-        quoteTicker = nil
-        AlomawaniQoL.Debug("Stopped Thich Nhat Hanh quote ticker")
-    end
+    CancelAllTimers()
+    AlomawaniQoL.Debug("Stopped Thich Nhat Hanh quote ticker")
 end
 
 AlomawaniQoL.Gameplay.ThichNhatHanh = ThichNhatHanh

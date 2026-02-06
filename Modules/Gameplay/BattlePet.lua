@@ -32,19 +32,16 @@ function BattlePet:OnEvent(_, ...)
 
     local currentTime = GetTime()
     if currentTime - lastSummonAttempt < 2 then
-        AlomawaniQoL.Debug("time")
         return
     end
 
     local instanceType = select(2, IsInInstance())
     if InCombatLockdown('player') or IsStealthed() or instanceType == 'pvp' or instanceType == 'arena' then
-        AlomawaniQoL.Debug("instanceType")
         return
     end
 
     local configuredPetName = AlomawaniQoLData.Configs["BattlePetNameToSummon"]
     if cachedPetName ~= configuredPetName then
-        AlomawaniQoL.Debug("cachedPetName ~= configuredPetName")
         local _, petGUID = FindPetIDByName(configuredPetName)
         cachedPetName = configuredPetName
         cachedPetGUID = petGUID

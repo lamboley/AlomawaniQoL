@@ -3,7 +3,6 @@ local _, AlomawaniQoL = ...
 -- Lua API
 local tonumber = tonumber
 local select = select
-local type = type
 local max = math.max
 local min = math.min
 
@@ -21,9 +20,7 @@ function Graphics:OnEvent(_, ...)
         end
 
         local scale = max(0.4, min(1.15, (768 / screenHeight)))
-        if type(scale) == "number" then
-            UIParent:SetScale(scale)
-        end
+        UIParent:SetScale(scale)
     end
 
     if AlomawaniQoLData.Configs["MaxOutCameraDistance"] then
