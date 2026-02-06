@@ -13,15 +13,17 @@ function Social:OnEvent(event, ...)
 	ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 0, 0)
 
 	for i = 1, #CHAT_FRAMES do
-		local chatFrame = _G["ChatFrame" .. i]
+		local frameName = "ChatFrame" .. i
+
+		local chatFrame = _G[frameName]
 		chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
 		chatFrame:SetClampRectInsets(0, 0, 0, 0)
 		chatFrame:SetScale(1.1)
 
-		local chatFrameXTab = _G['ChatFrame' .. i .. 'Tab']
+		local chatFrameXTab = _G[frameName .. 'Tab']
 		chatFrameXTab:SetScale(1.1)
 
-		local frame = _G['ChatFrame' .. i .. 'EditBox']
+		local frame = _G[frameName .. 'EditBox']
 		frame:ClearAllPoints()
 		frame:SetPoint('BOTTOMLEFT', frame.chatFrame, 'TOPLEFT', 0, 3)
 		frame:SetPoint('BOTTOMRIGHT', frame.chatFrame, 'TOPRIGHT', frame.chatFrame.ScrollBar:GetWidth(), 3)

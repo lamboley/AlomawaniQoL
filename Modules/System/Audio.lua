@@ -8,6 +8,9 @@ local MuteSoundFile  = MuteSoundFile
 
 local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 
+-- Session flag to prevent repeated muting
+local soundsMutedThisSession = false
+
 local blacklistSound = {
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
     569858, -- sound/vehicles/motorcyclevehicle/motorcyclevehicleattackthrown.ogg
@@ -67,10 +70,12 @@ local blacklistSound = {
 }
 
 function Audio:OnEvent(_, ...)
-    if AlomawaniQoLData.Configs["MuteAnnoyingSound"] then
+    if AlomawaniQoLData.Configs["MuteAnnoyingSound"] and not soundsMutedThisSession then
         for _, s in pairs(blacklistSound) do
             MuteSoundFile(s)
         end
+        soundsMutedThisSession = true
+        AlomawaniQoL.Debug("Muted", #blacklistSound, "annoying sounds")
     end
 end
 

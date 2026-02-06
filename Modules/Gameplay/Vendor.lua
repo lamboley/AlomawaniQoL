@@ -15,7 +15,7 @@ local GetGuildInfo = GetGuildInfo
 local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
 
 function Vendor:OnEvent(_, ...)
-    if AlomawaniQoLData.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
+    if AlomawaniQoLData.Configs["RepairGearAutomatically"] and CanMerchantRepair() then
         if AlomawaniQoLData.Configs["UseGuildBankForRepair"] and select(1, GetGuildInfo('player')) then
             RepairAllItems(true)
         end
@@ -24,16 +24,14 @@ function Vendor:OnEvent(_, ...)
 
     if AlomawaniQoLData.Configs["SellJunkAutomatically"] then
         for bagID = 0, NUM_BAG_SLOTS do
-            local numSlots  = GetContainerNumSlots(bagID)
+            local numSlots = GetContainerNumSlots(bagID)
             if numSlots then
                 for slot = 1, numSlots do
                     local itemID = GetContainerItemID(bagID, slot)
                     if itemID then
                         local containerInfo = GetContainerItemInfo(bagID, slot)
-                        if not containerInfo.isLocked and containerInfo.iconFileID then
-                            if (containerInfo.quality and containerInfo.quality == 0) then
-                                UseContainerItem(bagID, slot)
-                            end
+                        if containerInfo and not containerInfo.isLocked and containerInfo.iconFileID and containerInfo.quality == 0 then
+                            UseContainerItem(bagID, slot)
                         end
                     end
                 end

@@ -8,28 +8,37 @@ local IsInInstance = IsInInstance
 
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
+local uiElementsHidden = false
+local lastInstanceType = nil
+
 function Quests:OnEvent(event, ...)
 	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
 
-	-- CompactRaidFrameManager:UnregisterAllEvents()
-	-- CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
-	-- CompactRaidFrameManager:Hide()
-
-	MicroButtonAndBagsBar:UnregisterAllEvents()
-	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
-	MicroButtonAndBagsBar:Hide()
+	if not uiElementsHidden then
+		MicroButtonAndBagsBar:UnregisterAllEvents()
+		MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
+		MicroButtonAndBagsBar:Hide()
+		uiElementsHidden = true
+	end
 
 	local instanceType = select(2, IsInInstance())
-	if not instanceType then return end
 
-	if instanceType == 'pvp' or instanceType == 'arena' then
-		ObjectiveTrackerFrame:Hide()
-	elseif instanceType == 'party' or instanceType == 'raid' or instanceType == 'scenario' then
-		ObjectiveTrackerFrame:Show()
-		ObjectiveTrackerFrame:SetCollapsed(true)
-	else
-		ObjectiveTrackerFrame:Show()
-		ObjectiveTrackerFrame:SetCollapsed(false)
+	if lastInstanceType ~= instanceType then
+		if not instanceType then
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(false)
+		elseif instanceType == 'pvp' or instanceType == 'arena' then
+			ObjectiveTrackerFrame:Hide()
+		elseif instanceType == 'party' or instanceType == 'raid' or instanceType == 'scenario' then
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(true)
+		else
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(false)
+		end
+
+		lastInstanceType = instanceType
+		AlomawaniQoL.Debug("Quest tracker updated for instance type:", instanceType or "none")
 	end
 end
 

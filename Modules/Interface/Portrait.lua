@@ -10,15 +10,31 @@ local Portrait = AlomawaniQoL.CreateModule("Portrait", {
     "PLAYER_SPECIALIZATION_CHANGED"
 })
 
+local lastPortraitState = nil
+
 function Portrait:OnEvent(event, ...)
-    if AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] then
-        local currentSpec = GetSpecialization()
-        if currentSpec then
-            local roleToken = GetSpecializationRole(currentSpec)
-            if roleToken and roleToken == 'HEALER' then
-                RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'hide;hide')
-            else
-                RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
+    if not AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] then
+        if lastPortraitState == 'hidden' then
+            RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
+            lastPortraitState = 'shown'
+        end
+        return
+    end
+
+    local currentSpec = GetSpecialization()
+    if currentSpec then
+        local roleToken = GetSpecializationRole(currentSpec)
+        if roleToken then
+            local desiredState = (roleToken == 'HEALER') and 'hidden' or 'shown'
+
+            if lastPortraitState ~= desiredState then
+                if desiredState == 'hidden' then
+                    RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'hide;hide')
+                else
+                    RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
+                end
+                lastPortraitState = desiredState
+                AlomawaniQoL.Debug("Player portrait:", desiredState)
             end
         end
     end

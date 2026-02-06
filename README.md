@@ -27,8 +27,8 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- Nothing
+- Make a Function for SetCvar that yse GetVar to check if the value is already set to the desired value before setting it, to avoid unnecessary calls to SetCvar.
 
 ## Issues
 
-* If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).
+If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).
