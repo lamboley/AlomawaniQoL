@@ -9,12 +9,12 @@ local type = type
 local CreateFrame = CreateFrame
 
 function AlomawaniQoL.Print(...)
-	print("Alomawani QoL:", ...)
+	print("|cff00D9FFAlomawani QoL:|r", ...)
 end
 
 function AlomawaniQoL.Debug(...)
 	if AlomawaniQoLData.Configs["Debug"] then
-		print("Alomawani QoL:", ...)
+		print("|cffFFAA00Alomawani QoL:|r |cffFF6B6B[DEBUG]|r", ...)
 	end
 end
 
