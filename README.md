@@ -1,6 +1,6 @@
 # AlomawaniQoL
 
-[![Build Status](https://github.com/lamboley/AlomawaniQoL/workflows/release/badge.svg)](https://github.com/lamboley/AlomawaniQoL/actions?workflow=release)
+[![Build Status](https://github.com/lamboley/AlomawaniQoL/workflows/tests/badge.svg)](https://github.com/lamboley/AlomawaniQoL/actions?workflow=tests)
 [![version](https://img.shields.io/github/v/release/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/releases)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/commits/master)
 [![last commit](https://img.shields.io/github/last-commit/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/commits/master)
