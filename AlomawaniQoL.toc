@@ -2,7 +2,7 @@
 ## Author: Alomawani
 ## Title: AlomawaniQoL
 ## Notes: Provide quality of life improvements to enhance your World of Warcraft experience
-## Version: #@project-version@
+## Version: 0.0.1
 ## SavedVariables: AlomawaniQoLData
 
 ## X-Curse-Project-ID: 1445676

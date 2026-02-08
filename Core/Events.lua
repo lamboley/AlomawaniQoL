@@ -1,7 +1,7 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- WoW API
+-- Local API
 local CreateFrame = CreateFrame
 
 local Events = CreateFrame("Frame")
@@ -52,7 +52,6 @@ Events:SetScript("OnEvent", function(_, event, ...)
             SetDefault("DisableDamageText", true)
             SetDefault("HideTooltipWhileInCombat", false)
             SetDefault("HidePlayerPortraitWhenHeal", false)
-
             SetDefault("ObjectiveTrackerScale", 1)
         end
 	elseif (event == "PLAYER_LOGIN") then

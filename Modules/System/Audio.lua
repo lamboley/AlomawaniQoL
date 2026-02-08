@@ -1,16 +1,15 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
-local ipairs = ipairs
-
--- WoW API
+-- Local API
 local MuteSoundFile  = MuteSoundFile
+local ipairs = ipairs
 
 ---@class Audio : table
 ---@field OnEvent fun(event: string, any)
 local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 
+---@type boolean
 local soundsMutedThisSession = false
 
 local blacklistSound = {
@@ -78,6 +77,13 @@ function Audio:OnEvent(_, ...)
         end
         soundsMutedThisSession = true
     end
+end
+
+function Audio:PreDisable()
+    for _, s in ipairs(blacklistSound) do
+        UnmuteSoundFile(s)
+    end
+    soundsMutedThisSession = false
 end
 
 AlomawaniQoL.System.Audio = Audio

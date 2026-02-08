@@ -1,7 +1,7 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- LUA API
+-- Local API
 local _G = _G
 
 ---@class Social : table

@@ -1,15 +1,13 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
+-- Local API
+local GetPhysicalScreenSize = GetPhysicalScreenSize
 local tonumber = tonumber
+local SetCVar = SetCVar
 local select = select
 local max = math.max
 local min = math.min
-
--- WoW API
-local GetPhysicalScreenSize = GetPhysicalScreenSize
-local SetCVar = SetCVar
 
 ---@class Graphics : table
 ---@field OnEvent fun(event: string, any)

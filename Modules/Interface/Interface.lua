@@ -1,13 +1,11 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
-local ipairs = ipairs
-
--- WoW API
+-- Local API
 local UnitAffectingCombat = UnitAffectingCombat
 local hooksecurefunc = hooksecurefunc
 local SetCVar = SetCVar
+local ipairs = ipairs
 
 ---@class Interface : table
 ---@field Portrait Portrait
@@ -19,7 +17,11 @@ local SetCVar = SetCVar
 ---@field PostDisable fun()
 local Interface = AlomawaniQoL.CreateModule("Interface", "PLAYER_ENTERING_WORLD")
 
+---@type boolean
 local tooltipHookRegistered = false
+
+---@type boolean
+local cvarsInitialized = false
 
 local floatingCombatTextCVars = {
     'floatingCombatTextCombatHealing',
@@ -45,9 +47,12 @@ function Interface:PreEnable()
 end
 
 function Interface:OnEvent(event, ...)
-    local value = AlomawaniQoLData.Configs["DisableDamageText"] and 0 or 1
-    for _, cvar in ipairs(floatingCombatTextCVars) do
-        SetCVar(cvar, value)
+    if not cvarsInitialized then
+        local value = AlomawaniQoLData.Configs["DisableDamageText"] and 0 or 1
+        for _, cvar in ipairs(floatingCombatTextCVars) do
+            SetCVar(cvar, value)
+        end
+        cvarsInitialized = true
     end
 end
 

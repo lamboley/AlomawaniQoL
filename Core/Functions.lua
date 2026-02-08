@@ -1,13 +1,11 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
+-- Local API
+local CreateFrame = CreateFrame
 local ipairs = ipairs
 local print = print
 local type = type
-
--- WoW API
-local CreateFrame = CreateFrame
 
 function AlomawaniQoL.Print(...)
 	print("|cff00D9FFAlomawani QoL:|r", ...)

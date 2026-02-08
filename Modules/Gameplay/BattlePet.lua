@@ -1,16 +1,14 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
---Lua API
-local select = select
-
--- WoW API
+-- Local API
 local GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local FindPetIDByName = C_PetJournal.FindPetIDByName
 local SummonPetByGUID = C_PetJournal.SummonPetByGUID
 local InCombatLockdown = InCombatLockdown
 local IsInInstance = IsInInstance
 local IsStealthed = IsStealthed
+local select = select
 local GetTime = GetTime
 
 ---@class BattlePet : table

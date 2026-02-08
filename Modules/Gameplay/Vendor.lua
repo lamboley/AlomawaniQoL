@@ -1,10 +1,7 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
---Lua API
-local select = select
-
--- WoW API
+-- Local API
 local GetContainerItemInfo = C_Container.GetContainerItemInfo
 local GetContainerNumSlots = C_Container.GetContainerNumSlots
 local GetContainerItemID = C_Container.GetContainerItemID
@@ -12,6 +9,7 @@ local UseContainerItem = C_Container.UseContainerItem
 local CanMerchantRepair = CanMerchantRepair
 local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
+local select = select
 
 ---@class Vendor : table
 ---@field OnEvent fun(event: string, any)

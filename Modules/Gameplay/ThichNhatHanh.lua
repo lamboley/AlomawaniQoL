@@ -1,13 +1,11 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
-local ipairs = ipairs
-local wipe = wipe
-
--- WoW API
+-- Local API
 local NewTicker = C_Timer.NewTicker
 local NewTimer = C_Timer.NewTimer
+local ipairs = ipairs
+local wipe = wipe
 
 ---@class ThichNhatHanh : table
 ---@field OnEvent fun(event: string, any)

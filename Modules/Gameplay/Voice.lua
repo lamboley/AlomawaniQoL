@@ -1,12 +1,10 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
---Lua API
+-- Local API
+local PlaySoundFile = PlaySoundFile
 local tinsert = table.insert
 local pairs = pairs
-
--- WoW API
-local PlaySoundFile = PlaySoundFile
 local time = time
 
 ---@class Voice : table

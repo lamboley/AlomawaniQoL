@@ -1,28 +1,27 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
-local select = select
-
--- WoW API
+-- Local API
 local IsInInstance = IsInInstance
+local select = select
 
 ---@class Quests : table
 ---@field OnEvent fun(event: string, any)
 ---@field PreEnable fun()
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
+---@type boolean
 local lastInstanceType = nil
 
 function Quests:PreEnable()
+	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
+
 	MicroButtonAndBagsBar:UnregisterAllEvents()
 	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
 	MicroButtonAndBagsBar:Hide()
 end
 
 function Quests:OnEvent(event, ...)
-	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
-
 	local instanceType = select(2, IsInInstance())
 
 	if lastInstanceType ~= instanceType then

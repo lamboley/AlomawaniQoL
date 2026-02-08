@@ -1,7 +1,7 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- WoW API
+-- Local API
 local GetNumLootItems = GetNumLootItems
 local LootSlot = LootSlot
 

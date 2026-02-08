@@ -1,27 +1,23 @@
 ---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
--- Lua API
-local select = select
-
--- WoW API
+-- Local API
 local GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
 local ReloadUI = ReloadUI
+local select = select
 
 SLASH_AlomawaniQoL1 = "/alomawaniqol"
 SLASH_AlomawaniQoL2 = "/aql"
 
 SlashCmdList["AlomawaniQoL"] = function(msg)
-    if msg == "debug" then
-        AlomawaniQoL.Print(AlomawaniQoLData.Configs["DisableDamageText"])
-    elseif msg == "pet" then
+    if msg == "pet" then
         local summonedPetGUID = GetSummonedPetGUID()
         if summonedPetGUID then
             local petName = select(8, GetPetInfoByPetID(summonedPetGUID))
             AlomawaniQoL.Print(petName)
         else
-            AlomawaniQoL.Print("There is not battle pet summoned.")
+            AlomawaniQoL.Print("There is no battle pet summoned.")
         end
     elseif msg == "h" or msg == "help" then
         AlomawaniQoL.Print("Command usage:")
