@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- WoW API
@@ -6,6 +6,8 @@ local RegisterAttributeDriver = RegisterAttributeDriver
 local GetSpecializationRole = GetSpecializationRole
 local GetSpecialization = GetSpecialization
 
+---@class Portrait : table
+---@field OnEvent fun(event: string, any)
 local Portrait = AlomawaniQoL.CreateModule("Portrait", {
     "PLAYER_ENTERING_WORLD",
     "PLAYER_SPECIALIZATION_CHANGED"

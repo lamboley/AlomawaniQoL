@@ -1,11 +1,12 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
 local tonumber = tonumber
 
----@type detailsframework
 local DF = _G["DetailsFramework"]
+
+local L = AlomawaniQoL.L
 
 local WIDTH, HEIGHT = 1100, 670
 
@@ -16,16 +17,8 @@ local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
 local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
-local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLGui", {UseScaleBar = true})
-AlomawaniQoLGui.Title:SetAlpha(.75)
-AlomawaniQoLGui:SetFrameStrata("DIALOG")
-AlomawaniQoLGui:SetToplevel(true)
-DF:ApplyStandardBackdrop(AlomawaniQoLGui)
--- AlomawaniQoLGui:SetPoint("CENTER")
-
-local versionText = DF:CreateLabel (AlomawaniQoLGui, "0.0.1", 11, "white")
-versionText:SetPoint ("topright", AlomawaniQoLGui, "topright", -25, -7)
-versionText:SetAlpha(0.75)
+---@class AlomawaniQoLGui : table
+local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLGui", {})
 
 function AlomawaniQoLGui:Init()
     local tabsContainer = DF:CreateTabContainer(AlomawaniQoLGui, "Alomawani QoL", "AlomawaniQoLGuiTabsContainers",
@@ -134,7 +127,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Max Out Camera Distance",
-                desc = AlomawaniQoL.L["A /reload may be required to take effect."],
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["MaxOutCameraDistance"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MaxOutCameraDistance"] = value
@@ -152,7 +145,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Use Perfect Pixel",
-                desc = "Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). Requires /reload to take effect",
+                desc = "Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). " .. L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["UsePerfectPixel"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["UsePerfectPixel"] = value
@@ -161,7 +154,7 @@ function AlomawaniQoLGui:Init()
             { -- Use Custom Height
                 type = "textentry",
                 name = "Use Custom Height",
-                desc = "If the UI is too small when using the option above, you can set a custom vertical resolution here. Requires /reload to take effect",
+                desc = "If the UI is too small when using the option above, you can set a custom vertical resolution here. " .. L["Requires /reload to take effect."],
                 width = 50,
                 get = function() return AlomawaniQoLData.Configs["UseCustomHeight"] or "" end,
                 set = function(_, _, value)
@@ -207,7 +200,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Mute Annoying Sound",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["MuteAnnoyingSound"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MuteAnnoyingSound"] = value
@@ -230,7 +223,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Chat Clamping",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["DisableChatClamping"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableChatClamping"] = value
@@ -253,7 +246,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Right Click Targeting",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["DisableRightClickTargeting"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
@@ -396,7 +389,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Disable Damage Text",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["DisableDamageText"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableDamageText"] = value
@@ -406,7 +399,7 @@ function AlomawaniQoLGui:Init()
                 type = "toggle",
                 boxfirst = true,
                 name = "Hide Tooltip While In Combat",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
@@ -437,7 +430,7 @@ function AlomawaniQoLGui:Init()
             { -- ObjectiveTracker Scale
                 type = "range",
                 name = "ObjectiveTracker Scale",
-                desc = "Requires /reload to take effect",
+                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["ObjectiveTrackerScale"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = value

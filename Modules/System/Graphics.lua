@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -11,6 +11,8 @@ local min = math.min
 local GetPhysicalScreenSize = GetPhysicalScreenSize
 local SetCVar = SetCVar
 
+---@class Graphics : table
+---@field OnEvent fun(event: string, any)
 local Graphics = AlomawaniQoL.CreateModule("Graphics", "PLAYER_ENTERING_WORLD")
 
 function Graphics:OnEvent(_, ...)

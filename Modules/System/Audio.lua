@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -7,9 +7,10 @@ local ipairs = ipairs
 -- WoW API
 local MuteSoundFile  = MuteSoundFile
 
+---@class Audio : table
+---@field OnEvent fun(event: string, any)
 local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 
--- Session flag to prevent repeated muting
 local soundsMutedThisSession = false
 
 local blacklistSound = {

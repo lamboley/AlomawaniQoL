@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 --Lua API
@@ -13,6 +13,8 @@ local CanMerchantRepair = CanMerchantRepair
 local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
 
+---@class Vendor : table
+---@field OnEvent fun(event: string, any)
 local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
 
 function Vendor:OnEvent(_, ...)

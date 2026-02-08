@@ -1,10 +1,18 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- WoW API
 local GetNumLootItems = GetNumLootItems
 local LootSlot = LootSlot
 
+---@class Gameplay : table
+---@field BattlePet BattlePet
+---@field ThichNhatHanh ThichNhatHanh
+---@field Vendor Vendor
+---@field Voice Voice
+---@field OnEvent fun(event: string, any)
+---@field PostEnable fun()
+---@field PostDisable fun()
 local Gameplay = AlomawaniQoL.CreateModule("Gameplay", "LOOT_READY")
 
 local mouselookInitialized = false

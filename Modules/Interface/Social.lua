@@ -1,9 +1,11 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- LUA API
 local _G = _G
 
+---@class Social : table
+---@field OnEvent fun(event: string, any)
 local Social = AlomawaniQoL.CreateModule("Social", "PLAYER_ENTERING_WORLD")
 
 function Social:OnEvent(event, ...)

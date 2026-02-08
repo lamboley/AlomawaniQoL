@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -9,6 +9,13 @@ local UnitAffectingCombat = UnitAffectingCombat
 local hooksecurefunc = hooksecurefunc
 local SetCVar = SetCVar
 
+---@class System : table
+---@field Portrait Portrait
+---@field Quests Quests
+---@field Social Social
+---@field OnEvent fun(event: string, any)
+---@field PostEnable fun()
+---@field PostDisable fun()
 local Interface = AlomawaniQoL.CreateModule("Interface", "PLAYER_ENTERING_WORLD")
 
 local tooltipHookRegistered = false

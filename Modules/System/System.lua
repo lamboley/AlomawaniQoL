@@ -1,9 +1,15 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
+---@class System : table
+---@field Graphics Graphics
+---@field Audio Audio
+---@field OnEvent fun(event: string, any)
+---@field PostEnable fun()
+---@field PostDisable fun()
 local System = AlomawaniQoL.CreateModule("System", "PLAYER_ENTERING_WORLD")
 
-function System:OnEvent(event, ...)
+function System:OnEvent(_, ...)
     -- Placeholder for future system-level event handling
     -- This ensures consistent architecture across all Core modules
 end

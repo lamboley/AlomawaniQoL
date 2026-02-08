@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 --Lua API
@@ -13,6 +13,8 @@ local IsInInstance = IsInInstance
 local IsStealthed = IsStealthed
 local GetTime = GetTime
 
+---@class BattlePet : table
+---@field OnEvent fun(event: string, any)
 local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
     "PLAYER_ENTERING_WORLD",
     "COMPANION_UPDATE",
@@ -21,6 +23,7 @@ local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
     "ZONE_CHANGED_NEW_AREA"
 })
 
+---@type number
 local lastSummonAttempt = 0
 
 function BattlePet:OnEvent(_, ...)

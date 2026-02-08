@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -19,8 +19,6 @@ function AlomawaniQoL.Debug(...)
 	end
 end
 
----@param name string
----@param events string|string[]
 function AlomawaniQoL.CreateModule(name, events)
     local module = CreateFrame('Frame', "AlomawaniQoL_" .. name)
     module.enabled = false

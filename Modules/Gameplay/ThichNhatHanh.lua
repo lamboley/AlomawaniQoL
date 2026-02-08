@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -9,6 +9,8 @@ local wipe = wipe
 local NewTicker = C_Timer.NewTicker
 local NewTimer = C_Timer.NewTimer
 
+---@class ThichNhatHanh : table
+---@field OnEvent fun(event: string, any)
 local ThichNhatHanh = AlomawaniQoL.CreateModule("ThichNhatHanh", "PLAYER_ENTERING_WORLD")
 
 local CYCLE_INTERVAL = 2000

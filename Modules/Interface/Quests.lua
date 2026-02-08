@@ -1,4 +1,4 @@
----@class AlomawaniQoL
+---@type AlomawaniQoL
 local AlomawaniQoL = select(2, ...)
 
 -- Lua API
@@ -7,11 +7,13 @@ local select = select
 -- WoW API
 local IsInInstance = IsInInstance
 
+---@class Quests : table
+---@field OnEvent fun(event: string, any)
+---@field PreEnable fun()
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
 local lastInstanceType = nil
 
--- One-time setup: hooks are permanent and cannot be removed
 function Quests:PreEnable()
 	MicroButtonAndBagsBar:UnregisterAllEvents()
 	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
