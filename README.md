@@ -30,6 +30,7 @@ Use __/aql__ for configurations.
 
 - None
 
-## Issues
+## Problems
 
-If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).
+* test
+* If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).
