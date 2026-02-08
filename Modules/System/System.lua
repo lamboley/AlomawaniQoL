@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 local System = AlomawaniQoL.CreateModule("System", "PLAYER_ENTERING_WORLD")
 

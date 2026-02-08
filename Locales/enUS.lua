@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 local L = setmetatable({}, { __index = function(t, k)
     local v = tostring(k)

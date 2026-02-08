@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- LUA API
 local _G = _G

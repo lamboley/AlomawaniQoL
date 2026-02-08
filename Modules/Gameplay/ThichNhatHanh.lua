@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- Lua API
 local ipairs = ipairs
@@ -40,6 +41,7 @@ end
 
 local function DisplayStep(step)
     for _, line in ipairs(step) do
+        ---@diagnostic disable-next-line: undefined-global
         DEFAULT_CHAT_FRAME:AddMessage(line)
     end
 end

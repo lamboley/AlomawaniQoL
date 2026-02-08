@@ -1,12 +1,14 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 --Lua API
 local tinsert = table.insert
 local pairs = pairs
-local time = time
+
 
 -- WoW API
 local PlaySoundFile = PlaySoundFile
+local time = time
 
 local Voice = AlomawaniQoL.CreateModule("Voice", "PLAYER_DEAD")
 

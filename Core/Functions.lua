@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- Lua API
 local ipairs = ipairs
@@ -18,6 +19,8 @@ function AlomawaniQoL.Debug(...)
 	end
 end
 
+---@param name string
+---@param events string|string[]
 function AlomawaniQoL.CreateModule(name, events)
     local module = CreateFrame('Frame', "AlomawaniQoL_" .. name)
     module.enabled = false

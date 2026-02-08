@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 --Lua API
 local select = select
@@ -33,7 +34,7 @@ function BattlePet:OnEvent(_, ...)
     end
 
     local instanceType = select(2, IsInInstance())
-    if InCombatLockdown('player') or IsStealthed() or instanceType == 'pvp' or instanceType == 'arena' then
+    if InCombatLockdown() or IsStealthed() or instanceType == 'pvp' or instanceType == 'arena' then
         return
     end
 
