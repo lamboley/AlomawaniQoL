@@ -1,5 +1,6 @@
 # AlomawaniQoL
 
+[![Build Status](https://github.com/lamboley/AlomawaniQoL/workflows/tests/badge.svg)](https://github.com/lamboley/AlomawaniQoL/actions?workflow=tests)
 [![version](https://img.shields.io/github/v/release/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/releases)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/commits/master)
 [![last commit](https://img.shields.io/github/last-commit/lamboley/AlomawaniQoL)](https://github.com/lamboley/AlomawaniQoL/commits/master)
@@ -11,14 +12,14 @@
 
 ## Introduction
 
-Provide quality of life improvements to enhance your World of Wacraft experience.
+Provide quality of life improvements to enhance your World of Warcraft experience.
 
 ## Features
 
 - __Graphics:__ Custom scale, max out camera distance.
 - __Social:__ Un-Clamp chat window, set Editbox at the top.
 - __Interface:__ Allow change to scale of ObjectiveTrackerFrame, Choose when to collapse ObjectiveTrackerFrame, Show/Hide combat text.
-- __Gameplay:__ Add rp voice, disable targeting with right-click.
+- __Gameplay:__ Add rp voice, disable right click targeting in combat.
 - __Merchant:__ Automatic gear repair, automatic junk selling.
 
 ## Slash Commands
@@ -27,8 +28,9 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- Nothing
+- None
 
-## Issues
+## Problems
 
+* test
 * If you found a bug or have an error, you can create an issue on [github](https://github.com/lamboley/AlomawaniQoL/issues).

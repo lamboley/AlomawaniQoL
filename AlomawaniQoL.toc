@@ -1,7 +1,7 @@
 ## Interface: 120001, 120000
 ## Author: Alomawani
 ## Title: AlomawaniQoL
-## Notes: Provide quality of life improvements to enhance your World of Wacraft experience
+## Notes: Provide quality of life improvements to enhance your World of Warcraft experience
 ## Version: #@project-version@
 ## SavedVariables: AlomawaniQoLData
 
@@ -27,15 +27,16 @@ Core\Events.lua
 Core\Gui.lua
 
 ## Modules
-Modules\System\Core.lua
+Modules\System\System.lua
 Modules\System\Graphics.lua
 Modules\System\Audio.lua
 
-Modules\Interface\Core.lua
+Modules\Interface\Interface.lua
 Modules\Interface\Quests.lua
 Modules\Interface\Social.lua
+Modules\Interface\Portrait.lua
 
-Modules\Gameplay\Core.lua
+Modules\Gameplay\Gameplay.lua
 Modules\Gameplay\Vendor.lua
 Modules\Gameplay\Voice.lua
 Modules\Gameplay\ThichNhatHanh.lua

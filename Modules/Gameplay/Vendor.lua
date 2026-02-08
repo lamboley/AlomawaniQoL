@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 --Lua API
 local select = select
@@ -11,12 +12,11 @@ local UseContainerItem = C_Container.UseContainerItem
 local CanMerchantRepair = CanMerchantRepair
 local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
-local CreateFrame = CreateFrame
 
-local Vendor = CreateFrame('Frame')
+local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
 
 function Vendor:OnEvent(_, ...)
-    if AlomawaniQoLData.Configs["EnableRepairAutomatic"] and CanMerchantRepair() then
+    if AlomawaniQoLData.Configs["RepairGearAutomatically"] and CanMerchantRepair() then
         if AlomawaniQoLData.Configs["UseGuildBankForRepair"] and select(1, GetGuildInfo('player')) then
             RepairAllItems(true)
         end
@@ -25,27 +25,20 @@ function Vendor:OnEvent(_, ...)
 
     if AlomawaniQoLData.Configs["SellJunkAutomatically"] then
         for bagID = 0, NUM_BAG_SLOTS do
-            local numSlots  = GetContainerNumSlots(bagID)
+            local numSlots = GetContainerNumSlots(bagID)
             if numSlots then
                 for slot = 1, numSlots do
                     local itemID = GetContainerItemID(bagID, slot)
                     if itemID then
                         local containerInfo = GetContainerItemInfo(bagID, slot)
-                        if not containerInfo.isLocked and containerInfo.iconFileID then
-                            if (containerInfo.quality and containerInfo.quality == 0) then
-                                UseContainerItem(bagID, slot)
-                            end
+                        if containerInfo and not containerInfo.isLocked and containerInfo.iconFileID and containerInfo.quality == 0 then
+                            UseContainerItem(bagID, slot)
                         end
                     end
                 end
             end
         end
     end
-end
-
-function Vendor:Enable()
-	self:RegisterEvent('MERCHANT_SHOW')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Gameplay.Vendor = Vendor

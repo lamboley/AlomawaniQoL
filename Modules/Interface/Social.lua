@@ -1,12 +1,10 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- LUA API
 local _G = _G
 
--- WoW API
-local CreateFrame = CreateFrame
-
-local Social = CreateFrame('Frame')
+local Social = AlomawaniQoL.CreateModule("Social", "PLAYER_ENTERING_WORLD")
 
 function Social:OnEvent(event, ...)
 	DEFAULT_CHATFRAME_ALPHA = 0
@@ -16,27 +14,30 @@ function Social:OnEvent(event, ...)
 	ChatFrame1:SetPoint('BOTTOMLEFT', UIParent, 'BOTTOMLEFT', 0, 0)
 
 	for i = 1, #CHAT_FRAMES do
-		local chatFrame = _G["ChatFrame" .. i]
-		chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
-		chatFrame:SetClampRectInsets(0, 0, 0, 0)
-		chatFrame:SetScale(1.1)
+		local frameName = "ChatFrame" .. i
 
-		local chatFrameXTab = _G['ChatFrame' .. i .. 'Tab']
-		chatFrameXTab:SetScale(1.1)
+		local chatFrame = _G[frameName]
+		if chatFrame then
+			chatFrame:SetClampedToScreen(not AlomawaniQoLData.Configs["DisableChatClamping"])
+			chatFrame:SetClampRectInsets(0, 0, 0, 0)
+			chatFrame:SetScale(1.1)
 
-		local frame = _G['ChatFrame' .. i .. 'EditBox']
-		frame:ClearAllPoints()
-		frame:SetPoint('BOTTOMLEFT', frame.chatFrame, 'TOPLEFT', 0, 3)
-		frame:SetPoint('BOTTOMRIGHT', frame.chatFrame, 'TOPRIGHT', frame.chatFrame.ScrollBar:GetWidth(), 3)
-		frame:SetScale(1.1)
+			local chatFrameXTab = _G[frameName .. 'Tab']
+			if chatFrameXTab then
+				chatFrameXTab:SetScale(1.1)
+			end
+
+			local editBox = _G[frameName .. 'EditBox']
+			if editBox then
+				editBox:ClearAllPoints()
+				editBox:SetPoint('BOTTOMLEFT', editBox.chatFrame, 'TOPLEFT', 0, 3)
+				editBox:SetPoint('BOTTOMRIGHT', editBox.chatFrame, 'TOPRIGHT', editBox.chatFrame.ScrollBar:GetWidth(), 3)
+				editBox:SetScale(1.1)
+			end
+		end
 	end
 
 	QuickJoinToastButton:SetScale(1.1)
-end
-
-function Social:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Interface.Social = Social

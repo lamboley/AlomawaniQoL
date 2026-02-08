@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- Lua API
 local select = select
@@ -13,7 +14,7 @@ SLASH_AlomawaniQoL2 = "/aql"
 
 SlashCmdList["AlomawaniQoL"] = function(msg)
     if msg == "debug" then
-        AlomawaniQoL.Print("debug")
+        AlomawaniQoL.Print(AlomawaniQoLData.Configs["DisableDamageText"])
     elseif msg == "pet" then
         local summonedPetGUID = GetSummonedPetGUID()
         if summonedPetGUID then

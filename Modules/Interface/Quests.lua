@@ -1,42 +1,44 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- Lua API
 local select = select
 
 -- WoW API
 local IsInInstance = IsInInstance
-local CreateFrame = CreateFrame
 
-local Quests = CreateFrame('Frame')
+local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
+
+local lastInstanceType = nil
+
+-- One-time setup: hooks are permanent and cannot be removed
+function Quests:PreEnable()
+	MicroButtonAndBagsBar:UnregisterAllEvents()
+	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
+	MicroButtonAndBagsBar:Hide()
+end
 
 function Quests:OnEvent(event, ...)
 	ObjectiveTrackerFrame:SetScale(AlomawaniQoLData.Configs["ObjectiveTrackerScale"])
 
-	-- CompactRaidFrameManager:UnregisterAllEvents()
-	-- CompactRaidFrameManager:HookScript("OnShow", function(s) s:Hide() end)
-	-- CompactRaidFrameManager:Hide()
-
-	MicroButtonAndBagsBar:UnregisterAllEvents()
-	MicroButtonAndBagsBar:HookScript("OnShow", function(s) s:Hide() end)
-	MicroButtonAndBagsBar:Hide()
-
 	local instanceType = select(2, IsInInstance())
-	if not instanceType then return end
 
-	if instanceType == 'pvp' or instanceType == 'arena' then
-		ObjectiveTrackerFrame:Hide()
-	elseif instanceType == 'party' or instanceType == 'raid' or instanceType == 'scenario' then
-		ObjectiveTrackerFrame:Show()
-		ObjectiveTrackerFrame:SetCollapsed(true)
-	else
-		ObjectiveTrackerFrame:Show()
-		ObjectiveTrackerFrame:SetCollapsed(false)
+	if lastInstanceType ~= instanceType then
+		if not instanceType then
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(false)
+		elseif instanceType == 'pvp' or instanceType == 'arena' then
+			ObjectiveTrackerFrame:Hide()
+		elseif instanceType == 'party' or instanceType == 'raid' or instanceType == 'scenario' then
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(true)
+		else
+			ObjectiveTrackerFrame:Show()
+			ObjectiveTrackerFrame:SetCollapsed(false)
+		end
+
+		lastInstanceType = instanceType
 	end
-end
-
-function Quests:Enable()
-	self:RegisterEvent('PLAYER_ENTERING_WORLD')
-	self:SetScript('OnEvent', self.OnEvent)
 end
 
 AlomawaniQoL.Interface.Quests = Quests

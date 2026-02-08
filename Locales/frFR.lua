@@ -1,4 +1,5 @@
-local _, AlomawaniQoL = ...
+---@class AlomawaniQoL
+local AlomawaniQoL = select(2, ...)
 
 -- WoW API
 local GetLocale = GetLocale
@@ -6,5 +7,5 @@ local GetLocale = GetLocale
 local L = AlomawaniQoL.L
 
 if GetLocale() == "frFR" then
-    L["Hello"] = "Bonjour"
+    L["A /reload may be required to take effect."] = "Un /reload peut être nécessaire pour prendre effet."
 end
