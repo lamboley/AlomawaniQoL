@@ -1,7 +1,7 @@
 std = "lua51"
 max_line_length = false
 exclude_files = {
-	"AlomawaniQoL/Libs/",
+	"Libs/",
 	".luacheckrc"
 }
 ignore = {
@@ -25,6 +25,28 @@ ignore = {
 	"582", --  error-prone operator orders
 }
 globals = {
-	"_G",
+	-- AlomawaniQoL
+	"AlomawaniQoLData",
+
+	-- Third Party
+
+	-- WoW Frames
+	"UIParent",
+	"CHAT_FRAMES",
+	"ChatFrame1",
+	"ObjectiveTrackerFrame",
+	"MicroButtonAndBagsBar",
+	"PlayerFrame",
+
+	-- WoW constants
+	"DEFAULT_CHATFRAME_ALPHA",
+	"CHAT_FRAME_BUTTON_FRAME_MIN_ALPHA",
+
+	-- WoW functions
     "SetCVar",
+	"MuteSoundFile",
+	"GetPhysicalScreenSize",
+	"QuickJoinToastButton",
+	"IsInInstance",
+	"GetSpecialization",
 }
