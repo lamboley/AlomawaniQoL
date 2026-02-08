@@ -29,10 +29,19 @@ globals = {
 	"AlomawaniQoLData",
 
 	-- Third Party
+	"LibStub",
+
+	-- WoW Namespaces
+	"C_Container",
+	"C_PetJournal",
+	"C_Timer",
 
 	-- WoW Frames
 	"CHAT_FRAMES",
 	"ChatFrame1",
+	"DEFAULT_CHAT_FRAME",
+	"GameTooltip",
+	"LootFrame",
 	"MicroButtonAndBagsBar",
 	"ObjectiveTrackerFrame",
 	"PlayerFrame",
@@ -42,11 +51,34 @@ globals = {
 	-- WoW Constants
 	"CHAT_FRAME_BUTTON_FRAME_MIN_ALPHA",
 	"DEFAULT_CHATFRAME_ALPHA",
+	"NUM_BAG_SLOTS",
 
 	-- WoW Functions
+	"CanMerchantRepair",
+	"CreateFrame",
+	"GetGuildInfo",
+	"GetLocale",
+	"GetNumLootItems",
 	"GetPhysicalScreenSize",
 	"GetSpecialization",
+	"GetSpecializationRole",
+	"GetTime",
+	"InCombatLockdown",
 	"IsInInstance",
+	"IsStealthed",
+	"LootSlot",
+	"MouselookStart",
+	"MouselookStop",
 	"MuteSoundFile",
+	"PlaySoundFile",
+	"RegisterAttributeDriver",
+	"RegisterStateDriver",
+	"ReloadUI",
+	"RepairAllItems",
 	"SetCVar",
+	"SlashCmdList",
+	"UnitAffectingCombat",
+	"hooksecurefunc",
+	"time",
+	"wipe",
 }
