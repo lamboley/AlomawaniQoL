@@ -1,4 +1,4 @@
 package-as: AlomawaniQoL
 
 ignore:
-  - wowapi.d.lua
+  - Definitions.lua
