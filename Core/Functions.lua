@@ -18,12 +18,6 @@ function AlomawaniQoL.Debug(...)
 	end
 end
 
-function AlomawaniQoL.GetConfig(key, default)
-    local val = AlomawaniQoLData.Configs[key]
-    if val == nil then return default end
-    return val
-end
-
 function AlomawaniQoL.CreateModule(name, events)
     local module = CreateFrame('Frame', "AlomawaniQoL_" .. name)
     module.enabled = false
@@ -42,8 +36,6 @@ function AlomawaniQoL.CreateModule(name, events)
         self:SetScript('OnEvent', self.OnEvent)
         self.enabled = true
 
-        AlomawaniQoL.Debug("Enabled module:", name)
-
         if self.PostEnable then
             self:PostEnable()
         end
@@ -60,8 +52,6 @@ function AlomawaniQoL.CreateModule(name, events)
             self:UnregisterEvent(event)
         end
         self.enabled = false
-
-        AlomawaniQoL.Debug("Disabled module:", name)
 
         if self.PostDisable then
             self:PostDisable()

@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Provide quality of life improvements to enhance your World of Wacraft experience.
+Provide quality of life improvements to enhance your World of Warcraft experience.
 
 ## Features
 
@@ -27,7 +27,7 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- Make a Function for SetCvar that yse GetVar to check if the value is already set to the desired value before setting it, to avoid unnecessary calls to SetCvar.
+- None
 
 ## Issues
 

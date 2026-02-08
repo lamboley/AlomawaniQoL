@@ -37,7 +37,6 @@ function Quests:OnEvent(event, ...)
 		end
 
 		lastInstanceType = instanceType
-		AlomawaniQoL.Debug("Quest tracker updated for instance type:", instanceType or "none")
 	end
 end
 

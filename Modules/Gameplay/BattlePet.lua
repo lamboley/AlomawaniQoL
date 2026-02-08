@@ -22,16 +22,13 @@ local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
 
 local lastSummonAttempt = 0
 
-local cachedPetName = nil
-local cachedPetGUID = nil
-
 function BattlePet:OnEvent(_, ...)
     if not AlomawaniQoLData.Configs["KeepABattlePetSummoned"] or AlomawaniQoLData.Configs["BattlePetNameToSummon"] == "" then
         return
     end
 
     local currentTime = GetTime()
-    if currentTime - lastSummonAttempt < 2 then
+    if currentTime - lastSummonAttempt < 10 then
         return
     end
 
@@ -40,17 +37,10 @@ function BattlePet:OnEvent(_, ...)
         return
     end
 
-    local configuredPetName = AlomawaniQoLData.Configs["BattlePetNameToSummon"]
-    if cachedPetName ~= configuredPetName then
-        local _, petGUID = FindPetIDByName(configuredPetName)
-        cachedPetName = configuredPetName
-        cachedPetGUID = petGUID
-    end
-
-    if cachedPetGUID and GetSummonedPetGUID() ~= cachedPetGUID then
-        SummonPetByGUID(cachedPetGUID)
+    local _, petGUID = FindPetIDByName(AlomawaniQoLData.Configs["BattlePetNameToSummon"])
+    if petGUID and GetSummonedPetGUID() ~= petGUID then
+        SummonPetByGUID(petGUID)
         lastSummonAttempt = currentTime
-        AlomawaniQoL.Debug("Summoned battle pet:", cachedPetName)
     end
 end
 

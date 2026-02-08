@@ -63,13 +63,11 @@ function ThichNhatHanh:OnEvent(_, ...)
                 stepTimers[#stepTimers + 1] = timer
             end
         end)
-        AlomawaniQoL.Debug("Started Thich Nhat Hanh quote ticker")
     end
 end
 
 function ThichNhatHanh:PreDisable()
     CancelAllTimers()
-    AlomawaniQoL.Debug("Stopped Thich Nhat Hanh quote ticker")
 end
 
 AlomawaniQoL.Gameplay.ThichNhatHanh = ThichNhatHanh

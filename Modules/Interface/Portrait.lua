@@ -34,7 +34,6 @@ function Portrait:OnEvent(event, ...)
                     RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
                 end
                 lastPortraitState = desiredState
-                AlomawaniQoL.Debug("Player portrait:", desiredState)
             end
         end
     end

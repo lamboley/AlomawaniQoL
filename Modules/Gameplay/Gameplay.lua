@@ -31,7 +31,6 @@ function Gameplay:PreEnable()
         end)
 
         mouselookInitialized = true
-        AlomawaniQoL.Debug("Mouselook bindings initialized")
     end
 end
 

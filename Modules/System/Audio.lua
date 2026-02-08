@@ -75,7 +75,6 @@ function Audio:OnEvent(_, ...)
             MuteSoundFile(s)
         end
         soundsMutedThisSession = true
-        AlomawaniQoL.Debug("Muted", #blacklistSound, "annoying sounds")
     end
 end
 
