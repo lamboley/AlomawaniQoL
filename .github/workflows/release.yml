@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - master
+      - fix/mouse-look-not-in-combat
     tags:
       - '**'
-      - "!**-alpha**"
-      - "!**-beta**"
 
 jobs:
   release:
