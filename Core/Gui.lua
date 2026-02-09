@@ -11,7 +11,7 @@ local DF = _G["DetailsFramework"]
 local L = AlomawaniQoL.L
 
 ---@type number, number
-local WIDTH, HEIGHT = 1100, 670
+local WIDTH, HEIGHT = 1000, 600
 
 ---@type table
 local textTemplate = DF:GetTemplate("font", "OPTIONS_FONT_TEMPLATE")
