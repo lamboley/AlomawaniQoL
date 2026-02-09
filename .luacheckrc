@@ -32,6 +32,7 @@ globals = {
 	"LibStub",
 
 	-- WoW Namespaces
+	"C_Bank",
 	"C_Container",
 	"C_PetJournal",
 	"C_Timer",
@@ -58,6 +59,7 @@ globals = {
 	"CreateFrame",
 	"GetGuildInfo",
 	"GetLocale",
+	"GetMoney",
 	"GetNumLootItems",
 	"GetPhysicalScreenSize",
 	"GetSpecialization",
@@ -77,6 +79,7 @@ globals = {
 	"RepairAllItems",
 	"SetCVar",
 	"SlashCmdList",
+	"UnmuteSoundFile",
 	"UnitAffectingCombat",
 	"hooksecurefunc",
 	"time",
