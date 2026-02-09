@@ -346,6 +346,38 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["SellJunkAutomatically"] = value
                 end,
             },
+            {
+                type = "blank"
+            },
+            { -- Bank
+                type = "label",
+                get = function() return L["Bank"] end,
+                text_template = orangeTextTemplate
+            },
+            { -- Deposit Gold In Warband Bank
+                type = "toggle",
+                boxfirst = true,
+                name = L["Deposit Gold In Warband Bank"],
+                get = function() return AlomawaniQoLData.Configs["DepositGoldInWarbandBank"] end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["DepositGoldInWarbandBank"] = value
+                end,
+            },
+            { -- Quantity Of Gold To Keep In Inventory
+                type = "textentry",
+                name = L["Quantity Of Gold To Keep In Inventory"],
+                width = 50,
+                get = function() return AlomawaniQoLData.Configs["QuantityOfGoldToKeepInInventory"] or "" end,
+                set = function(_, _, value)
+                    AlomawaniQoLData.Configs["QuantityOfGoldToKeepInInventory"] = value
+                end,
+                hooks = {
+                    OnEditFocusLost = function(self)
+                        self:SetText(AlomawaniQoLData.Configs["QuantityOfGoldToKeepInInventory"])
+                    end,
+                    OnEnterPressed = function(self) return end
+                },
+            },
 
         },
         10, -100, HEIGHT - 10, false,

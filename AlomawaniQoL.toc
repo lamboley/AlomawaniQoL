@@ -41,3 +41,4 @@ Modules\Gameplay\Vendor.lua
 Modules\Gameplay\Voice.lua
 Modules\Gameplay\ThichNhatHanh.lua
 Modules\Gameplay\BattlePet.lua
+Modules\Gameplay\Bank.lua

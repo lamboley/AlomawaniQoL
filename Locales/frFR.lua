@@ -24,6 +24,7 @@ if GetLocale() == "frFR" then
     L["Roleplay"] = "Jeu de rôle"
     L["Battle Pet"] = "Mascotte de combat"
     L["Merchant"] = "Marchand"
+    L["Bank"] = "Banque"
     L["Scale"] = "Échelle"
 
     -- Toggle names
@@ -46,6 +47,8 @@ if GetLocale() == "frFR" then
     L["Hide Tooltip While In Combat"] = "Masquer l'infobulle en combat"
     L["Hide Player Portrait When Heal"] = "Masquer le portrait du joueur en soin"
     L["ObjectiveTracker Scale"] = "Échelle du suivi d'objectifs"
+    L["Deposit Gold In Warband Bank"] = "Déposer l'or dans la banque de compte"
+    L["Quantity Of Gold To Keep In Inventory"] = "Quantité d'or à garder dans l'inventaire"
 
     -- Descriptions
     L["Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). "] = "Définir l'échelle de l'interface en fonction de la résolution verticale (UIScale = 768 / résolutionVerticale). "

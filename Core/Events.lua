@@ -50,6 +50,8 @@ Events:SetScript("OnEvent", function(_, event, ...)
             SetDefault("RepairGearAutomatically", true)
             SetDefault("UseGuildBankForRepair", false)
             SetDefault("SellJunkAutomatically", true)
+            SetDefault("DepositGoldInWarbandBank", true)
+            SetDefault("QuantityOfGoldToKeepInInventory", "500")
 
             -- Interface
             SetDefault("DisableDamageText", true)

@@ -10,6 +10,7 @@ local LootSlot = LootSlot
 ---@field ThichNhatHanh ThichNhatHanh
 ---@field Vendor Vendor
 ---@field Voice Voice
+---@field Bank Bank
 ---@field OnEvent fun(self: Gameplay, event: WowEvent, ...: any)
 ---@field PreEnable fun(self: Gameplay)
 ---@field PostEnable fun(self: Gameplay)
@@ -61,6 +62,7 @@ function Gameplay:PostEnable()
     self.Voice:Enable()
     self.ThichNhatHanh:Enable()
     self.BattlePet:Enable()
+    self.Bank:Enable()
 end
 
 function Gameplay:PostDisable()
@@ -68,6 +70,7 @@ function Gameplay:PostDisable()
     self.Voice:Disable()
     self.ThichNhatHanh:Disable()
     self.BattlePet:Disable()
+    self.Bank:Disable()
 end
 
 AlomawaniQoL.Gameplay = Gameplay
