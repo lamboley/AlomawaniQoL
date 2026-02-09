@@ -11,7 +11,7 @@ local DF = _G["DetailsFramework"]
 local L = AlomawaniQoL.L
 
 ---@type number, number
-local WIDTH, HEIGHT = 1000, 600
+local WIDTH, HEIGHT, LINE = 1000, 600, -85
 
 ---@type table
 local textTemplate = DF:GetTemplate("font", "OPTIONS_FONT_TEMPLATE")
@@ -29,10 +29,10 @@ local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 ---@class AlomawaniQoLGui : Frame
 ---@field Init fun(self: AlomawaniQoLGui)
 ---@field ToggleOptions fun(self: AlomawaniQoLGui)
-local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLGui", {})
+local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, AlomawaniQoL.addonName, "AlomawaniQoLGui", {})
 
 function AlomawaniQoLGui:Init()
-    local tabsContainer = DF:CreateTabContainer(AlomawaniQoLGui, "Alomawani QoL", "AlomawaniQoLGuiTabsContainers",
+    local tabsContainer = DF:CreateTabContainer(AlomawaniQoLGui, AlomawaniQoL.addonName, "AlomawaniQoLGuiTabsContainers",
         {
             {
                 name = "General",
@@ -58,29 +58,17 @@ function AlomawaniQoLGui:Init()
         {
             width = WIDTH,
             height = HEIGHT - 10,
-            backdrop_color = { 0, 0, 0, 0 },
-            button_width = 108,
-            -- button_height = 23,
-            close_text_alpha = 0.4,
             container_width_offset = 30,
-            backdrop_border_color = { 0.1, 0.1, 0.1, 0.4 }
+            hide_click_label = true
         }
     )
     tabsContainer:SetPoint("CENTER", AlomawaniQoLGui, "CENTER", 0, 0)
 
     for _, frame in ipairs(tabsContainer.AllFrames) do
-		local frameBackgroundTexture = frame:CreateTexture(nil, "artwork")
-		frameBackgroundTexture:SetPoint("TOPLEFT", frame, "TOPLEFT", 1, -85)
-		frameBackgroundTexture:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -1, 20)
-		frameBackgroundTexture:SetColorTexture(0.2317647, 0.2317647, 0.2317647)
-		frameBackgroundTexture:SetVertexColor(0.27, 0.27, 0.27)
-		frameBackgroundTexture:SetAlpha(0.5)
-
-		local frameBackgroundTextureTopLine = frame:CreateTexture(nil, "artwork")
-		frameBackgroundTextureTopLine:SetPoint("BOTTOMLEFT", frameBackgroundTexture, "TOPLEFT", 0, 0)
-		frameBackgroundTextureTopLine:SetPoint("BOTTOMRIGHT", frame, "TOPRIGHT", -1, 0)
-		frameBackgroundTextureTopLine:SetHeight(1)
-		frameBackgroundTextureTopLine:SetColorTexture(0.1215, 0.1176, 0.1294)
+		local lineSeparator = frame:CreateTexture(nil, "artwork")
+        lineSeparator:SetPoint("TOPLEFT", frame ,"TOPLEFT", 0, LINE)
+        lineSeparator:SetPoint("BOTTOMRIGHT", frame ,"BOTTOMRIGHT", 0, (HEIGHT+LINE-11))
+		lineSeparator:SetColorTexture(0.1215, 0.1176, 0.1294)
 	end
 
     -- General
