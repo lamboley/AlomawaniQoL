@@ -4,12 +4,8 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local WithdrawMoney = C_Bank.WithdrawMoney
 local DepositMoney = C_Bank.DepositMoney
-local UnitFullName = UnitFullName
-local smatch = string.match
 local tonumber = tonumber
 local GetMoney = GetMoney
-local ssub = string.sub
-local slen = string.len
 
 ---@class Bank : Frame
 ---@field OnEvent fun(self: Bank, event: WowEvent, ...: any)
