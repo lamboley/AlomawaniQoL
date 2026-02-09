@@ -363,9 +363,9 @@ function AlomawaniQoLGui:Init()
                     AlomawaniQoLData.Configs["DepositGoldInWarbandBank"] = value
                 end,
             },
-            { -- Quantity Of Gold To Keep In Inventory
+            { -- Gold To Keep In Inventory
                 type = "textentry",
-                name = L["Quantity Of Gold To Keep In Inventory"],
+                name = L["Gold To Keep In Inventory"],
                 width = 50,
                 get = function() return AlomawaniQoLData.Configs["QuantityOfGoldToKeepInInventory"] or "" end,
                 set = function(_, _, value)
