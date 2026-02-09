@@ -7,16 +7,21 @@ local ipairs = ipairs
 local print = print
 local type = type
 
+---@param ... any
 function AlomawaniQoL.Print(...)
 	print("|cff00D9FFAlomawani QoL:|r", ...)
 end
 
+---@param ... any
 function AlomawaniQoL.Debug(...)
 	if AlomawaniQoLData.Configs["Debug"] then
 		print("|cffFFAA00Alomawani QoL:|r |cffFF6B6B[DEBUG]|r", ...)
 	end
 end
 
+---@param name string
+---@param events string|string[]
+---@return Frame
 function AlomawaniQoL.CreateModule(name, events)
     local module = CreateFrame('Frame', "AlomawaniQoL_" .. name)
     module.enabled = false

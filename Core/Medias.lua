@@ -8,6 +8,9 @@ local mediaPath = {
 	font = [[Interface\AddOns\AlomawaniQoL\Medias\Font\]],
 }
 
+---@param type string
+---@param name string
+---@param file string
 local function AddMedia(type, name, file)
 	LSM:Register(type, name, mediaPath[type] .. file)
 end

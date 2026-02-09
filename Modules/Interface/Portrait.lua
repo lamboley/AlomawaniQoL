@@ -6,8 +6,8 @@ local RegisterAttributeDriver = RegisterAttributeDriver
 local GetSpecializationRole = GetSpecializationRole
 local GetSpecialization = GetSpecialization
 
----@class Portrait : table
----@field OnEvent fun(event: string, any)
+---@class Portrait : Frame
+---@field OnEvent fun(self: Portrait, event: WowEvent, ...: any)
 local Portrait = AlomawaniQoL.CreateModule("Portrait", {
     "PLAYER_ENTERING_WORLD",
     "PLAYER_SPECIALIZATION_CHANGED"
@@ -16,6 +16,8 @@ local Portrait = AlomawaniQoL.CreateModule("Portrait", {
 ---@type string?
 local lastPortraitState = nil
 
+---@param event WowEvent
+---@param ... any
 function Portrait:OnEvent(event, ...)
     if not AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] then
         if lastPortraitState == 'hidden' then

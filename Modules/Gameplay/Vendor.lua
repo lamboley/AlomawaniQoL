@@ -11,10 +11,12 @@ local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
 local select = select
 
----@class Vendor : table
----@field OnEvent fun(event: string, any)
+---@class Vendor : Frame
+---@field OnEvent fun(self: Vendor, event: WowEvent, ...: any)
 local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
 
+---@param _ WowEvent
+---@param ... any
 function Vendor:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["RepairGearAutomatically"] and CanMerchantRepair() then
         if AlomawaniQoLData.Configs["UseGuildBankForRepair"] and select(1, GetGuildInfo('player')) then

@@ -10,6 +10,7 @@ local select = select
 SLASH_AlomawaniQoL1 = "/alomawaniqol"
 SLASH_AlomawaniQoL2 = "/aql"
 
+---@param msg string
 SlashCmdList["AlomawaniQoL"] = function(msg)
     if msg == "pet" then
         local summonedPetGUID = GetSummonedPetGUID()

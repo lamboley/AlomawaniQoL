@@ -9,10 +9,12 @@ local select = select
 local max = math.max
 local min = math.min
 
----@class Graphics : table
----@field OnEvent fun(event: string, any)
+---@class Graphics : Frame
+---@field OnEvent fun(self: Graphics, event: WowEvent, ...: any)
 local Graphics = AlomawaniQoL.CreateModule("Graphics", "PLAYER_ENTERING_WORLD")
 
+---@param _ WowEvent
+---@param ... any
 function Graphics:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["UsePerfectPixel"] then
         local screenHeight = select(2, GetPhysicalScreenSize())

@@ -26,7 +26,9 @@ local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
 ---@type table
 local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
----@class AlomawaniQoLGui : table
+---@class AlomawaniQoLGui : Frame
+---@field Init fun(self: AlomawaniQoLGui)
+---@field ToggleOptions fun(self: AlomawaniQoLGui)
 local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, "Alomawani QoL", "AlomawaniQoLGui", {})
 
 function AlomawaniQoLGui:Init()

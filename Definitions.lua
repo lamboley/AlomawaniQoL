@@ -1,12 +1,12 @@
 ---@class AlomawaniQoL : table
----@field System table
----@field Interface table
----@field Gameplay table
----@field L table
----@field AlomawaniQoLGui table
----@field Print fun(any) Print text in chat
----@field Debug fun(any) Print text in chat if Debug is enabled
----@field CreateModule fun(name: string, events: string|string[]) : frame Print in chat if Debug is enabled
+---@field System System
+---@field Interface Interface
+---@field Gameplay Gameplay
+---@field L table<string, string>
+---@field AlomawaniQoLGui AlomawaniQoLGui
+---@field Print fun(...: any) Print text in chat
+---@field Debug fun(...: any) Print text in chat if Debug is enabled
+---@field CreateModule fun(name: string, events: string|string[]): Frame
 
 ---@class AlomawaniQoLConfigs
 ---@field Debug boolean

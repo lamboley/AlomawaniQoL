@@ -4,10 +4,12 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local _G = _G
 
----@class Social : table
----@field OnEvent fun(event: string, any)
+---@class Social : Frame
+---@field OnEvent fun(self: Social, event: WowEvent, ...: any)
 local Social = AlomawaniQoL.CreateModule("Social", "PLAYER_ENTERING_WORLD")
 
+---@param event WowEvent
+---@param ... any
 function Social:OnEvent(event, ...)
 	DEFAULT_CHATFRAME_ALPHA = 0
 	CHAT_FRAME_BUTTON_FRAME_MIN_ALPHA = 0.2

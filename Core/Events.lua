@@ -20,6 +20,8 @@ Events:SetScript("OnEvent", function(_, event, ...)
                 AlomawaniQoLData.Configs = {}
             end
 
+            ---@param key string
+            ---@param default any
             local function SetDefault(key, default)
                 if AlomawaniQoLData.Configs[key] == nil then
                     AlomawaniQoLData.Configs[key] = default

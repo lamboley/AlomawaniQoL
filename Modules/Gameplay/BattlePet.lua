@@ -11,8 +11,8 @@ local IsStealthed = IsStealthed
 local select = select
 local GetTime = GetTime
 
----@class BattlePet : table
----@field OnEvent fun(event: string, any)
+---@class BattlePet : Frame
+---@field OnEvent fun(self: BattlePet, event: WowEvent, ...: any)
 local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
     "PLAYER_ENTERING_WORLD",
     "COMPANION_UPDATE",
@@ -24,6 +24,8 @@ local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
 ---@type number
 local lastSummonAttempt = 0
 
+---@param _ WowEvent
+---@param ... any
 function BattlePet:OnEvent(_, ...)
     if not AlomawaniQoLData.Configs["KeepABattlePetSummoned"] or AlomawaniQoLData.Configs["BattlePetNameToSummon"] == "" then
         return

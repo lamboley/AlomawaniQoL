@@ -5,9 +5,9 @@ local AlomawaniQoL = select(2, ...)
 local IsInInstance = IsInInstance
 local select = select
 
----@class Quests : table
----@field OnEvent fun(event: string, any)
----@field PreEnable fun()
+---@class Quests : Frame
+---@field OnEvent fun(self: Quests, event: WowEvent, ...: any)
+---@field PreEnable fun(self: Quests)
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
 ---@type string?
@@ -21,6 +21,8 @@ function Quests:PreEnable()
 	MicroButtonAndBagsBar:Hide()
 end
 
+---@param event WowEvent
+---@param ... any
 function Quests:OnEvent(event, ...)
 	local instanceType = select(2, IsInInstance())
 

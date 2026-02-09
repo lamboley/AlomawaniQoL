@@ -5,14 +5,15 @@ local AlomawaniQoL = select(2, ...)
 local GetNumLootItems = GetNumLootItems
 local LootSlot = LootSlot
 
----@class Gameplay : table
+---@class Gameplay : Frame
 ---@field BattlePet BattlePet
 ---@field ThichNhatHanh ThichNhatHanh
 ---@field Vendor Vendor
 ---@field Voice Voice
----@field OnEvent fun(event: string, any)
----@field PostEnable fun()
----@field PostDisable fun()
+---@field OnEvent fun(self: Gameplay, event: WowEvent, ...: any)
+---@field PreEnable fun(self: Gameplay)
+---@field PostEnable fun(self: Gameplay)
+---@field PostDisable fun(self: Gameplay)
 local Gameplay = AlomawaniQoL.CreateModule("Gameplay", "LOOT_READY")
 
 ---@type boolean
@@ -44,6 +45,8 @@ function Gameplay:PreEnable()
     end
 end
 
+---@param event WowEvent
+---@param ... any
 function Gameplay:OnEvent(event, ...)
     if AlomawaniQoLData.Configs["FasterAutoLoot"] then
         LootFrame:SetAlpha(0)

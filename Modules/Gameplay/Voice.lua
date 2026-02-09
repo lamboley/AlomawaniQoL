@@ -7,8 +7,8 @@ local tinsert = table.insert
 local pairs = pairs
 local time = time
 
----@class Voice : table
----@field OnEvent fun(event: string, any)
+---@class Voice : Frame
+---@field OnEvent fun(self: Voice, event: WowEvent, ...: any)
 local Voice = AlomawaniQoL.CreateModule("Voice", "PLAYER_DEAD")
 
 ---@type number
@@ -35,6 +35,8 @@ local deathSounds = {
     564844,  -- "Your will is no longer your own"
 }
 
+---@param _ WowEvent
+---@param ... any
 function Voice:OnEvent(_, ...)
     if not AlomawaniQoLData.Configs["AddVoiceLineWhenDead"] then
         return

@@ -7,14 +7,14 @@ local hooksecurefunc = hooksecurefunc
 local SetCVar = SetCVar
 local ipairs = ipairs
 
----@class Interface : table
+---@class Interface : Frame
 ---@field Portrait Portrait
 ---@field Quests Quests
 ---@field Social Social
----@field OnEvent fun(event: string, any)
----@field PreEnable fun()
----@field PostEnable fun()
----@field PostDisable fun()
+---@field OnEvent fun(self: Interface, event: WowEvent, ...: any)
+---@field PreEnable fun(self: Interface)
+---@field PostEnable fun(self: Interface)
+---@field PostDisable fun(self: Interface)
 local Interface = AlomawaniQoL.CreateModule("Interface", "PLAYER_ENTERING_WORLD")
 
 ---@type boolean
@@ -47,6 +47,8 @@ function Interface:PreEnable()
     end
 end
 
+---@param event WowEvent
+---@param ... any
 function Interface:OnEvent(event, ...)
     if not cvarsInitialized then
         local value = AlomawaniQoLData.Configs["DisableDamageText"] and 0 or 1

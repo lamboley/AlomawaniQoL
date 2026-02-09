@@ -5,8 +5,9 @@ local AlomawaniQoL = select(2, ...)
 local MuteSoundFile  = MuteSoundFile
 local ipairs = ipairs
 
----@class Audio : table
----@field OnEvent fun(event: string, any)
+---@class Audio : Frame
+---@field OnEvent fun(self: Audio, event: WowEvent, ...: any)
+---@field PreDisable fun(self: Audio)
 local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 
 ---@type boolean
@@ -71,6 +72,8 @@ local blacklistSound = {
     600293 -- sound/creature/goblintrike/veh_goblintrike_drive_loop_01.ogg
 }
 
+---@param _ WowEvent
+---@param ... any
 function Audio:OnEvent(_, ...)
     if AlomawaniQoLData.Configs["MuteAnnoyingSound"] and not soundsMutedThisSession then
         for _, s in ipairs(blacklistSound) do

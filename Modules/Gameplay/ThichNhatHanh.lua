@@ -7,8 +7,9 @@ local NewTimer = C_Timer.NewTimer
 local ipairs = ipairs
 local wipe = wipe
 
----@class ThichNhatHanh : table
----@field OnEvent fun(event: string, any)
+---@class ThichNhatHanh : Frame
+---@field OnEvent fun(self: ThichNhatHanh, event: WowEvent, ...: any)
+---@field PreDisable fun(self: ThichNhatHanh)
 local ThichNhatHanh = AlomawaniQoL.CreateModule("ThichNhatHanh", "PLAYER_ENTERING_WORLD")
 
 ---@type number
@@ -43,9 +44,9 @@ local function CancelAllTimers()
     wipe(stepTimers)
 end
 
+---@param step string[]
 local function DisplayStep(step)
     for _, line in ipairs(step) do
-        ---@diagnostic disable-next-line: undefined-global
         DEFAULT_CHAT_FRAME:AddMessage(line)
     end
 end
