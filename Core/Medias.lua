@@ -1,5 +1,7 @@
+---@type table
 local LSM = LibStub('LibSharedMedia-3.0')
 
+---@type table<string, string>
 local mediaPath = {
 	statusbar = [[Interface\AddOns\AlomawaniQoL\Medias\Statusbar\]],
 	sound = [[Interface\AddOns\AlomawaniQoL\Medias\Sounds\]],

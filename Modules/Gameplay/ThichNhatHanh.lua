@@ -11,9 +11,13 @@ local wipe = wipe
 ---@field OnEvent fun(event: string, any)
 local ThichNhatHanh = AlomawaniQoL.CreateModule("ThichNhatHanh", "PLAYER_ENTERING_WORLD")
 
+---@type number
 local CYCLE_INTERVAL = 2000
+
+---@type number
 local STEP_DELAY = 60
 
+---@type string[][]
 local steps = {
     {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r",
      "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r"},

@@ -14,6 +14,7 @@ local Voice = AlomawaniQoL.CreateModule("Voice", "PLAYER_DEAD")
 ---@type number
 local lastSoundTime = 0
 
+---@type number[]
 local deathSounds = {
     -- Ilgynoth
     1360543, -- "You have failed those who needed you"

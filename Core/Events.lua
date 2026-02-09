@@ -4,6 +4,7 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local CreateFrame = CreateFrame
 
+---@type frame
 local Events = CreateFrame("Frame")
 Events:RegisterEvent("ADDON_LOADED")
 Events:RegisterEvent("PLAYER_LOGIN")

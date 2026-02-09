@@ -6,4 +6,28 @@
 ---@field AlomawaniQoLGui table
 ---@field Print fun(any) Print text in chat
 ---@field Debug fun(any) Print text in chat if Debug is enabled
----@field CreateModule fun(name: string, events: string[]) : frame Print in chat if Debug is enabled
+---@field CreateModule fun(name: string, events: string|string[]) : frame Print in chat if Debug is enabled
+
+---@class AlomawaniQoLConfigs
+---@field Debug boolean
+---@field MaxOutCameraDistance boolean
+---@field UsePerfectPixel boolean
+---@field UseCustomHeight string
+---@field MuteAnnoyingSound boolean
+---@field DisableChatClamping boolean
+---@field DisableRightClickTargeting boolean
+---@field FasterAutoLoot boolean
+---@field AddVoiceLineWhenDead boolean
+---@field PrintQuoteFromThichNhatHanh boolean
+---@field KeepABattlePetSummoned boolean
+---@field BattlePetNameToSummon string
+---@field RepairGearAutomatically boolean
+---@field UseGuildBankForRepair boolean
+---@field SellJunkAutomatically boolean
+---@field DisableDamageText boolean
+---@field HideTooltipWhileInCombat boolean
+---@field HidePlayerPortraitWhenHeal boolean
+---@field ObjectiveTrackerScale number
+
+---@class AlomawaniQoLData
+---@field Configs AlomawaniQoLConfigs

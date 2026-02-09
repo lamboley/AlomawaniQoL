@@ -4,17 +4,26 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local tonumber = tonumber
 
+---@type table
 local DF = _G["DetailsFramework"]
 
+---@type table
 local L = AlomawaniQoL.L
 
+---@type number, number
 local WIDTH, HEIGHT = 1100, 670
 
+---@type table
 local textTemplate = DF:GetTemplate("font", "OPTIONS_FONT_TEMPLATE")
+---@type table
 local dropdownTemplate = DF:GetTemplate("dropdown", "OPTIONS_DROPDOWN_TEMPLATE")
+---@type table
 local switchTemplate = DF:GetTemplate("switch", "OPTIONS_CHECKBOX_TEMPLATE")
+---@type table
 local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
+---@type table
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
+---@type table
 local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
 
 ---@class AlomawaniQoLGui : table

@@ -12,6 +12,7 @@ local Audio = AlomawaniQoL.CreateModule("Audio", "PLAYER_ENTERING_WORLD")
 ---@type boolean
 local soundsMutedThisSession = false
 
+---@type number[]
 local blacklistSound = {
     569854, -- sound/vehicles/motorcyclevehicle/motorcyclevehiclewalkrun.ogg
     569858, -- sound/vehicles/motorcyclevehicle/motorcyclevehicleattackthrown.ogg

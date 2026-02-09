@@ -15,6 +15,7 @@ local LootSlot = LootSlot
 ---@field PostDisable fun()
 local Gameplay = AlomawaniQoL.CreateModule("Gameplay", "LOOT_READY")
 
+---@type boolean
 local mouselookInitialized = false
 
 function Gameplay:PreEnable()

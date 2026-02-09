@@ -23,6 +23,7 @@ local tooltipHookRegistered = false
 ---@type boolean
 local cvarsInitialized = false
 
+---@type string[]
 local floatingCombatTextCVars = {
     'floatingCombatTextCombatHealing',
     'floatingCombatTextCombatDamage',

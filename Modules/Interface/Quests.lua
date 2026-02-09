@@ -10,7 +10,7 @@ local select = select
 ---@field PreEnable fun()
 local Quests = AlomawaniQoL.CreateModule("Quests", "PLAYER_ENTERING_WORLD")
 
----@type boolean
+---@type string?
 local lastInstanceType = nil
 
 function Quests:PreEnable()

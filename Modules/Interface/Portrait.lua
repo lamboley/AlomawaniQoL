@@ -13,6 +13,7 @@ local Portrait = AlomawaniQoL.CreateModule("Portrait", {
     "PLAYER_SPECIALIZATION_CHANGED"
 })
 
+---@type string?
 local lastPortraitState = nil
 
 function Portrait:OnEvent(event, ...)
