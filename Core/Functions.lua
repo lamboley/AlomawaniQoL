@@ -8,14 +8,14 @@ local print = print
 local type = type
 
 ---@param ... any
-function AlomawaniQoL.Print(...)
-	print("|cff00D9FFAlomawani QoL:|r", ...)
+function AlomawaniQoL:Print(...)
+	print(self.pretty, ...)
 end
 
 ---@param ... any
 function AlomawaniQoL.Debug(...)
 	if AlomawaniQoLData.Configs["Debug"] then
-		print("|cffFFAA00Alomawani QoL:|r |cffFF6B6B[DEBUG]|r", ...)
+		print(AlomawaniQoL.pretty.. " |cffffff00[DEBUG]|r", ...)
 	end
 end
 

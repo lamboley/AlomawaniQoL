@@ -20,7 +20,6 @@ function Bank:OnEvent(_, ...)
 
     local amountToKeep = tonumber(AlomawaniQoLData.Configs["QuantityOfGoldToKeepInInventory"])*10000
     if amountToKeep then
-        AlomawaniQoL.Print("if amountToKeep")
         local money = GetMoney()
         if (money > amountToKeep) then
             DepositMoney(2, money-amountToKeep)

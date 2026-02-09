@@ -16,12 +16,12 @@ SlashCmdList["AlomawaniQoL"] = function(msg)
         local summonedPetGUID = GetSummonedPetGUID()
         if summonedPetGUID then
             local petName = select(8, GetPetInfoByPetID(summonedPetGUID))
-            AlomawaniQoL.Print(petName)
+            AlomawaniQoL:Print(petName)
         else
-            AlomawaniQoL.Print("There is no battle pet summoned.")
+            AlomawaniQoL:Print("There is no battle pet summoned.")
         end
     elseif msg == "h" or msg == "help" then
-        AlomawaniQoL.Print("Command usage:")
+        AlomawaniQoL:Print("Command usage:")
         print("|cff00ff00/aql|r - Toggle options menu")
         print("|cff00ff00/aql pet|r - Display currently summoned battle pet name")
         print("|cff00ff00/aql help|r - Show this help message")

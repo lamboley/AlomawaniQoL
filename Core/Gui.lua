@@ -10,8 +10,11 @@ local DF = _G["DetailsFramework"]
 ---@type table
 local L = AlomawaniQoL.L
 
----@type number, number
+---@type number, number, number
 local WIDTH, HEIGHT, LINE = 1000, 600, -85
+
+---@type number
+local LINE_BOTTOM = HEIGHT+LINE-11
 
 ---@type table
 local textTemplate = DF:GetTemplate("font", "OPTIONS_FONT_TEMPLATE")
@@ -24,7 +27,8 @@ local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 ---@type table
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
 ---@type table
-local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
+-- local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
+local blueTextTemplate = {color = AlomawaniQoL.colorRGB, size = 11, font = DF:GetBestFontForLanguage()}
 
 ---@class AlomawaniQoLGui : Frame
 ---@field Init fun(self: AlomawaniQoLGui)
@@ -63,13 +67,16 @@ function AlomawaniQoLGui:Init()
         }
     )
     tabsContainer:SetPoint("CENTER", AlomawaniQoLGui, "CENTER", 0, 0)
+    tabsContainer:CallOnEachTab(function(frame)
+        local line = frame:CreateTexture(nil, "artwork")
+        line:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, LINE)
+        line:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, LINE_BOTTOM)
+        line:SetColorTexture(0.15, 0.15, 0.15)
+    end)
 
-    for _, frame in ipairs(tabsContainer.AllFrames) do
-		local lineSeparator = frame:CreateTexture(nil, "artwork")
-        lineSeparator:SetPoint("TOPLEFT", frame ,"TOPLEFT", 0, LINE)
-        lineSeparator:SetPoint("BOTTOMRIGHT", frame ,"BOTTOMRIGHT", 0, (HEIGHT+LINE-11))
-		lineSeparator:SetColorTexture(0.1215, 0.1176, 0.1294)
-	end
+    for _, button in ipairs(tabsContainer.AllButtons) do
+        button:SetTextColor(AlomawaniQoL.colorRGB) -- gold color
+    end
 
     -- General
     DF:BuildMenu(tabsContainer:GetTabFrameByName("General"),
@@ -77,7 +84,7 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Enable Debug
                 type = "toggle",
@@ -99,7 +106,7 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Max Out Camera Distance
                 type = "toggle",
@@ -117,7 +124,7 @@ function AlomawaniQoLGui:Init()
             { -- Graphics
                 type = "label",
                 get = function() return L["Graphics"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Use Perfect Pixel
                 type = "toggle",
@@ -140,7 +147,7 @@ function AlomawaniQoLGui:Init()
                     if height and height >= 480 and height <= 4320 then
                         AlomawaniQoLData.Configs["UseCustomHeight"] = value
                     else
-                        AlomawaniQoL.Print(L["Custom height must be between 480-4320"])
+                        AlomawaniQoL:Print(L["Custom height must be between 480-4320"])
                     end
                 end,
                 hooks = {
@@ -157,7 +164,7 @@ function AlomawaniQoLGui:Init()
             { -- Audio
                 type = "label",
                 get = function() return L["Audio"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Mute Annoying Sound
                 type = "toggle",
@@ -180,7 +187,7 @@ function AlomawaniQoLGui:Init()
             { -- Chat
                 type = "label",
                 get = function() return L["Chat"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Disable Chat Clamping
                 type = "toggle",
@@ -203,7 +210,7 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Disable Right Click Targeting
                 type = "toggle",
@@ -230,7 +237,7 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Roleplay"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Add Voice Line When Dead
                 type = "toggle",
@@ -267,7 +274,7 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Battle Pet"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Keep A Battle Pet Summoned
                 type = "toggle",
@@ -305,7 +312,7 @@ function AlomawaniQoLGui:Init()
             { -- Merchant
                 type = "label",
                 get = function() return L["Merchant"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Repair Gear Automatically
                 type = "toggle",
@@ -340,7 +347,7 @@ function AlomawaniQoLGui:Init()
             { -- Bank
                 type = "label",
                 get = function() return L["Bank"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Deposit Gold In Warband Bank
                 type = "toggle",
@@ -378,7 +385,7 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- Disable Damage Text
                 type = "toggle",
@@ -420,7 +427,7 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Scale"] end,
-                text_template = orangeTextTemplate
+                text_template = blueTextTemplate
             },
             { -- ObjectiveTracker Scale
                 type = "range",

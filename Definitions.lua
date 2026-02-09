@@ -8,6 +8,9 @@
 ---@field Debug fun(...: any) Print text in chat if Debug is enabled
 ---@field CreateModule fun(name: string, events: string|string[]): Frame
 ---@field addonName string
+---@field colorRGB number[]
+---@field colorHex string
+---@field pretty string
 
 ---@class AlomawaniQoLConfigs
 ---@field Debug boolean
