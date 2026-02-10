@@ -7,9 +7,13 @@ local tinsert = table.insert
 local pairs = pairs
 local time = time
 
+---@type Gameplay
+local Gameplay = AlomawaniQoL.Gameplay
+
 ---@class Voice : Frame
 ---@field OnEvent fun(self: Voice, event: WowEvent, ...: any)
-local Voice = AlomawaniQoL.CreateModule("Voice", "PLAYER_DEAD")
+---@field Enable fun(self: Voice)
+local Voice = CreateFrame("Frame")
 
 ---@type number
 local lastSoundTime = 0
@@ -47,15 +51,15 @@ function Voice:OnEvent(_, ...)
         return
     end
 
-	local soundFile = deathSounds[math.random(1, #deathSounds)]
-
-	local willPlay = PlaySoundFile(soundFile , 'Master', true, false)
+	local willPlay = PlaySoundFile(deathSounds[math.random(1, #deathSounds)] , 'Master', true, false)
 	if willPlay then
-		AlomawaniQoL.Debug("Played death sound:", soundFile)
 		lastSoundTime = currentTime
-	else
-		AlomawaniQoL.Debug("Failed to play death sound:", soundFile)
 	end
 end
 
-AlomawaniQoL.Gameplay.Voice = Voice
+function Voice:Enable()
+	self:RegisterEvent("PLAYER_DEAD")
+	self:SetScript("OnEvent", self.OnEvent)
+end
+
+Gameplay.Voice = Voice

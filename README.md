@@ -28,7 +28,7 @@ Use __/aql__ for configurations.
 
 ## Todo
 
-- None
+- Nothing
 
 ## Problems
 

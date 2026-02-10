@@ -8,20 +8,11 @@ local SetCVar = SetCVar
 local ipairs = ipairs
 
 ---@class Interface : Frame
+---@field Enable fun(self: Interface)
 ---@field Portrait Portrait
 ---@field Quests Quests
 ---@field Social Social
----@field OnEvent fun(self: Interface, event: WowEvent, ...: any)
----@field PreEnable fun(self: Interface)
----@field PostEnable fun(self: Interface)
----@field PostDisable fun(self: Interface)
-local Interface = AlomawaniQoL.CreateModule("Interface", "PLAYER_ENTERING_WORLD")
-
----@type boolean
-local tooltipHookRegistered = false
-
----@type boolean
-local cvarsInitialized = false
+local Interface = CreateFrame("Frame")
 
 ---@type string[]
 local floatingCombatTextCVars = {
@@ -36,39 +27,24 @@ local floatingCombatTextCVars = {
     'floatingCombatTextPetMeleeDamage_v2',
     'floatingCombatTextPetSpellDamage_v2',
 }
-function Interface:PreEnable()
-    if AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] and not tooltipHookRegistered then
+
+function Interface:Enable()
+    if AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] then
         hooksecurefunc(GameTooltip, 'Show', function(self)
             if UnitAffectingCombat('player') then
                 self:Hide()
             end
         end)
-        tooltipHookRegistered = true
     end
-end
 
----@param event WowEvent
----@param ... any
-function Interface:OnEvent(event, ...)
-    if not cvarsInitialized then
-        local value = AlomawaniQoLData.Configs["DisableDamageText"] and 0 or 1
-        for _, cvar in ipairs(floatingCombatTextCVars) do
-            SetCVar(cvar, value)
-        end
-        cvarsInitialized = true
+    local value = AlomawaniQoLData.Configs["DisableDamageText"] and 0 or 1
+    for _, cvar in ipairs(floatingCombatTextCVars) do
+        SetCVar(cvar, value)
     end
-end
 
-function Interface:PostEnable()
+    self.Portrait:Enable()
     self.Quests:Enable()
     self.Social:Enable()
-    self.Portrait:Enable()
-end
-
-function Interface:PostDisable()
-    self.Quests:Disable()
-    self.Social:Disable()
-    self.Portrait:Disable()
 end
 
 AlomawaniQoL.Interface = Interface

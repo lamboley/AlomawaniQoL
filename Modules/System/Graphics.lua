@@ -9,13 +9,15 @@ local select = select
 local max = math.max
 local min = math.min
 
----@class Graphics : Frame
----@field OnEvent fun(self: Graphics, event: WowEvent, ...: any)
-local Graphics = AlomawaniQoL.CreateModule("Graphics", "PLAYER_ENTERING_WORLD")
+---@type System
+local System = AlomawaniQoL.System
 
----@param _ WowEvent
----@param ... any
-function Graphics:OnEvent(_, ...)
+---@class Graphics : Frame
+---@field Enable fun(self: Graphics)
+---@field Disable fun(self: Graphics)
+local Graphics = CreateFrame("Frame")
+
+function Graphics:Enable()
     if AlomawaniQoLData.Configs["UsePerfectPixel"] then
         local screenHeight = select(2, GetPhysicalScreenSize())
         if AlomawaniQoLData.Configs["UseCustomHeight"] ~= "" then
@@ -31,4 +33,8 @@ function Graphics:OnEvent(_, ...)
     end
 end
 
-AlomawaniQoL.System.Graphics = Graphics
+function Graphics:Disable()
+    UIParent:SetScale(1)
+end
+
+System.Graphics = Graphics

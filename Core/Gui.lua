@@ -2,13 +2,18 @@
 local AlomawaniQoL = select(2, ...)
 
 -- Local API
+local string = string
 local tonumber = tonumber
+local unpack = unpack
 
 ---@type table
 local DF = _G["DetailsFramework"]
 
 ---@type table
 local L = AlomawaniQoL.L
+
+local System = AlomawaniQoL.System
+local Interface = AlomawaniQoL.Interface
 
 ---@type number, number, number
 local WIDTH, HEIGHT, LINE = 1000, 600, -85
@@ -26,9 +31,12 @@ local switchTemplate = DF:GetTemplate("switch", "OPTIONS_CHECKBOX_TEMPLATE")
 local sliderTemplate = DF:GetTemplate("slider", "OPTIONS_SLIDER_TEMPLATE")
 ---@type table
 local buttonTemplate = DF:GetTemplate("button", "OPTIONS_BUTTON_TEMPLATE")
----@type table
--- local orangeTextTemplate = DF:GetTemplate("font", "ORANGE_FONT_TEMPLATE")
-local blueTextTemplate = {color = AlomawaniQoL.colorRGB, size = 11, font = DF:GetBestFontForLanguage()}
+
+---@type string
+local nameRequireReload = "|cFF00FF00*|r"
+
+---@type string
+local descRequireReload = " \n\n|cFF00FF00[*]|r |cFFFFFFFF" .. L["Requires /reload to take effect."] .. "|r"
 
 ---@class AlomawaniQoLGui : Frame
 ---@field Init fun(self: AlomawaniQoLGui)
@@ -36,6 +44,9 @@ local blueTextTemplate = {color = AlomawaniQoL.colorRGB, size = 11, font = DF:Ge
 local AlomawaniQoLGui = DF:CreateSimplePanel(UIParent, WIDTH, HEIGHT, AlomawaniQoL.addonName, "AlomawaniQoLGui", {})
 
 function AlomawaniQoLGui:Init()
+    ---@type table
+    local customTextTemplate = {color = AlomawaniQoLData.Configs["MenuColor"], size = 11, font = DF:GetBestFontForLanguage()}
+
     local tabsContainer = DF:CreateTabContainer(AlomawaniQoLGui, AlomawaniQoL.addonName, "AlomawaniQoLGuiTabsContainers",
         {
             {
@@ -75,7 +86,7 @@ function AlomawaniQoLGui:Init()
     end)
 
     for _, button in ipairs(tabsContainer.AllButtons) do
-        button:SetTextColor(AlomawaniQoL.colorRGB) -- gold color
+        button:SetTextColor(AlomawaniQoLData.Configs["MenuColor"])
     end
 
     -- General
@@ -84,7 +95,7 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Enable Debug
                 type = "toggle",
@@ -93,6 +104,16 @@ function AlomawaniQoLGui:Init()
                 get = function() return AlomawaniQoLData.Configs["Debug"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["Debug"] = value
+                end,
+            },
+            { -- Menu Color
+                type = "color",
+                boxfirst = true,
+                name = L["Menu Color"] .. nameRequireReload,
+                desc = L["Change the addon theme color."] .. descRequireReload,
+                get = function() return unpack(AlomawaniQoLData.Configs["MenuColor"]) end,
+                set = function(self, r, g, b, a)
+                    AlomawaniQoLData.Configs["MenuColor"] = {r, g, b, a}
                 end,
             },
         },
@@ -106,13 +127,13 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Max Out Camera Distance
                 type = "toggle",
                 boxfirst = true,
-                name = L["Max Out Camera Distance"],
-                desc = L["Requires /reload to take effect."],
+                name = L["Max Out Camera Distance"] .. nameRequireReload,
+                desc = L["Set the CVar 'cameraDistanceMaxZoomFactor' to 2.6."] .. descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["MaxOutCameraDistance"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MaxOutCameraDistance"] = value
@@ -124,13 +145,13 @@ function AlomawaniQoLGui:Init()
             { -- Graphics
                 type = "label",
                 get = function() return L["Graphics"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Use Perfect Pixel
                 type = "toggle",
                 boxfirst = true,
-                name = L["Use Perfect Pixel"],
-                desc = L["Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). "] .. L["Requires /reload to take effect."],
+                name = L["Use Perfect Pixel"] .. nameRequireReload,
+                desc = L["Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution)."] .. descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["UsePerfectPixel"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["UsePerfectPixel"] = value
@@ -138,8 +159,8 @@ function AlomawaniQoLGui:Init()
             },
             { -- Use Custom Height
                 type = "textentry",
-                name = L["Use Custom Height"],
-                desc = L["If the UI is too small when using the option above, you can set a custom vertical resolution here. "] .. L["Requires /reload to take effect."],
+                name = L["Use Custom Height"] .. nameRequireReload,
+                desc = L["If the UI is too small when using the option above, you can set a custom vertical resolution here."] .. descRequireReload,
                 width = 50,
                 get = function() return AlomawaniQoLData.Configs["UseCustomHeight"] or "" end,
                 set = function(_, _, value)
@@ -154,7 +175,7 @@ function AlomawaniQoLGui:Init()
                     OnEditFocusLost = function(self)
                         self:SetText(AlomawaniQoLData.Configs["UseCustomHeight"])
                     end,
-                    OnEnterPressed = function(self) return end
+                    OnEnterPressed = function(_) return end
                 },
             },
             {
@@ -164,16 +185,20 @@ function AlomawaniQoLGui:Init()
             { -- Audio
                 type = "label",
                 get = function() return L["Audio"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Mute Annoying Sound
                 type = "toggle",
                 boxfirst = true,
                 name = L["Mute Annoying Sound"],
-                desc = L["Requires /reload to take effect."],
                 get = function() return AlomawaniQoLData.Configs["MuteAnnoyingSound"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["MuteAnnoyingSound"] = value
+                    if value then
+                        System.Audio:Enable()
+                    else
+                        System.Audio:Disable()
+                    end
                 end,
             },
         },
@@ -187,13 +212,13 @@ function AlomawaniQoLGui:Init()
             { -- Chat
                 type = "label",
                 get = function() return L["Chat"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Disable Chat Clamping
                 type = "toggle",
                 boxfirst = true,
-                name = L["Disable Chat Clamping"],
-                desc = L["Requires /reload to take effect."],
+                name = L["Disable Chat Clamping"] .. nameRequireReload,
+                desc = descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["DisableChatClamping"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableChatClamping"] = value
@@ -210,13 +235,13 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Disable Right Click Targeting
                 type = "toggle",
                 boxfirst = true,
-                name = L["Disable Right Click Targeting"],
-                desc = L["Requires /reload to take effect."],
+                name = L["Disable Right Click Targeting"] .. nameRequireReload,
+                desc = descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["DisableRightClickTargeting"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableRightClickTargeting"] = value
@@ -237,7 +262,7 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Roleplay"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Add Voice Line When Dead
                 type = "toggle",
@@ -274,7 +299,7 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Battle Pet"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Keep A Battle Pet Summoned
                 type = "toggle",
@@ -312,7 +337,7 @@ function AlomawaniQoLGui:Init()
             { -- Merchant
                 type = "label",
                 get = function() return L["Merchant"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Repair Gear Automatically
                 type = "toggle",
@@ -347,7 +372,7 @@ function AlomawaniQoLGui:Init()
             { -- Bank
                 type = "label",
                 get = function() return L["Bank"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Deposit Gold In Warband Bank
                 type = "toggle",
@@ -385,13 +410,13 @@ function AlomawaniQoLGui:Init()
             { -- General
                 type = "label",
                 get = function() return L["General"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- Disable Damage Text
                 type = "toggle",
                 boxfirst = true,
-                name = L["Disable Damage Text"],
-                desc = L["Requires /reload to take effect."],
+                name = L["Disable Damage Text"] .. nameRequireReload,
+                desc = descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["DisableDamageText"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["DisableDamageText"] = value
@@ -400,8 +425,8 @@ function AlomawaniQoLGui:Init()
             { -- Hide Tooltip While In Combat
                 type = "toggle",
                 boxfirst = true,
-                name = L["Hide Tooltip While In Combat"],
-                desc = L["Requires /reload to take effect."],
+                name = L["Hide Tooltip While In Combat"] .. nameRequireReload,
+                desc = descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["HideTooltipWhileInCombat"] = value
@@ -415,9 +440,9 @@ function AlomawaniQoLGui:Init()
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] = value
                     if value then
-                        AlomawaniQoL.Interface.Portrait:Enable()
+                        Interface.Portrait:Enable()
                     else
-                        AlomawaniQoL.Interface.Portrait:Disable()
+                        Interface.Portrait:Disable()
                     end
                 end,
             },
@@ -427,12 +452,12 @@ function AlomawaniQoLGui:Init()
             { -- Scale
                 type = "label",
                 get = function() return L["Scale"] end,
-                text_template = blueTextTemplate
+                text_template = customTextTemplate
             },
             { -- ObjectiveTracker Scale
                 type = "range",
-                name = L["ObjectiveTracker Scale"],
-                desc = L["Requires /reload to take effect."],
+                name = L["ObjectiveTracker Scale"] .. nameRequireReload,
+                desc = descRequireReload,
                 get = function() return AlomawaniQoLData.Configs["ObjectiveTrackerScale"] end,
                 set = function(_, _, value)
                     AlomawaniQoLData.Configs["ObjectiveTrackerScale"] = value

@@ -29,6 +29,7 @@ if GetLocale() == "frFR" then
 
     -- Toggle names
     L["Enable Debug"] = "Activer le débogage"
+    L["Menu Color"] = "Couleur du menu"
     L["Max Out Camera Distance"] = "Distance de caméra maximale"
     L["Use Perfect Pixel"] = "Utiliser le pixel parfait"
     L["Use Custom Height"] = "Utiliser une hauteur personnalisée"
@@ -51,8 +52,10 @@ if GetLocale() == "frFR" then
     L["Gold To Keep In Inventory"] = "Or à garder dans l'inventaire"
 
     -- Descriptions
-    L["Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution). "] = "Définir l'échelle de l'interface en fonction de la résolution verticale (UIScale = 768 / résolutionVerticale). "
-    L["If the UI is too small when using the option above, you can set a custom vertical resolution here. "] = "Si l'interface est trop petite avec l'option ci-dessus, vous pouvez définir une résolution verticale personnalisée ici. "
+    L["Change the addon theme color."] = "Changer la couleur du thème de l'addon."
+    L["Set the CVar 'cameraDistanceMaxZoomFactor' to 2.6."] = "Définir le CVar 'cameraDistanceMaxZoomFactor' à 2.6."
+    L["Set the UI Scale based on the vertical resolution (UIScale = 768 / verticalResolution)."] = "Définir l'échelle de l'interface en fonction de la résolution verticale (UIScale = 768 / résolutionVerticale)."
+    L["If the UI is too small when using the option above, you can set a custom vertical resolution here."] = "Si l'interface est trop petite avec l'option ci-dessus, vous pouvez définir une résolution verticale personnalisée ici."
     L["Voice line are from Ilgynoth, Yshaarj, Xalatath and Yoggsaron"] = "Les répliques vocales proviennent d'Ilgynoth, Y'shaarj, Xal'atath et Yogg-Saron"
     L["The name of the battle pet to be summoned"] = "Le nom de la mascotte de combat à invoquer"
     L["Custom height must be between 480-4320"] = "La hauteur personnalisée doit être entre 480 et 4320"

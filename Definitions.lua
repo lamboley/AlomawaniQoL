@@ -6,7 +6,6 @@
 ---@field AlomawaniQoLGui AlomawaniQoLGui
 ---@field Print fun(...: any) Print text in chat
 ---@field Debug fun(...: any) Print text in chat if Debug is enabled
----@field CreateModule fun(name: string, events: string|string[]): Frame
 ---@field addonName string
 ---@field colorRGB number[]
 ---@field colorHex string

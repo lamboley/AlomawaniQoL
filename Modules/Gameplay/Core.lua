@@ -6,21 +6,30 @@ local GetNumLootItems = GetNumLootItems
 local LootSlot = LootSlot
 
 ---@class Gameplay : Frame
+---@field Bank Bank
 ---@field BattlePet BattlePet
 ---@field ThichNhatHanh ThichNhatHanh
 ---@field Vendor Vendor
 ---@field Voice Voice
----@field Bank Bank
 ---@field OnEvent fun(self: Gameplay, event: WowEvent, ...: any)
----@field PreEnable fun(self: Gameplay)
----@field PostEnable fun(self: Gameplay)
----@field PostDisable fun(self: Gameplay)
-local Gameplay = AlomawaniQoL.CreateModule("Gameplay", "LOOT_READY")
+---@field Enable fun(self: Gameplay)
+local Gameplay = CreateFrame("Frame")
 
 ---@type boolean
 local mouselookInitialized = false
 
-function Gameplay:PreEnable()
+---@param event WowEvent
+---@param ... any
+function Gameplay:OnEvent(event, ...)
+    if AlomawaniQoLData.Configs["FasterAutoLoot"] then
+        LootFrame:SetAlpha(0)
+        for i = 1, GetNumLootItems() do
+            LootSlot(i)
+        end
+    end
+end
+
+function Gameplay:Enable()
     if AlomawaniQoLData.Configs["DisableRightClickTargeting"] and not mouselookInitialized then
         local statusMouseover = CreateFrame('frame', nil, nil, 'SecureHandlerStateTemplate')
         RegisterStateDriver(statusMouseover, 'mouseunitexist', '[@mouseover,exists,combat]1;0')
@@ -44,33 +53,15 @@ function Gameplay:PreEnable()
 
         mouselookInitialized = true
     end
-end
 
----@param event WowEvent
----@param ... any
-function Gameplay:OnEvent(event, ...)
-    if AlomawaniQoLData.Configs["FasterAutoLoot"] then
-        LootFrame:SetAlpha(0)
-        for i = 1, GetNumLootItems() do
-            LootSlot(i)
-        end
-    end
-end
-
-function Gameplay:PostEnable()
     self.Vendor:Enable()
     self.Voice:Enable()
     self.ThichNhatHanh:Enable()
     self.BattlePet:Enable()
     self.Bank:Enable()
-end
 
-function Gameplay:PostDisable()
-    self.Vendor:Disable()
-    self.Voice:Disable()
-    self.ThichNhatHanh:Disable()
-    self.BattlePet:Disable()
-    self.Bank:Disable()
+	self:RegisterEvent("LOOT_READY")
+	self:SetScript("OnEvent", self.OnEvent)
 end
 
 AlomawaniQoL.Gameplay = Gameplay

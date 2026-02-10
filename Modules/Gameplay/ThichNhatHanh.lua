@@ -7,10 +7,14 @@ local NewTimer = C_Timer.NewTimer
 local ipairs = ipairs
 local wipe = wipe
 
+---@type Gameplay
+local Gameplay = AlomawaniQoL.Gameplay
+
 ---@class ThichNhatHanh : Frame
 ---@field OnEvent fun(self: ThichNhatHanh, event: WowEvent, ...: any)
----@field PreDisable fun(self: ThichNhatHanh)
-local ThichNhatHanh = AlomawaniQoL.CreateModule("ThichNhatHanh", "PLAYER_ENTERING_WORLD")
+---@field Enable fun(self: ThichNhatHanh)
+---@field Disable fun(self: ThichNhatHanh)
+local ThichNhatHanh = CreateFrame("Frame")
 
 ---@type number
 local CYCLE_INTERVAL = 2000
@@ -20,14 +24,22 @@ local STEP_DELAY = 60
 
 ---@type string[][]
 local steps = {
-    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r",
-     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r"},
-    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00As my in-breath grows deep,|r",
-     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00My out-breath grows slow.|r"},
-    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I am aware of my body.|r",
-     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I calm my body.|r"},
-    {"|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Dwelling in the present moment,|r",
-     "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00I know this is a wonderful moment.|r"},
+    {
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I know I am breathing in.|r",
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I know I am breathing out.|r"
+    },
+    {
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00As my in-breath grows deep,|r",
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00My out-breath grows slow.|r"
+    },
+    {
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing in, I am aware of my body.|r",
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Breathing out, I calm my body.|r"
+    },
+    {
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00Dwelling in the present moment,|r",
+        "|cffFF9FFFThich Nhat Hanh says:|r |cffFFFF00I know this is a wonderful moment.|r"
+    },
 }
 
 local quoteTicker = nil
@@ -51,7 +63,7 @@ local function DisplayStep(step)
     end
 end
 
-function ThichNhatHanh:OnEvent(_, ...)
+function ThichNhatHanh:Enable()
     if AlomawaniQoLData.Configs["PrintQuoteFromThichNhatHanh"] then
         CancelAllTimers()
 
@@ -73,8 +85,8 @@ function ThichNhatHanh:OnEvent(_, ...)
     end
 end
 
-function ThichNhatHanh:PreDisable()
+function ThichNhatHanh:Disable()
     CancelAllTimers()
 end
 
-AlomawaniQoL.Gameplay.ThichNhatHanh = ThichNhatHanh
+Gameplay.ThichNhatHanh = ThichNhatHanh

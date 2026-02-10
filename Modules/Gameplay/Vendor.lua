@@ -11,9 +11,13 @@ local RepairAllItems = RepairAllItems
 local GetGuildInfo = GetGuildInfo
 local select = select
 
+---@type Gameplay
+local Gameplay = AlomawaniQoL.Gameplay
+
 ---@class Vendor : Frame
 ---@field OnEvent fun(self: Vendor, event: WowEvent, ...: any)
-local Vendor = AlomawaniQoL.CreateModule("Vendor", "MERCHANT_SHOW")
+---@field Enable fun(self: Vendor)
+local Vendor = CreateFrame("Frame")
 
 ---@param _ WowEvent
 ---@param ... any
@@ -43,4 +47,9 @@ function Vendor:OnEvent(_, ...)
     end
 end
 
-AlomawaniQoL.Gameplay.Vendor = Vendor
+function Vendor:Enable()
+	self:RegisterEvent("MERCHANT_SHOW")
+	self:SetScript("OnEvent", self.OnEvent)
+end
+
+Gameplay.Vendor = Vendor

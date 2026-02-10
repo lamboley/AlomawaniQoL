@@ -20,10 +20,14 @@ SlashCmdList["AlomawaniQoL"] = function(msg)
         else
             AlomawaniQoL:Print("There is no battle pet summoned.")
         end
+    elseif msg == "reset" then
+        AlomawaniQoLData.Configs = nil
+        ReloadUI()
     elseif msg == "h" or msg == "help" then
         AlomawaniQoL:Print("Command usage:")
         print("|cff00ff00/aql|r - Toggle options menu")
         print("|cff00ff00/aql pet|r - Display currently summoned battle pet name")
+        print("|cff00ff00/aql reset|r - Reset all settings to default and reload")
         print("|cff00ff00/aql help|r - Show this help message")
     else
         AlomawaniQoL.AlomawaniQoLGui:ToggleOptions()

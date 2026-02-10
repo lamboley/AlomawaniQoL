@@ -6,24 +6,20 @@ local RegisterAttributeDriver = RegisterAttributeDriver
 local GetSpecializationRole = GetSpecializationRole
 local GetSpecialization = GetSpecialization
 
+---@type Interface
+local Interface = AlomawaniQoL.Interface
+
 ---@class Portrait : Frame
 ---@field OnEvent fun(self: Portrait, event: WowEvent, ...: any)
-local Portrait = AlomawaniQoL.CreateModule("Portrait", {
-    "PLAYER_ENTERING_WORLD",
-    "PLAYER_SPECIALIZATION_CHANGED"
-})
-
----@type string?
-local lastPortraitState = nil
+---@field Enable fun(self: Portrait)
+---@field Disable fun(self: Portrait)
+local Portrait = CreateFrame("Frame")
 
 ---@param event WowEvent
 ---@param ... any
 function Portrait:OnEvent(event, ...)
+    -- TODO: Check PLAYER_ENTERING_WORLD for InitialLogin and make a function to be called easly
     if not AlomawaniQoLData.Configs["HidePlayerPortraitWhenHeal"] then
-        if lastPortraitState == 'hidden' then
-            RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
-            lastPortraitState = 'shown'
-        end
         return
     end
 
@@ -32,17 +28,27 @@ function Portrait:OnEvent(event, ...)
         local roleToken = GetSpecializationRole(currentSpec)
         if roleToken then
             local desiredState = (roleToken == 'HEALER') and 'hidden' or 'shown'
-
-            if lastPortraitState ~= desiredState then
-                if desiredState == 'hidden' then
-                    RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'hide;hide')
-                else
-                    RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
-                end
-                lastPortraitState = desiredState
+            if desiredState == 'hidden' then
+                RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'hide;hide')
+            else
+                RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
             end
         end
     end
 end
 
-AlomawaniQoL.Interface.Portrait = Portrait
+function Portrait:Enable()
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+	self:SetScript("OnEvent", self.OnEvent)
+end
+
+function Portrait:Disable()
+	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
+	self:UnregisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+	self:SetScript("OnEvent", self.OnEvent)
+
+    RegisterAttributeDriver(PlayerFrame, 'state-visibility', 'show;show')
+end
+
+Interface.Portrait = Portrait

@@ -8,18 +8,16 @@ local SummonPetByGUID = C_PetJournal.SummonPetByGUID
 local InCombatLockdown = InCombatLockdown
 local IsInInstance = IsInInstance
 local IsStealthed = IsStealthed
-local select = select
 local GetTime = GetTime
+local select = select
+
+---@type Gameplay
+local Gameplay = AlomawaniQoL.Gameplay
 
 ---@class BattlePet : Frame
 ---@field OnEvent fun(self: BattlePet, event: WowEvent, ...: any)
-local BattlePet = AlomawaniQoL.CreateModule("BattlePet", {
-    "PLAYER_ENTERING_WORLD",
-    "COMPANION_UPDATE",
-    "ZONE_CHANGED",
-    "ZONE_CHANGED_INDOORS",
-    "ZONE_CHANGED_NEW_AREA"
-})
+---@field Enable fun(self: Vendor)
+local BattlePet = CreateFrame("Frame")
 
 ---@type number
 local lastSummonAttempt = 0
@@ -48,4 +46,13 @@ function BattlePet:OnEvent(_, ...)
     end
 end
 
-AlomawaniQoL.Gameplay.BattlePet = BattlePet
+function BattlePet:Enable()
+	self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	self:RegisterEvent("COMPANION_UPDATE")
+	self:RegisterEvent("ZONE_CHANGED")
+	self:RegisterEvent("ZONE_CHANGED_INDOORS")
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	self:SetScript("OnEvent", self.OnEvent)
+end
+
+Gameplay.BattlePet = BattlePet

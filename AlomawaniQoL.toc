@@ -22,21 +22,21 @@ Locales\frFR.lua
 
 ## Core
 Core\Functions.lua
-Core\Commands.lua
 Core\Events.lua
+Core\Commands.lua
 Core\Gui.lua
 
 ## Modules
-Modules\System\System.lua
+Modules\System\Core.lua
 Modules\System\Graphics.lua
 Modules\System\Audio.lua
 
-Modules\Interface\Interface.lua
+Modules\Interface\Core.lua
 Modules\Interface\Quests.lua
 Modules\Interface\Social.lua
 Modules\Interface\Portrait.lua
 
-Modules\Gameplay\Gameplay.lua
+Modules\Gameplay\Core.lua
 Modules\Gameplay\Vendor.lua
 Modules\Gameplay\Voice.lua
 Modules\Gameplay\ThichNhatHanh.lua

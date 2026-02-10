@@ -7,9 +7,13 @@ local DepositMoney = C_Bank.DepositMoney
 local tonumber = tonumber
 local GetMoney = GetMoney
 
+---@type Gameplay
+local Gameplay = AlomawaniQoL.Gameplay
+
 ---@class Bank : Frame
 ---@field OnEvent fun(self: Bank, event: WowEvent, ...: any)
-local Bank = AlomawaniQoL.CreateModule("Bank", "BANKFRAME_OPENED")
+---@field Enable fun(self: Bank)
+local Bank = CreateFrame("Frame")
 
 ---@param _ WowEvent
 ---@param ... any
@@ -30,4 +34,9 @@ function Bank:OnEvent(_, ...)
 
 end
 
-AlomawaniQoL.Gameplay.Bank = Bank
+function Bank:Enable()
+	self:RegisterEvent("BANKFRAME_OPENED")
+	self:SetScript("OnEvent", self.OnEvent)
+end
+
+Gameplay.Bank = Bank
