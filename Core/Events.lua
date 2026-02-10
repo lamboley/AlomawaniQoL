@@ -4,8 +4,6 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local CreateFrame = CreateFrame
 
----@class Events : Frame
----@field OnEvent fun(self: Events, event: WowEvent, ...: any)
 local Events = CreateFrame("Frame")
 Events:RegisterEvent("ADDON_LOADED")
 Events:RegisterEvent("PLAYER_LOGIN")
@@ -33,13 +31,16 @@ Events:SetScript("OnEvent", function(_, event, ...)
             -- General
             SetDefault("Debug", false)
             SetDefault("MenuColor", {1, 0.8235, 0, 1})
+
             -- System
             SetDefault("MaxOutCameraDistance", true)
             SetDefault("UsePerfectPixel", false)
             SetDefault("UseCustomHeight", "")
             SetDefault("MuteAnnoyingSound", false)
+
             -- Social
             SetDefault("DisableChatClamping", true)
+
             -- Gameplay
             SetDefault("DisableRightClickTargeting", true)
             SetDefault("FasterAutoLoot", false)
@@ -52,6 +53,7 @@ Events:SetScript("OnEvent", function(_, event, ...)
             SetDefault("SellJunkAutomatically", true)
             SetDefault("DepositGoldInWarbandBank", true)
             SetDefault("QuantityOfGoldToKeepInInventory", "500")
+
             -- Interface
             SetDefault("DisableDamageText", true)
             SetDefault("HideTooltipWhileInCombat", false)

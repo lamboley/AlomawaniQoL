@@ -3,10 +3,7 @@ local AlomawaniQoL = select(2, ...)
 
 -- Local API
 local CreateFrame = CreateFrame
-local ipairs = ipairs
 local print = print
-local tonumber = tonumber
-local type = type
 
 ---@param ... any
 function AlomawaniQoL:Print(...)
