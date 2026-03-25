@@ -6,6 +6,9 @@
 ---@field AlomawaniQoLGui AlomawaniQoLGui
 ---@field Print fun(...: any) Print text in chat
 ---@field Debug fun(...: any) Print text in chat if Debug is enabled
+---@field GetZoneID fun() : number Affiche la zone du joueur
+---@field Mount fun()
+---@field GetMountID fun()
 ---@field addonName string
 ---@field colorRGB number[]
 ---@field colorHex string

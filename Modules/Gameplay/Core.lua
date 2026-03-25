@@ -2,8 +2,17 @@
 local AlomawaniQoL = select(2, ...)
 
 -- Local API
+local SummonByID = C_MountJournal.SummonByID
 local GetNumLootItems = GetNumLootItems
+local CanExitVehicle = CanExitVehicle
+local IsFlyableArea = IsFlyableArea
+local IsInInstance = IsInInstance
+local VehicleExit = VehicleExit
+local IsMounted = IsMounted
+local Dismount = Dismount
 local LootSlot = LootSlot
+local tostring = tostring
+local select = select
 
 ---@class Gameplay : Frame
 ---@field Bank Bank
@@ -17,6 +26,10 @@ local Gameplay = CreateFrame("Frame")
 
 ---@type boolean
 local mouselookInitialized = false
+
+local donotfly = {
+    1, -- Example
+}
 
 ---@param event WowEvent
 ---@param ... any
@@ -62,6 +75,29 @@ function Gameplay:Enable()
 
 	self:RegisterEvent("LOOT_READY")
 	self:SetScript("OnEvent", self.OnEvent)
+end
+
+
+-- 1048: Dark Iron Core Hound
+-- 1550: Depthstalker
+-- 2532: Herald of Sa'bak
+function AlomawaniQoL:Mount()
+    if CanExitVehicle() then
+        VehicleExit()
+    elseif IsMounted() then
+        Dismount()
+    else
+        local instanceType = select(2, IsInInstance())
+        if instanceType and instanceType == 'arena' then -- In Arena
+            SummonByID(1048)
+        elseif instanceType and instanceType == 'pvp' then -- In Battleground
+            SummonByID(1048)
+        elseif not IsFlyableArea() or donotfly[tostring(self.GetZoneID())] then -- Can't fly here || In blacklist
+            SummonByID(1048)
+        else
+            SummonByID(1550)
+        end
+    end
 end
 
 AlomawaniQoL.Gameplay = Gameplay

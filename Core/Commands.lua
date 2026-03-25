@@ -4,6 +4,7 @@ local AlomawaniQoL = select(2, ...)
 -- Local API
 local GetSummonedPetGUID = C_PetJournal.GetSummonedPetGUID
 local GetPetInfoByPetID = C_PetJournal.GetPetInfoByPetID
+local GetBestMapForUnit = C_Map.GetBestMapForUnit
 local ReloadUI = ReloadUI
 local select = select
 
@@ -20,6 +21,8 @@ SlashCmdList["AlomawaniQoL"] = function(msg)
         else
             AlomawaniQoL:Print("There is no battle pet summoned.")
         end
+    elseif msg == "zone" then
+        AlomawaniQoL:Print(AlomawaniQoL.GetZoneID())
     elseif msg == "reset" then
         AlomawaniQoLData.Configs = nil
         ReloadUI()
@@ -36,3 +39,7 @@ end
 
 SLASH_RELOADUI1 = "/rel"
 SlashCmdList.RELOADUI = ReloadUI
+
+function AlomawaniQoL.GetZoneID()
+    return C_Map.GetBestMapForUnit('player')
+end
